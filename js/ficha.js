@@ -60,6 +60,7 @@ const DEFENSES = [
 const DEFENSE_PARTS = [
     { key: 'level', label: 'Nível' },
     { key: 'class', label: 'Classe' },
+    { key: 'species', label: 'Raça' },
     { key: 'hab',   label: 'Hab.' },
     { key: 'other', label: 'Outros' },
 ];
@@ -117,12 +118,14 @@ function createEmptySheet(id) {
         player: "",
         classes: [{ name: "Jedi", level: 1 }],
         species: "",
+        speciesKey: "",
         level: 1,
         age: "",
         sex: "",
         weight: "",
         height: "",
         alignment: "Neutro",
+        // val = valor real do atributo (já com a raça); speciesMods = modificadores de raça já somados em val
         attributes: {
             FOR: { val: 10, mod: 0 },
             DES: { val: 10, mod: 0 },
@@ -143,6 +146,8 @@ function createEmptySheet(id) {
         weapons: [],
         specialActions: ["", "", ""],
         skills: Object.fromEntries(SKILL_ROWS.map(skill => [skill.key, { treinada: false, bonus: 0 }])),
+        // talents/aptitudes são recalculados a partir de "escolhas" (js/talentos.js cria esse campo na
+        // primeira renderização e converte o que já estiver digitado aqui)
         talents: [],
         aptitudes: [],
         forcePowers: [],
@@ -196,6 +201,35 @@ function syncDerivedValues(sheet) {
             changed = true;
         }
     });
+    // O valor do atributo é o que está salvo (já com a raça). Se a raça foi editada no
+    // cadastro, aplica só a diferença entre os modificadores antigos e os novos.
+    if (getSpeciesData(sheet)) {
+        const applied = getAppliedSpeciesMods(sheet);
+        const current = normalizeSpeciesMods(getSpeciesData(sheet).modificadores);
+        // Compara atributo a atributo (o Firestore pode devolver as chaves em outra ordem)
+        if (!sheet.speciesMods || ATTRIBUTES.some(attr => toInt(applied[attr]) !== toInt(current[attr]))) {
+            ATTRIBUTES.forEach(attr => {
+                const data = sheet.attributes?.[attr];
+                if (data) data.val = toInt(data.val) - toInt(applied[attr]) + toInt(current[attr]);
+            });
+            sheet.speciesMods = current;
+            changed = true;
+        }
+    }
+    ATTRIBUTES.forEach(attr => {
+        const data = sheet.attributes?.[attr];
+        if (!data) return;
+        // Fichas do jeito antigo guardavam um "valor base" separado; o val já tinha a conta
+        if (data.base !== undefined) {
+            delete data.base;
+            changed = true;
+        }
+        const mod = Math.floor((toInt(data.val) - 10) / 2);
+        if (data.mod !== mod) {
+            data.mod = mod;
+            changed = true;
+        }
+    });
     const total = toInt(sheet.hp?.total);
     if (total > 0 && toInt(sheet.hp.current) > total) {
         sheet.hp.current = total;
@@ -213,11 +247,11 @@ function getConditionPenalty(sheet) {
     return condition === -99 ? -10 : condition;
 }
 
-// Perícia = ½ nível + mod. do atributo + 5 se treinada + bônus extra + penalidade de condição
+// Perícia = ½ nível + mod. do atributo + 5 se treinada + raça + bônus extra + penalidade de condição
 function calculateSkillTotal(sheet, skill) {
     const sk = sheet.skills?.[skill.key] || { treinada: false, bonus: 0 };
     const attrMod = toInt(sheet.attributes?.[skill.attr]?.mod);
-    return getHalfLevel(sheet) + attrMod + (sk.treinada ? 5 : 0) + toInt(sk.bonus) + getConditionPenalty(sheet);
+    return getHalfLevel(sheet) + attrMod + (sk.treinada ? 5 : 0) + getSpeciesSkillBonus(sheet, skill.key) + toInt(sk.bonus) + getConditionPenalty(sheet);
 }
 
 function calculateDefense(sheet, defType) {
@@ -225,12 +259,12 @@ function calculateDefense(sheet, defType) {
     const def = sheet.defenses[defType];
     const defense = DEFENSES.find(d => d.key === defType);
     const attrMod = toInt(sheet.attributes[defense.attr]?.mod);
-    return baseDefense + attrMod + toInt(def?.level) + toInt(def?.class) + toInt(def?.hab) + toInt(def?.other);
+    return baseDefense + attrMod + toInt(def?.level) + toInt(def?.class) + getSpeciesDefenseBonus(sheet, defType) + toInt(def?.hab) + toInt(def?.other);
 }
 
-// Limiar de Dano = Defesa de Fortitude + outros (talentos, tamanho...)
+// Limiar de Dano = Defesa de Fortitude + raça (tamanho, talento bônus) + outros
 function calculateDamageThreshold(sheet) {
-    return calculateDefense(sheet, 'FORT') + toInt(sheet.damageThreshold?.other);
+    return calculateDefense(sheet, 'FORT') + getSpeciesThresholdBonus(sheet) + toInt(sheet.damageThreshold?.other);
 }
 
 function getHpState(sheet) {
@@ -239,6 +273,111 @@ function getHpState(sheet) {
     const percent = total > 0 ? Math.max(0, Math.min(100, (current / total) * 100)) : 0;
     const level = percent <= 25 ? 'low' : percent <= 50 ? 'mid' : '';
     return { percent, level };
+}
+
+// ===== Raça =====
+
+function getSpeciesData(sheet) {
+    return SPECIES_DATA[sheet.speciesKey] || null;
+}
+
+function getSpeciesEffects(sheet) {
+    return SPECIES_EFFECTS[sheet.speciesKey] || null;
+}
+
+function getSpeciesModifier(sheet, attr) {
+    return toInt(getSpeciesData(sheet)?.modificadores?.[attr]);
+}
+
+// { FOR: -2, CAR: 2 } só com os atributos que têm modificador
+function normalizeSpeciesMods(modificadores) {
+    const result = {};
+    ATTRIBUTES.forEach(attr => {
+        const value = toInt(modificadores?.[attr]);
+        if (value) result[attr] = value;
+    });
+    return result;
+}
+
+// Modificadores de raça que já estão somados nos atributos da ficha.
+// Fichas antigas não guardam isso: vale o modificador da raça atual.
+function getAppliedSpeciesMods(sheet) {
+    return sheet.speciesMods || normalizeSpeciesMods(getSpeciesData(sheet)?.modificadores);
+}
+
+// Bônus de espécie (Vontade de Ferro, Grande Fortitude...) + efeito de tamanho
+function getSpeciesDefenseBonus(sheet, defType) {
+    const effects = getSpeciesEffects(sheet);
+    if (!effects) return 0;
+    return toInt(effects.defesas?.[defType]) + toInt(SIZE_EFFECTS[effects.tamanho]?.defesas?.[defType]);
+}
+
+// Tamanho (Furtividade) + Foco em Perícia condicional quando treinada + bônus fixos da raça
+function getSpeciesSkillBonus(sheet, skillKey) {
+    const effects = getSpeciesEffects(sheet);
+    if (!effects) return 0;
+    const size = toInt(SIZE_EFFECTS[effects.tamanho]?.pericias?.[skillKey]);
+    const focus = effects.focoPericia === skillKey && sheet.skills?.[skillKey]?.treinada ? 5 : 0;
+    const fixed = toInt(effects.pericias?.[skillKey]);
+    return size + focus + fixed;
+}
+
+function getSpeciesThresholdBonus(sheet) {
+    const effects = getSpeciesEffects(sheet);
+    if (!effects) return 0;
+    return toInt(effects.limiar) + toInt(SIZE_EFFECTS[effects.tamanho]?.limiar);
+}
+
+function getSpeciesSpeedText(sheet) {
+    const effects = getSpeciesEffects(sheet);
+    if (!effects) return '';
+    return `${effects.velocidade} quadrados${effects.natacao ? ` (nadando ${effects.natacao})` : ''}`;
+}
+
+function renderSkillSpeciesBonus(sheet, skillKey) {
+    const bonus = getSpeciesSkillBonus(sheet, skillKey);
+    return bonus
+        ? `<span class="skill-species ${bonus < 0 ? 'negative' : ''}">${formatBonus(bonus)}</span>`
+        : '<span class="skill-species empty">—</span>';
+}
+
+function renderSpeciesField(sheet) {
+    const data = getSpeciesData(sheet);
+    if (data) {
+        const icon = typeof renderSpeciesIcon === 'function' ? renderSpeciesIcon(sheet.speciesKey, 'species-field-icon') : '';
+        return `
+            <button type="button" id="species-${sheet.id}" class="species-field" onclick="openSpeciesPicker(${sheet.id})" title="Trocar raça">
+                ${icon}<span>${escapeHtml(data.nome)}</span>
+            </button>
+        `;
+    }
+    // Ficha antiga com a espécie digitada à mão: mostra o texto e convida a escolher na lista
+    return `
+        <button type="button" id="species-${sheet.id}" class="species-field empty" onclick="openSpeciesPicker(${sheet.id})">
+            <span>${sheet.species ? `${escapeHtml(sheet.species)}<small>escolher na lista</small>` : 'Escolher raça'}</span>
+        </button>
+    `;
+}
+
+function renderSpeciesTraits(sheet) {
+    const data = getSpeciesData(sheet);
+    if (!data?.tracos?.length) return '';
+    return `
+        <section class="card species-traits-card">
+            <div class="card-header">
+                <h3 class="card-title">Traços Raciais · ${escapeHtml(data.nome)}</h3>
+                <button class="btn-add" onclick="openSpeciesPicker(${sheet.id})">Ver raça</button>
+            </div>
+            <div class="trait-grid">
+                ${data.tracos.map(trait => `
+                    <div class="trait-card">
+                        <h5>${escapeHtml(trait.nome)}</h5>
+                        <p>${escapeHtml(trait.texto)}</p>
+                    </div>
+                `).join('')}
+            </div>
+        </section>
+    `;
 }
 
 // ===== Imagem do personagem =====
@@ -399,6 +538,8 @@ function renderSheets() {
     sortedSheets.forEach(sheet => {
         // Fichas antigas podem ter nível digitado à mão ou PV atual acima do total
         if (syncDerivedValues(sheet)) scheduleSave(sheet.id);
+        // Talentos e Aptidões por nível (js/talentos.js); converte a lista digitada das fichas antigas
+        if (prepareSheetChoices(sheet)) scheduleSave(sheet.id);
 
         const sheetDiv = document.createElement('div');
         sheetDiv.className = `sheet-content ${sheet.id === activeSheetId ? 'active' : ''}`;
@@ -444,8 +585,12 @@ function renderFichaTab(sheet) {
 
         ${renderDefenses(sheet)}
 
+        ${renderSpeciesTraits(sheet)}
+
         <section class="grid-section">
-            ${['talents', 'aptitudes', 'forcePowers'].map(field => renderListCard(sheet, field)).join('')}
+            ${renderChoiceCard(sheet, 'talento')}
+            ${renderChoiceCard(sheet, 'aptidao')}
+            ${renderListCard(sheet, 'forcePowers')}
         </section>
 
         <section class="grid-section">
@@ -509,7 +654,10 @@ function renderBasicInfo(sheet) {
             </div>
             <div class="info-grid">
                 ${renderTextField(sheet, 'player', 'Jogador')}
-                ${renderTextField(sheet, 'species', 'Espécie')}
+                <div class="field">
+                    <label for="species-${sheet.id}">Espécie</label>
+                    ${renderSpeciesField(sheet)}
+                </div>
                 <div class="field">
                     <label for="level-${sheet.id}">Nível <span class="label-hint">soma das classes</span></label>
                     <input id="level-${sheet.id}" class="locked" type="number" value="${getCharacterLevel(sheet)}" readonly tabindex="-1" title="Soma dos níveis das classes">
@@ -517,6 +665,10 @@ function renderBasicInfo(sheet) {
                 ${renderTextField(sheet, 'alignment', 'Alinhamento')}
                 ${renderTextField(sheet, 'age', 'Idade')}
                 ${renderTextField(sheet, 'sex', 'Sexo')}
+                <div class="field">
+                    <label for="speed-${sheet.id}">Deslocamento <span class="label-hint">da raça</span></label>
+                    <input id="speed-${sheet.id}" class="locked" type="text" value="${escapeHtml(getSpeciesSpeedText(sheet) || '—')}" readonly tabindex="-1">
+                </div>
             </div>
             <div>
                 <div class="card-header">
@@ -544,6 +696,7 @@ function renderClassRow(sheetId, index, classObj) {
                 <span>Nív.</span>
                 <input type="number" min="1" aria-label="Nível na classe" value="${toInt(classObj.level)}" onchange="updateClassRow(${sheetId}, ${index}, this.value, 'level')">
             </div>
+            ${renderClassEntryWarning(sheetId, index)}
             <button class="icon-btn btn-remove" title="Remover classe" onclick="removeClassRow(${sheetId}, ${index})">×</button>
         </div>
     `;
@@ -552,7 +705,9 @@ function renderClassRow(sheetId, index, classObj) {
 function renderAttributes(sheet) {
     return `
         <div class="card attributes-card">
-            <div class="card-header"><h3 class="card-title">Atributos</h3></div>
+            <div class="card-header">
+                <h3 class="card-title">Atributos</h3>
+            </div>
             <div class="attr-grid">
                 ${ATTRIBUTES.map(attr => {
                     const mod = toInt(sheet.attributes[attr]?.mod);
@@ -593,10 +748,11 @@ function renderHitPoints(sheet) {
 function renderDamageThreshold(sheet) {
     // Fichas antigas tinham o limiar digitado dentro de Pontos de Vida
     const legacyValue = sheet.damageThreshold === undefined ? toInt(sheet.hp?.threshold) : 0;
+    const speciesThreshold = getSpeciesThresholdBonus(sheet);
     return `
         <div class="card" data-threshold>
             <div class="card-header"><h3 class="card-title">Limiar de Dano</h3></div>
-            <div class="threshold-layout">
+            <div class="threshold-layout ${speciesThreshold ? 'with-species' : ''}">
                 <div class="field">
                     <label for="threshold-total-${sheet.id}">Total</label>
                     <input id="threshold-total-${sheet.id}" class="stat-input locked highlight" type="number" value="${calculateDamageThreshold(sheet)}" readonly tabindex="-1" data-threshold-total>
@@ -606,6 +762,13 @@ function renderDamageThreshold(sheet) {
                     <label for="threshold-fort-${sheet.id}">Fortitude</label>
                     <input id="threshold-fort-${sheet.id}" class="stat-input locked" type="number" value="${calculateDefense(sheet, 'FORT')}" readonly tabindex="-1" title="Defesa de Fortitude" data-threshold-fort>
                 </div>
+                ${speciesThreshold ? `
+                    <span class="threshold-op">+</span>
+                    <div class="field">
+                        <label for="threshold-species-${sheet.id}">Raça</label>
+                        <input id="threshold-species-${sheet.id}" class="stat-input locked" type="number" value="${speciesThreshold}" readonly tabindex="-1" title="Tamanho e talento bônus da raça">
+                    </div>
+                ` : ''}
                 <span class="threshold-op">+</span>
                 <div class="field">
                     <label for="threshold-other-${sheet.id}">Outros</label>
@@ -644,7 +807,7 @@ function renderDefenses(sheet) {
         <section class="card defenses-card">
             <div class="card-header">
                 <h3 class="card-title">Defesas</h3>
-                <span class="card-hint">10 + atributo + nível + classe + habilidades + outros</span>
+                <span class="card-hint">10 + atributo + nível + classe + raça + habilidades + outros</span>
             </div>
             <div class="defense-grid">
                 ${DEFENSES.filter(def => sheet.defenses[def.key]).map(def => `
@@ -658,7 +821,9 @@ function renderDefenses(sheet) {
                             ${DEFENSE_PARTS.map(part => `
                                 <div>
                                     <label for="def-${def.key}-${part.key}-${sheet.id}">${part.label}</label>
-                                    ${part.key === 'level'
+                                    ${part.key === 'species'
+                                        ? `<input id="def-${def.key}-species-${sheet.id}" class="locked" type="number" value="${getSpeciesDefenseBonus(sheet, def.key)}" readonly tabindex="-1" title="Bônus da raça e do tamanho" data-def-species="${def.key}">`
+                                        : part.key === 'level'
                                         ? `<input id="def-${def.key}-level-${sheet.id}" class="locked" type="number" value="${getCharacterLevel(sheet)}" readonly tabindex="-1" title="Nível do personagem (soma das classes)" data-def-level>`
                                         : `<input id="def-${def.key}-${part.key}-${sheet.id}" type="number" value="${toInt(sheet.defenses[def.key][part.key])}" onchange="updateDefense(${sheet.id}, '${def.key}', '${part.key}', this.value)">`}
                                 </div>
@@ -705,12 +870,12 @@ function renderSkillsTab(sheet) {
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Perícias</h3>
-                <span class="card-hint">½ nível + atributo + 5 se treinada + bônus extra + condição</span>
+                <span class="card-hint">½ nível + atributo + 5 se treinada + raça + bônus extra + condição</span>
             </div>
             <div class="table-scroll">
                 <table class="skills-table">
                     <thead>
-                        <tr><th>Perícia</th><th>Atributo</th><th>½ Nível</th><th>Treinada</th><th>Bônus Extra</th><th>Total</th></tr>
+                        <tr><th>Perícia</th><th>Atributo</th><th>½ Nível</th><th>Treinada</th><th>Raça</th><th>Bônus Extra</th><th>Total</th></tr>
                     </thead>
                     <tbody>
                         ${SKILLS.map(skill => skill.group === 'knowledge' ? renderKnowledgeGroup(sheet, skill) : renderSkillRow(sheet, skill)).join('')}
@@ -757,6 +922,7 @@ function renderSkillRow(sheet, skill, extraClass = '') {
                     <span></span>
                 </span>
             </td>
+            <td data-skill-species>${renderSkillSpeciesBonus(sheet, skill.key)}</td>
             <td><input type="number" class="skill-bonus" aria-label="Bônus extra de ${skill.label}" value="${toInt(sk.bonus)}" onchange="updateSkill(${sheet.id}, '${skill.key}', 'bonus', this.value)"></td>
             <td class="skill-total ${total < 0 ? 'negative' : ''}">${formatBonus(total)}</td>
         </tr>
@@ -778,7 +944,7 @@ function renderKnowledgeGroup(sheet, skill) {
                 </td>
                 <td><span class="skill-attr">${skill.attr}</span></td>
                 <td class="skill-half-level">${formatBonus(getHalfLevel(sheet))}</td>
-                <td colspan="3" class="knowledge-summary" data-knowledge-summary>${renderKnowledgeSummary(sheet)}</td>
+                <td colspan="4" class="knowledge-summary" data-knowledge-summary>${renderKnowledgeSummary(sheet)}</td>
             </tr>
             ${KNOWLEDGE_SKILLS.map(area => renderSkillRow(sheet, area, 'skill-sub')).join('')}
         </tbody>
@@ -1040,6 +1206,7 @@ function refreshSkillTotals(id, sheet) {
         totalEl.textContent = formatBonus(total);
         totalEl.classList.toggle('negative', total < 0);
         row.querySelector('.skill-half-level').textContent = halfLevel;
+        row.querySelector('[data-skill-species]').innerHTML = renderSkillSpeciesBonus(sheet, skill.key);
         row.classList.toggle('trained', !!sheet.skills?.[skill.key]?.treinada);
     });
 }
@@ -1097,24 +1264,51 @@ function refreshCharacterLevel(id, sheet) {
     refreshDefenseTotals(id, sheet);
 }
 
+// O valor digitado é o valor real do atributo (já com a raça) e fica exatamente assim
 function updateAttr(id, attr, value) {
     const sheet = findSheet(id);
-    if (sheet) {
-        const val = toInt(value);
-        const mod = Math.floor((val - 10) / 2);
-        sheet.attributes[attr].val = val;
-        sheet.attributes[attr].mod = mod;
-        // Atualiza o modificador no DOM sem re-renderizar tudo
-        const modEl = document.querySelector(`#sheet-${id} [data-attr-mod="${attr}"]`);
-        if (modEl) {
-            modEl.textContent = formatBonus(mod);
-            modEl.classList.toggle('negative', mod < 0);
-        }
-        // Atualiza totais de perícias e defesas que usam esse atributo
-        refreshSkillTotals(id, sheet);
-        refreshDefenseTotals(id, sheet);
-        scheduleSave(sheet.id);
+    if (!sheet) return;
+    const data = sheet.attributes[attr];
+    data.val = toInt(value);
+    data.mod = Math.floor((data.val - 10) / 2);
+    delete data.base;
+    refreshAttributeCard(id, sheet, attr);
+    // Atualiza totais de perícias e defesas que usam esse atributo
+    refreshSkillTotals(id, sheet);
+    refreshDefenseTotals(id, sheet);
+    scheduleSave(sheet.id);
+}
+
+function refreshAttributeCard(id, sheet, attr) {
+    const mod = toInt(sheet.attributes[attr].mod);
+    const modEl = document.querySelector(`#sheet-${id} [data-attr-mod="${attr}"]`);
+    if (modEl) {
+        modEl.textContent = formatBonus(mod);
+        modEl.classList.toggle('negative', mod < 0);
     }
+}
+
+// Escolher raça: o modificador muda o próprio valor do atributo (ex.: FOR 13 com −2 vira 11).
+// Trocando de raça, tira o modificador da raça antiga e soma o da nova.
+function applySpeciesToSheet(id, slug) {
+    const sheet = findSheet(id);
+    if (!sheet || !SPECIES_DATA[slug]) return;
+
+    const oldMods = getAppliedSpeciesMods(sheet);
+    const newMods = normalizeSpeciesMods(SPECIES_DATA[slug].modificadores);
+    ATTRIBUTES.forEach(attr => {
+        if (!sheet.attributes[attr]) sheet.attributes[attr] = { val: 10, mod: 0 };
+        const data = sheet.attributes[attr];
+        data.val = toInt(data.val) - toInt(oldMods[attr]) + toInt(newMods[attr]);
+        delete data.base;
+    });
+
+    sheet.speciesKey = slug;
+    sheet.species = SPECIES_DATA[slug].nome;
+    sheet.speciesMods = newMods;
+    syncDerivedValues(sheet);
+    renderSheets();
+    scheduleSave(sheet.id);
 }
 
 function updateDefense(id, def, field, value) {
@@ -1162,23 +1356,18 @@ function addDynamicItem(id, field) {
     }
 }
 
+// Nível e classe mudam as vagas de Talentos/Aptidões, então a ficha é redesenhada
 function updateClassRow(id, index, value, field) {
     const sheet = findSheet(id);
-    if (sheet && sheet.classes[index]) {
-        sheet.classes[index][field] = field === 'level' ? Math.max(1, toInt(value)) : value;
-        if (field === 'level') {
-            const levelInput = document.querySelectorAll(`#classes-${id} .class-level input`)[index];
-            if (levelInput) levelInput.value = sheet.classes[index].level;
-            syncDerivedValues(sheet);
-            refreshCharacterLevel(id, sheet);
-        }
-        if (field === 'name') {
-            const icon = document.querySelectorAll(`#classes-${id} .class-row`)[index]?.querySelector('.class-icon');
-            if (icon) icon.outerHTML = renderClassIcon(value);
-            renderTabsHeader(getSortedSheets());
-        }
-        scheduleSave(sheet.id);
+    if (!sheet || !sheet.classes[index]) return;
+    if (field === 'name') {
+        // Classe de prestígio passa pelos pré-requisitos de entrada (js/talentos.js)
+        requestClassChange(id, index, value);
+        return;
     }
+    sheet.classes[index].level = Math.max(1, toInt(value));
+    renderSheets();
+    scheduleSave(sheet.id);
 }
 
 function removeClassRow(id, index) {
@@ -1210,6 +1399,7 @@ function refreshDefenseTotals(id, sheet) {
         if (attrEl) attrEl.textContent = renderDefenseAttribute(sheet, key);
     });
     sheetEl.querySelectorAll('[data-def-level]').forEach(input => { input.value = toInt(sheet.level); });
+    sheetEl.querySelectorAll('[data-def-species]').forEach(input => { input.value = getSpeciesDefenseBonus(sheet, input.dataset.defSpecies); });
     refreshDamageThreshold(id, sheet);
 }
 

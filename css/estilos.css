@@ -1531,6 +1531,291 @@ input.locked.highlight { color: var(--yellow); border-color: var(--yellow-line);
 
 .class-table tbody tr:hover { background: rgba(255, 255, 255, 0.025); }
 
+/* Raças */
+
+/* Os ícones de raça já trazem a moldura: sem borda nem fundo extra */
+.class-icon.species-icon { border: none; background: transparent; border-radius: 0; object-fit: contain; }
+.class-btn .class-icon.species-icon { width: 40px; height: 40px; }
+.class-icon.class-icon-large.species-icon { width: 112px; height: 112px; box-shadow: none; }
+
+.species-hero-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.species-en {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--text-faint);
+}
+
+.species-mods { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+
+.mod-chip {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 99px;
+    border: 1px solid var(--line);
+    background: var(--field);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+}
+
+.mod-chip strong { font-family: var(--font-display); font-size: 18px; letter-spacing: 0; }
+.mod-chip.positive { border-color: rgba(58, 210, 159, 0.4); background: var(--green-dim); }
+.mod-chip.positive strong { color: var(--green); }
+.mod-chip.negative { border-color: rgba(255, 82, 99, 0.4); background: var(--red-dim); }
+.mod-chip.negative strong { color: #ff8f9b; }
+
+.trait-list { display: flex; flex-direction: column; gap: 8px; }
+
+.trait-card {
+    padding: 12px 14px;
+    background: var(--field);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--yellow);
+    border-radius: 0 12px 12px 0;
+}
+
+.trait-card h5 { margin: 0 0 4px; font-size: 14px; color: var(--yellow); }
+.trait-card p { margin: 0; line-height: 1.6; }
+
+.species-pick { margin-top: 14px; }
+.species-pick-hint { margin: 8px 0 0; font-size: 12.5px; line-height: 1.55; color: var(--text-dim); }
+.species-pick-hint strong { color: var(--text); }
+
+/* Raça na ficha */
+
+.species-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 38px;
+    padding: 3px 10px 3px 3px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--field);
+    color: var(--text);
+    font: inherit;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 0.15s;
+}
+
+.species-field:hover { border-color: var(--yellow); }
+.species-field.empty { padding-left: 10px; color: var(--text-dim); font-weight: 500; }
+.species-field small { margin-left: 8px; font-size: 11px; color: var(--yellow); }
+.species-field .class-icon { width: 30px; height: 30px; font-size: 11px; }
+
+.species-traits-card { margin-bottom: 16px; }
+
+.trait-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 10px;
+}
+
+.defense-parts { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+.threshold-layout.with-species {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+}
+
+.skill-species { font-weight: 600; font-variant-numeric: tabular-nums; color: var(--green); }
+.skill-species.negative { color: #ff8f9b; }
+.skill-species.empty { font-weight: 400; color: var(--text-faint); }
+
+/* Cadastro de raças */
+
+.species-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.species-draft-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 280px;
+    padding: 10px 14px;
+    border: 1px solid rgba(255, 159, 67, 0.4);
+    border-radius: 12px;
+    background: rgba(255, 159, 67, 0.1);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.species-draft-bar span { flex: 1; min-width: 220px; }
+
+.species-draft-bar code,
+.form-hint code {
+    padding: 1px 5px;
+    border-radius: 5px;
+    background: var(--field);
+    color: var(--yellow);
+    font-size: 12px;
+}
+
+.draft-badge {
+    margin-left: auto;
+    padding: 1px 7px;
+    border-radius: 99px;
+    background: rgba(255, 159, 67, 0.15);
+    color: var(--orange);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.species-admin { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+
+.species-form { display: flex; flex-direction: column; gap: 16px; }
+
+.form-section {
+    padding: 16px;
+    background: var(--field);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+}
+
+.form-section > h3 {
+    margin: 0 0 12px;
+    font-family: var(--font-display);
+    font-size: 15px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+
+.form-hint { margin: -6px 0 12px; font-size: 12.5px; color: var(--text-dim); }
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 12px;
+}
+
+.form-grid.cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.form-grid .span-all { grid-column: 1 / -1; }
+
+.form-section input,
+.form-section select,
+.form-section textarea { background-color: var(--panel); }
+
+.form-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 90px 30px;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.trait-edit {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 30px;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--yellow);
+    border-radius: 0 10px 10px 0;
+    background: var(--panel);
+}
+
+.trait-edit textarea { grid-column: 1 / -1; min-height: 70px; }
+
+.form-error { min-height: 1em; margin: 0; font-size: 13px; color: var(--red); }
+
+.form-actions {
+    position: sticky;
+    bottom: -24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px 0;
+    background: #0c1119;
+    border-top: 1px solid var(--line);
+}
+
+@media (max-width: 680px) {
+    .form-grid.cols-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* Editor de ícone de raça */
+
+.icon-editor {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 290px;
+    gap: 20px;
+}
+
+.icon-stage {
+    display: grid;
+    place-items: center;
+    min-height: 480px;
+    padding: 12px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: repeating-conic-gradient(#1a2130 0 25%, #121824 0 50%) 0 0 / 20px 20px;
+}
+
+.icon-stage canvas { max-width: 100%; cursor: move; touch-action: none; }
+
+.icon-stage-empty { max-width: 320px; line-height: 1.6; text-align: center; color: var(--text-dim); }
+
+.icon-side { display: flex; flex-direction: column; gap: 14px; }
+
+.icon-preview { display: block; width: 200px; height: 200px; margin: 0 auto; }
+
+.range-field label { display: flex; justify-content: space-between; }
+
+.range-field input[type="range"] {
+    padding: 0;
+    border: none;
+    background: none;
+    box-shadow: none;
+    accent-color: var(--yellow);
+    cursor: pointer;
+}
+
+.editor-hint { margin: 0; font-size: 12.5px; line-height: 1.55; color: var(--text-dim); }
+
+.editor-hint code {
+    padding: 1px 5px;
+    border-radius: 5px;
+    background: var(--field);
+    color: var(--yellow);
+    font-size: 12px;
+}
+
+.editor-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.btn-primary { background: var(--yellow); border-color: var(--yellow); color: #14110a; }
+.btn-primary:hover { background: #fff06a; border-color: #fff06a; color: #14110a; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+@media (max-width: 860px) {
+    .icon-editor { grid-template-columns: minmax(0, 1fr); }
+    .icon-stage { min-height: 300px; }
+}
+
 /* Biblioteca */
 
 .library-tabs {
@@ -1609,11 +1894,144 @@ input.locked.highlight { color: var(--yellow); border-color: var(--yellow-line);
 
 .library-item-btn:hover { background: var(--panel-raised); color: var(--text); }
 
+/* Imagens dos itens da Biblioteca (img/talentos/) */
+.library-item-btn { justify-content: flex-start; }
+.library-item-name { flex: 1; min-width: 0; }
+.library-item-btn .library-count,
+.library-item-btn .library-pending { margin-left: auto; }
+
+.library-icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 7px;
+    border: 1px solid var(--line-strong);
+    background: var(--panel-raised);
+    object-fit: cover;
+}
+
+.library-icon.empty { border-style: dashed; border-color: var(--line); background: transparent; }
+
+.library-icon.large {
+    width: 72px;
+    height: 72px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+.library-item-head { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+.library-item-head .library-tree-title { margin: 0; }
+
 .library-item-btn.active {
     background: var(--yellow-dim);
     border-color: var(--yellow-line);
     color: var(--yellow);
 }
+
+/* ===== Talentos e Aptidões por nível (js/talentos.js) ===== */
+
+.choice-list { display: flex; flex-direction: column; gap: 6px; }
+
+.choice-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 42px;
+    padding: 6px 8px 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--field);
+}
+
+.choice-row .library-icon { width: 28px; height: 28px; }
+.choice-name { flex: 1; min-width: 0; font-weight: 600; line-height: 1.3; }
+.choice-name small { display: block; font-weight: 500; font-size: 12px; color: var(--text-faint); }
+.choice-name button { padding: 0; border: none; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.choice-name button:hover { color: var(--yellow); }
+
+.choice-source {
+    flex-shrink: 0;
+    padding: 2px 8px;
+    border-radius: 99px;
+    border: 1px solid var(--line-strong);
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--text-dim);
+}
+
+.choice-source.auto { border-color: rgba(58, 210, 159, 0.4); color: var(--green); }
+.choice-source.extra { border-color: rgba(77, 141, 255, 0.4); color: #86b3ff; }
+.choice-source.warn { border-color: rgba(255, 82, 99, 0.45); color: #ff8f9b; }
+
+.choice-row.pending {
+    border-style: dashed;
+    border-color: var(--yellow-line);
+    background: var(--yellow-dim);
+    color: var(--yellow);
+}
+
+.choice-row.pending .choice-name { font-weight: 600; }
+.choice-row.orphan { border-color: rgba(255, 82, 99, 0.45); }
+.choice-row.legacy { border-style: dashed; }
+
+.choice-pending-count {
+    margin-left: 6px;
+    padding: 1px 8px;
+    border-radius: 99px;
+    background: var(--yellow);
+    color: #14110a;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.choice-subtitle { margin: -8px 0 14px; color: var(--text-dim); }
+
+.choice-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-dim);
+    cursor: pointer;
+}
+
+.choice-toggle input { width: auto; }
+
+.choice-status { flex-shrink: 0; width: 18px; text-align: center; font-weight: 700; }
+.choice-status.ok { color: var(--green); }
+.choice-status.warn { color: var(--yellow); }
+.choice-status.blocked { color: #ff8f9b; }
+.library-item-btn.blocked .library-item-name { opacity: 0.55; }
+
+.prereq-list { display: flex; flex-direction: column; gap: 6px; margin: 4px 0 16px; padding: 0; list-style: none; }
+.prereq-list li { display: flex; gap: 8px; line-height: 1.45; }
+.prereq-list li::before { flex-shrink: 0; width: 16px; font-weight: 700; }
+.prereq-list li.ok::before { content: '✓'; color: var(--green); }
+.prereq-list li.blocked::before { content: '✕'; color: #ff8f9b; }
+.prereq-list li.warn::before { content: '!'; color: var(--yellow); }
+
+.choice-form { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px; margin: 16px 0; }
+.choice-form .field { flex: 1 1 200px; margin: 0; }
+.choice-blocked-msg { margin: 12px 0 0; color: #ff8f9b; font-size: 13px; }
+
+/* Classe de prestígio sem os pré-requisitos de entrada (linha da classe na ficha) */
+.class-warn {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 99px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: help;
+}
+
+.class-warn.blocked { background: var(--red-dim); color: #ff8f9b; }
+.class-warn.warn { background: var(--yellow-dim); color: var(--yellow); }
+#confirmMsg .prereq-list { margin: 10px 0 0; text-align: left; }
 
 .library-count,
 .library-pending {

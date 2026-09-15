@@ -106,4 +106,20 @@ function applyPreviewState(state) {
     }
     if (state === 'classes') openClassReference();
     if (state === 'biblioteca') openLibrary();
+    if (state === 'biblioteca-talentos') {
+        openLibrary();
+        showLibraryCategory('talents');
+        showLibraryItem('talents', null, LIBRARY_DATA.talents.items.findIndex(item => getLibraryImageUrl(item)));
+    }
+    if (state === 'racas') openSpeciesReference();
+    if (state === 'raca-form') { openSpeciesReference(); openSpeciesForm('wookiee'); }
+    if (state === 'raca-ficha') applySpeciesToSheet(activeSheetId, 'bothan');
+    if (state === 'racas-editor') {
+        openSpeciesReference();
+        openSpeciesIconEditor('wookiee');
+        // Carrega uma imagem de teste no editor, como se tivesse sido escolhida
+        fetch('dev/icones-especies/fontes/wookiee.jpg')
+            .then(response => response.blob())
+            .then(blob => loadSpeciesIconImage(new File([blob], 'wookiee.jpg', { type: blob.type })));
+    }
 }

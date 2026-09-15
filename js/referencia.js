@@ -62,6 +62,7 @@ function showClassDetails(className) {
     ].filter(([, value]) => value);
     const talents = classData.initialTalents || [];
     const table = classData.table || [];
+    const prerequisites = (typeof CLASS_PROGRESSION !== 'undefined' && CLASS_PROGRESSION[classData.nome]?.preRequisitos) || [];
 
     details.innerHTML = `
         <div class="class-hero">
@@ -75,6 +76,10 @@ function showClassDetails(className) {
         <div class="class-facts">
             ${facts.map(([title, value]) => `<div class="class-fact"><h4>${title}</h4><p>${value}</p></div>`).join('')}
         </div>
+        ${prerequisites.length ? `
+            <h4 class="section-label">Pré-requisitos para entrar</h4>
+            <div class="chip-list">${prerequisites.map(req => `<span class="chip">${escapeHtml(describeRequirement(req))}</span>`).join('')}</div>
+        ` : ''}
         ${talents.length ? `
             <h4 class="section-label">Talentos Iniciais</h4>
             <div class="chip-list">${talents.map(t => `<span class="chip">${t}</span>`).join('')}</div>
@@ -149,7 +154,7 @@ function showLibraryCategory(categoryKey) {
         btn.className = 'library-item-btn';
         btn.dataset.index = index;
         btn.dataset.search = normalizeSearch(item);
-        btn.innerHTML = `<span>${escapeHtml(item)}</span>${LIBRARY_ITEM_DETAILS[item] ? '' : '<span class="library-pending">sem texto</span>'}`;
+        btn.innerHTML = `${renderLibraryIcon(item)}<span class="library-item-name">${escapeHtml(item)}</span>${LIBRARY_ITEM_DETAILS[item] ? '' : '<span class="library-pending">sem texto</span>'}`;
         btn.onclick = () => showLibraryItem(categoryKey, null, index);
         list.appendChild(btn);
     });
@@ -182,7 +187,8 @@ function showLibraryTree(categoryKey, treeIndex) {
         <div class="library-tree-items">
             ${tree.items.map((item, itemIndex) => `
                 <button class="library-item-btn" onclick="showLibraryItem('${categoryKey}', ${treeIndex}, ${itemIndex})">
-                    <span>${escapeHtml(item)}</span>
+                    ${renderLibraryIcon(item)}
+                    <span class="library-item-name">${escapeHtml(item)}</span>
                     ${LIBRARY_ITEM_DETAILS[item] ? '' : '<span class="library-pending">sem texto</span>'}
                 </button>
             `).join('')}
@@ -256,7 +262,10 @@ function showLibraryItem(categoryKey, treeIndex, itemIndex) {
 
     details.innerHTML = `
         ${tree ? `<button class="library-back" onclick="showLibraryTree('${categoryKey}', ${treeIndex})">← ${escapeHtml(shortTreeName(tree.name))}</button>` : ''}
-        <h3 class="library-tree-title">${escapeHtml(itemName)}</h3>
+        <div class="library-item-head">
+            ${getLibraryImageUrl(itemName) ? renderLibraryIcon(itemName, 'large') : ''}
+            <h3 class="library-tree-title">${escapeHtml(itemName)}</h3>
+        </div>
         <div class="library-meta">
             ${meta.map(([label, value]) => `<span class="chip"><strong>${label}:</strong> ${escapeHtml(value)}</span>`).join('')}
         </div>

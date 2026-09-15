@@ -10,11 +10,30 @@
     <link rel="stylesheet" href="css/estilos.css">
     <script defer src="js/estado.js"></script>
     <script defer src="js/dados/classes.js"></script>
+    <script defer src="js/dados/especies.js"></script>
+    <script defer src="js/dados/especies-ameacas.js"></script>
+    <script defer src="js/dados/especies-kotor.js"></script>
+    <script defer src="js/dados/especies-force-unleashed.js"></script>
+    <script defer src="js/dados/especies-escoria.js"></script>
+    <script defer src="js/dados/especies-clone-wars.js"></script>
+    <script defer src="js/dados/especies-legado.js"></script>
+    <script defer src="js/dados/especies-academia-jedi.js"></script>
+    <script defer src="js/dados/especies-galaxia-em-guerra.js"></script>
+    <script defer src="js/dados/especies-intriga.js"></script>
+    <script defer src="js/dados/especies-regioes-desconhecidas.js"></script>
+    <script defer src="js/dados/especies-web.js"></script>
+    <script defer src="js/dados/especies-personalizadas.js"></script>
+    <script defer src="js/especies-cadastro.js"></script>
     <script defer src="js/dados/biblioteca.js"></script>
     <script defer src="js/dados/biblioteca-detalhes.js"></script>
+    <script defer src="js/dados/imagens-talentos.js"></script>
+    <script defer src="js/dados/progressao.js"></script>
+    <script defer src="js/dados/prerequisitos-talentos.js"></script>
     <script defer src="js/icones.js"></script>
     <script defer src="js/ficha.js"></script>
     <script defer src="js/referencia.js"></script>
+    <script defer src="js/especies.js"></script>
+    <script defer src="js/talentos.js"></script>
     <script defer src="js/firebase.js"></script>
 </head>
 <body>
@@ -46,6 +65,10 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0 1 14 0"/></svg>
                 Classes
             </button>
+            <button class="nav-btn" onclick="openSpeciesReference()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-4.4 0-7 3.2-7 7.2C5 15.4 9 21 12 21s7-5.6 7-10.8C19 6.2 16.4 3 12 3z"/><path d="M8.5 10.5c.8.6 1.8.9 2.5.9M15.5 10.5c-.8.6-1.8.9-2.5.9"/></svg>
+                Raças
+            </button>
             <button class="nav-btn" onclick="openLibrary()">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2.5z"/><path d="M8 7h7M8 11h5"/></svg>
                 Biblioteca
@@ -74,6 +97,88 @@
         <div class="class-browser">
             <div class="class-selector" id="classSelector"></div>
             <div id="classDetails"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Raças -->
+<div id="speciesModal" class="modal">
+    <div class="modal-content">
+        <button class="close-modal" onclick="closeModal('speciesModal')" aria-label="Fechar">&times;</button>
+        <h2 id="speciesModalTitle">Raças</h2>
+        <div class="species-toolbar" id="speciesToolbar"></div>
+        <div class="class-browser">
+            <div class="class-selector" id="speciesSelector"></div>
+            <div id="speciesDetails"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Cadastro de raça (criar, editar, duplicar) -->
+<div id="speciesFormModal" class="modal">
+    <div class="modal-content">
+        <button class="close-modal" onclick="closeModal('speciesFormModal')" aria-label="Fechar">&times;</button>
+        <h2 id="speciesFormTitle">Nova raça</h2>
+        <form id="speciesForm" class="species-form" onsubmit="saveSpeciesForm(event)" novalidate></form>
+    </div>
+</div>
+
+<!-- Editor de ícone de raça -->
+<div id="speciesIconModal" class="modal">
+    <div class="modal-content">
+        <button class="close-modal" onclick="closeModal('speciesIconModal')" aria-label="Fechar">&times;</button>
+        <h2 id="speciesIconTitle">Trocar imagem</h2>
+        <div class="icon-editor">
+            <div class="icon-stage" id="iconStage">
+                <canvas id="iconStageCanvas" width="460" height="460" hidden></canvas>
+                <div class="icon-stage-empty" id="iconStageEmpty">
+                    Escolha uma imagem da raça para começar.<br>
+                    Depois arraste o quadrado amarelo até o rosto e use a roda do mouse para aproximar.
+                </div>
+            </div>
+            <div class="icon-side">
+                <canvas id="iconPreview" class="icon-preview" width="256" height="256"></canvas>
+                <input type="file" id="iconFile" accept="image/*" hidden onchange="loadSpeciesIconImage(this.files[0])">
+                <button class="btn" onclick="document.getElementById('iconFile').click()">Escolher imagem</button>
+                <div class="range-field">
+                    <label for="iconZoom">Tamanho do recorte <span id="iconZoomValue">60%</span></label>
+                    <input type="range" id="iconZoom" min="5" max="150" value="60" oninput="setSpeciesCropSize(this.value)">
+                </div>
+                <div class="range-field">
+                    <label for="iconThreshold">Apagar fundo <span id="iconThresholdValue">60</span></label>
+                    <input type="range" id="iconThreshold" min="0" max="160" value="60" oninput="setSpeciesThreshold(this.value)">
+                </div>
+                <div class="field">
+                    <label for="iconMode">Fundo da imagem</label>
+                    <select id="iconMode" onchange="setSpeciesBackgroundMode(this.value)">
+                        <option value="remover">Apagar fundo</option>
+                        <option value="claros">Apagar fundo e manchas claras</option>
+                        <option value="manter">Manter o fundo</option>
+                    </select>
+                </div>
+                <p class="editor-hint" id="iconSaveHint"></p>
+                <div class="editor-actions">
+                    <button class="btn btn-primary" id="iconSaveBtn" onclick="saveSpeciesIcon()" disabled>Baixar PNG</button>
+                    <button class="btn" onclick="closeModal('speciesIconModal')">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Escolher Talento / Aptidão para uma vaga de nível ou extra -->
+<div id="choiceModal" class="modal">
+    <div class="modal-content">
+        <button class="close-modal" onclick="closeModal('choiceModal')" aria-label="Fechar">&times;</button>
+        <h2 id="choiceModalTitle">Escolher</h2>
+        <p class="choice-subtitle" id="choiceModalSubtitle"></p>
+        <div class="library-layout">
+            <div class="library-sidebar">
+                <input type="search" id="choiceSearch" class="library-search" placeholder="Buscar..." oninput="filterChoiceList(this.value)">
+                <label class="choice-toggle"><input type="checkbox" id="choiceOnlyAvailable" checked onchange="renderChoiceList()"> Só o que posso escolher</label>
+                <div class="library-list" id="choiceList"></div>
+            </div>
+            <div class="library-panel" id="choiceDetails"></div>
         </div>
     </div>
 </div>

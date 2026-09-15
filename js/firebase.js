@@ -120,6 +120,20 @@ window._debouncedRender = (() => {
             : (userInfo ? [userInfo.id] : []);
 
         unsubListeners = ownerIds.map(listenToOwner);
+
+        // Ícones de raças feitos no editor (só quando SPECIES_ICON_STORAGE = 'firebase', em js/especies.js)
+        if (window.SPECIES_ICON_STORAGE === 'firebase') {
+            unsubListeners.push(onSnapshot(collection(db, window.SPECIES_ICON_COLLECTION), snap => {
+                window.applySpeciesIconDocs?.(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+            }, error => console.error('Erro ao escutar ícones de raças:', error)));
+        }
+
+        // Raças criadas ou editadas no site (só quando SPECIES_CUSTOM_STORAGE = 'firebase', em js/especies-cadastro.js)
+        if (window.SPECIES_CUSTOM_STORAGE === 'firebase') {
+            unsubListeners.push(onSnapshot(collection(db, window.SPECIES_CUSTOM_COLLECTION), snap => {
+                window.applySpeciesCustomDocs?.(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+            }, error => console.error('Erro ao escutar raças personalizadas:', error)));
+        }
     }
 
     function listenToOwner(ownerId) {

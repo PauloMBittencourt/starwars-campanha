@@ -1,0 +1,21 @@
+{
+  "human":        { "arquivo": "human.png",        "x": 34, "y": 6,  "lado": 31, "limiar": 40 },
+  "aqualish":     { "arquivo": "aqualish.png",     "x": 47, "y": 0,  "lado": 34, "limiar": 40 },
+  "bothan":       { "arquivo": "bothan.jpg",       "x": 33, "y": 5,  "lado": 34, "limiar": 60 },
+  "cerean":       { "arquivo": "cerean.jpg",       "x": 51, "y": 1,  "lado": 40, "limiar": 60 },
+  "duros":        { "arquivo": "duros.png",        "x": 39, "y": 3,  "lado": 43, "limiar": 40 },
+  "ewok":         { "arquivo": "ewok.png",         "x": 57, "y": 18, "lado": 55, "limiar": 60 },
+  "gamorrean":    { "arquivo": "gamorrean.jpg",    "x": 50, "y": 11, "lado": 52, "limiar": 60 },
+  "gungan":       { "arquivo": "gungan.jpg",       "x": 54, "y": 1,  "lado": 44, "limiar": 60, "fundo": "claros" },
+  "hutt":         { "arquivo": "hutt.png",         "x": 46, "y": 3,  "lado": 56, "limiar": 60 },
+  "ithorian":     { "arquivo": "ithorian.jpg",     "x": 50, "y": 2,  "lado": 46, "limiar": 60 },
+  "kel-dor":      { "arquivo": "kel-dor.jpg",      "x": 43, "y": 3,  "lado": 35, "limiar": 60 },
+  "mon-calamari": { "arquivo": "mon-calamari.jpg", "x": 65, "y": 4,  "lado": 34, "limiar": 60 },
+  "quarren":      { "arquivo": "quarren.png",      "x": 39, "y": 3,  "lado": 38, "limiar": 50 },
+  "rodian":       { "arquivo": "rodian.jpg",       "x": 44, "y": 4,  "lado": 43, "limiar": 60 },
+  "sullustan":    { "arquivo": "sullustan.jpg",    "x": 40, "y": 3,  "lado": 63, "limiar": 50 },
+  "trandoshan":   { "arquivo": "trandoshan.jpg",   "x": 69, "y": 3,  "lado": 36, "limiar": 60 },
+  "twilek":       { "arquivo": "twilek.png",       "x": 52, "y": 10, "lado": 38, "limiar": 45 },
+  "wookiee":      { "arquivo": "wookiee.jpg",      "x": 50, "y": 1,  "lado": 60, "limiar": 60 },
+  "zabrak":       { "arquivo": "zabrak.png",       "x": 39, "y": 1,  "lado": 39, "limiar": 50 }
+}

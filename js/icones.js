@@ -74,3 +74,48 @@ function renderWeaponIcon(weaponName) {
     const file = rule ? rule.file : 'simple-weapons.jpg';
     return `<img class="item-icon" data-weapon-icon src="img/armas/${file}" alt="" draggable="false">`;
 }
+
+// ===== Imagens da Biblioteca =====
+// Talentos, aptidões e poderes usam as imagens de img/talentos/, listadas em
+// js/dados/imagens-talentos.js (gerado por dev/atualizar-imagens-talentos.py).
+// A imagem é achada pelo nome em inglês entre parênteses: "Esquiva (Dodge)" -> dodge.jpg
+
+// Itens com nome só em português, ou cuja imagem tem outro nome -> imagem (sem extensão)
+const LIBRARY_IMAGE_ALIASES = {
+    'Bloquear': 'block',
+    'Defletir': 'deflect',
+    'Defesa com Sabre de Luz': 'lightsaber-defense',
+    'Especialização em Arma (sabres de luz)': 'weapon-specialization',
+    'Fúria Sombria': 'dark-rage',
+    'Presença Sombria': 'dark-presence',
+    'Poder do Lado Sombrio': 'power-of-the-dark-side',
+    'Poder Rápido': 'swift-power',
+    'Vingança': 'revenge',
+    'Artes Marciais I, II e III (Martial Arts I, II and III)': 'martial-arts-i',
+    'Proficiência com Armadura (Armor Proficiency)': 'armor-proficiency-light',
+};
+
+function toImageSlug(text) {
+    return String(text || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+        .replace(/'/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
+// Apelidos comparados sem acentos, maiúsculas ou pontuação
+const libraryImageAliases = Object.fromEntries(
+    Object.entries(LIBRARY_IMAGE_ALIASES).map(([name, image]) => [toImageSlug(name), image])
+);
+
+function getLibraryImageUrl(itemName) {
+    const files = window.TALENT_IMAGE_FILES || {};
+    const english = String(itemName || '').match(/\(([^()]*)\)\s*$/)?.[1];
+    const image = [libraryImageAliases[toImageSlug(itemName)], english && toImageSlug(english), toImageSlug(itemName)]
+        .find(candidate => candidate && files[candidate]);
+    return image ? `img/talentos/${files[image]}` : '';
+}
+
+function renderLibraryIcon(itemName, extraClass = '') {
+    const url = getLibraryImageUrl(itemName);
+    return url
+        ? `<img class="library-icon ${extraClass}" src="${url}" alt="" loading="lazy" draggable="false">`
+        : `<span class="library-icon empty ${extraClass}" aria-hidden="true"></span>`;
+}
