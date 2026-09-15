@@ -32,8 +32,11 @@ const LIBRARY_ITEM_DETAILS = {
               "text": "Pré-requisito: Tiro à Queima-Roupa.\n\nBenefício: Ao disparar uma arma à distância contra um alvo dentro do seu espaço de luta ou adjacente a ele, você recebe +1 na jogada de ataque e causa +1 dado de dano se acertar.\n\nEspecial: O dano adicional deste Talento não se acumula com o dano extra concedido por Fogo de Rajada ou Tiro Rápido. Este Talento não se aplica a armas pesadas, armas veiculares ou combate veicular."
     },
     "Algumas Manobras (A Few Maneuvers)": {
-            "source": "Star Wars Saga Edition Threats of the Galaxy / Wiki-Fandom",
-            "text": "Pré-requisitos: Esquiva, Combate Veicular.\n\nBenefício: Enquanto pilota um veículo de tamanho Colossal ou menor, você concede +2 de bônus de esquiva à Defesa de Reflexos do veículo. Além disso, se você for alvo de um ataque com míssil ou torpedo e a jogada de ataque errar por 5 ou mais, o projétil se autodestrói sem causar dano."
+        category: 'Talentos',
+        source: 'Star Wars Saga Edition Threats of the Galaxy / Wiki-Fandom',
+        text: `Pré-requisitos: Esquiva, Combate Veicular.
+
+Benefício: Enquanto pilota um veículo de tamanho Colossal ou menor, você concede +2 de bônus de Esquiva à Defesa de Reflexos do veículo. Além disso, se você for alvo de um ataque de míssil ou torpedo e a jogada de ataque errar por 5 ou mais, o projétil se autodestrói sem causar dano.`
     },
     "Aliado Acrobático (Acrobatic Ally)": {
             "source": "Star Wars Saga Edition Unknown Regions / Wiki-Fandom",
@@ -84,8 +87,15 @@ const LIBRARY_ITEM_DETAILS = {
               "text": "Pré-requisito: traço de espécie Metamorfo.\n\nBenefício: Uma vez por encontro, como ação rápida, você pode distorcer sua aparência para assustar um oponente que possa vê-lo. Faça uma verificação de Enganação contra a Defesa de Vontade do alvo. Se tiver sucesso, o alvo se move 1 quadrado para longe de você e sofre –1 de penalidade em todas as jogadas de ataque até o início do seu próximo turno. Este é um efeito de medo e de afetar a mente."
     },
     "Assalto com Fogo Automático (Autofire Assault)": {
-            "source": "Star Wars Saga Edition Legacy Era Campaign Guide / Saga Edition RPG Omnibus",
-            "text": "Pré-requisitos: Foco em Arma com a arma escolhida.\n\nBenefício: Quando você mira a mesma área com fogo automático que atacou com fogo automático no seu turno anterior, a penalidade do ataque de fogo automático é reduzida para –2. Se estiver usando uma arma apenas de fogo automático preparada com a aptidão Rajada Controlada, a penalidade é reduzida para –1. Se acertar, causa +1 dado de dano.\n\nNormal: Ataques de fogo automático sofrem –5 de penalidade na jogada de ataque e não recebem bônus por disparos consecutivos nos mesmos quadrados.\n\nEspecial: Este talento não pode ser usado junto com Varredura com Fogo Automático ou Rajada de Fogo."
+        category: 'Talentos',
+        source: 'Star Wars Saga Edition Legacy Era Campaign Guide / Wiki-Fandom',
+        text: `Pré-requisito: Foco em Arma com a arma escolhida.
+
+Benefício: Quando empunha uma arma para a qual possui Foco em Arma e mira com fogo automático a mesma área que atingiu com fogo automático no seu último turno, a penalidade do ataque de fogo automático é reduzida para –2. A penalidade é reduzida para –1 se você estiver usando uma arma exclusiva de fogo automático apoiada ou a Aptidão Rajada Controlada. Se acertar, você causa +1 dado de dano.
+
+Normal: Ataques de fogo automático sofrem –5 de penalidade, e não há bônus por disparar contra os mesmos quadrados em rodadas consecutivas.
+
+Especial: Este Talento não pode ser usado com Varredura com Fogo Automático ou Fogo de Rajada.`
     },
     "Assumir Riscos (Risk Taker)": {
             "source": "Star Wars Saga Edition Galaxy at War / Wiki-Fandom",
@@ -120,36 +130,67 @@ const LIBRARY_ITEM_DETAILS = {
             "text": "Pré-requisito: Bônus base de ataque +6.\n\nBenefício: Escolha um grupo de armas com o qual seja proficiente. Quando fizer um ataque total com uma arma desse grupo, você pode fazer um ataque adicional. Você sofre –5 de penalidade em todas as jogadas de ataque feitas nesse ataque total.\n\nEspecial: Você pode escolher este talento mais de uma vez. Cada vez que o escolher, aplique-o a um grupo de armas diferente."
     },
     "Ataque em Corrida (Running Attack)": {
-            "source": "Star Wars Saga Edition Core Rulebook / Wiki-Fandom",
-            "text": "Pré-requisito: Destreza 13.\n\nBenefício: Quando faz um ataque com uma arma corpo a corpo ou à distância, você pode se mover antes e depois do ataque, desde que a distância total movida não exceda sua velocidade. Esse movimento segue as regras normais para ataques de oportunidade."
+        category: 'Talentos',
+        source: 'Star Wars Saga Edition Core Rulebook / Knights of the Old Republic Campaign Guide / Wiki-Fandom',
+        text: `Pré-requisito: Destreza 13.
+
+Benefício: Quando faz um ataque com uma arma corpo a corpo ou à distância, você pode se mover antes e depois do ataque, desde que a distância total movida não exceda sua velocidade.
+
+Efeito adicional — Esquiva combinada: Se também possuir Esquiva, você pode somar seu bônus de Esquiva à Defesa de Reflexos contra qualquer ataque de oportunidade provocado enquanto usa Ataque em Corrida.`
     },
     "Ataque Garantido (Assured Attack)": {
-            "source": "Star Wars Saga Edition Legacy Era Campaign Guide / Wiki-Fandom",
-            "text": "Pré-requisitos: bônus base de ataque +1, proficiência com a arma escolhida.\n\nBenefício: Escolha um grupo de armas ou uma arma exótica com a qual seja proficiente. Uma vez por encontro, quando errar um ataque com a arma escolhida, você pode causar dano igual à metade do seu nível heroico ao alvo."
+        category: 'Talentos',
+        source: 'Star Wars Saga Edition Rebellion Era Campaign Guide / Wiki-Fandom',
+        text: `Pré-requisito: Nenhum.
+
+Benefício: Sempre que causar dano a um alvo com um ataque e rolar múltiplos dados de dano, você pode rolar novamente o dado de menor resultado. Você deve manter o segundo resultado, mesmo que ele seja pior.`
     },
     "Ataque Implacável (Relentless Attack)": {
-            "source": "Star Wars Saga Edition Scum and Villainy / Saga Edition RPG Omnibus",
-            "text": "Pré-requisitos: Ataque Poderoso, bônus base de ataque +6.\n\nBenefício: Quando você erra um ataque corpo a corpo após usar Ataque Poderoso, ainda pode causar dano igual ao bônus de dano que teria recebido de Ataque Poderoso. Esse dano só se aplica se o ataque poderia atingir o alvo normalmente e não ultrapassa reduções ou imunidades aplicáveis."
+        category: 'Talentos',
+        source: 'Star Wars Saga Edition Jedi Academy Training Manual / Wiki-Fandom',
+        text: `Pré-requisito: Ataque Duplo com a arma escolhida.
+
+Benefício: Escolha um grupo de armas ou uma arma exótica para o qual possua Ataque Duplo. Sempre que errar um alvo com essa arma, você recebe +2 de bônus de competência na próxima jogada de ataque contra o alvo que errou, desde que esse ataque seja feito antes do fim do seu próximo turno.
+
+Especial: Você pode escolher este talento mais de uma vez. Cada vez que o escolher, aplique-o a um grupo de armas ou arma exótica diferente.`
     },
     "Ataque Instintivo (Instinctive Attack)": {
-            "source": "Star Wars Saga Edition Legacy Era Campaign Guide / Saga Edition RPG Omnibus",
-            "text": "Pré-requisito: Sabedoria 13.\n\nBenefício: Uma vez por encontro, quando fizer uma jogada de ataque, você pode usar seu modificador de Sabedoria no lugar do modificador normalmente usado para a jogada de ataque."
+        category: 'Talentos',
+        source: 'Star Wars Saga Edition Unknown Regions / Wiki-Fandom',
+        text: `Pré-requisito: não droide.
+
+Benefício: Quando gastar um Ponto da Força ao fazer uma jogada de ataque, você pode rolar novamente o ataque e ficar com o melhor resultado. A rolagem do Ponto da Força é aplicada ao melhor resultado.`
     },
     "Ataque Poderoso (Power Attack)": {
-            "source": "Star Wars Saga Edition Core Rulebook / Wiki-Fandom",
-            "text": "Pré-requisito: Força 13.\n\nBenefício: Em seu turno, antes de fazer uma jogada de ataque corpo a corpo, você pode escolher subtrair um número de todas as suas jogadas de ataque corpo a corpo e somar o mesmo número às rolagens de dano corpo a corpo. O número escolhido não pode exceder seu bônus base de ataque. A penalidade e o bônus duram até o início do seu próximo turno."
+        category: 'Talentos',
+        source: 'Star Wars Saga Edition Core Rulebook / Wiki-Fandom',
+        text: `Pré-requisito: Força 13.
+
+Benefício: Em seu turno, antes de fazer uma jogada de ataque corpo a corpo, você pode escolher subtrair um número de todas as suas jogadas de ataque corpo a corpo e somar o mesmo número às rolagens de dano corpo a corpo. O número escolhido não pode exceder seu bônus base de ataque. A penalidade e o bônus duram até o início do seu próximo turno.
+
+Especial: Se atacar com uma arma de duas mãos, ou com uma arma de uma mão empunhada com as duas mãos, some ao dano o dobro do número subtraído da jogada de ataque. O bônus de Ataque Poderoso não se aplica ao dano causado contra objetos ou veículos.`
     },
     "Ataque Selvagem (Savage Attack)": {
             "source": "Star Wars Saga Edition Force Unleashed Campaign Guide / Wiki-Fandom",
             "text": "Pré-requisitos: Ataque Duplo com a arma escolhida, proficiência com a arma escolhida.\n\nBenefício: Escolha um grupo de armas ou arma exótica para o qual possua Ataque Duplo. Quando usa uma ação de ataque total e acerta o alvo com seu primeiro ataque, cada ataque restante bem-sucedido contra esse mesmo alvo causa +1 dado de dano."
     },
     "Ataque Triplo (Triple Attack)": {
-            "source": "Star Wars Saga Edition Core Rulebook / Wiki-Fandom",
-            "text": "Pré-requisitos: Ataque Duplo com o grupo de armas escolhido, bônus base de ataque +11.\n\nBenefício: Escolha um grupo de armas para o qual possua Ataque Duplo. Quando fizer um ataque total com uma arma desse grupo, você pode fazer dois ataques adicionais. Você sofre –10 de penalidade em todas as jogadas de ataque feitas nesse ataque total.\n\nEspecial: Você pode escolher este talento mais de uma vez. Cada vez que o escolher, aplique-o a um grupo de armas diferente."
+        category: 'Talentos',
+        source: 'Star Wars Saga Edition Core Rulebook / Starships of the Galaxy / Wiki-Fandom',
+        text: `Pré-requisitos: bônus base de ataque +11, Ataque Duplo com a arma escolhida.
+
+Benefício: Escolha uma arma exótica ou um grupo de armas. Quando usa a ação ataque total empunhando essa arma, você pode fazer um ataque adicional. Você sofre –5 de penalidade em todas as jogadas de ataque até o seu próximo turno; esse ataque extra e essa penalidade se acumulam com Ataque Duplo.
+
+Normal: Fazer um único ataque é uma ação padrão.
+
+Especial: Você pode escolher este talento mais de uma vez. Cada vez que o escolher, aplique-o a uma arma exótica ou grupo de armas diferente. Se escolher este talento para Armas Pesadas, ele funciona normalmente com armas veiculares.`
     },
     "Ataque Turbilhão (Whirlwind Attack)": {
-            "source": "Star Wars Saga Edition Core Rulebook / Wiki-Fandom",
-            "text": "Pré-requisitos: Destreza 13, Inteligência 13, Esquiva, Mobilidade, Ataque em Movimento, bônus base de ataque +4.\n\nBenefício: Como ação de rodada completa, você pode fazer um ataque corpo a corpo contra cada inimigo dentro do seu alcance. Você faz uma jogada de ataque separada contra cada alvo."
+        category: 'Talentos',
+        source: 'Star Wars Saga Edition Core Rulebook / Wiki-Fandom',
+        text: `Pré-requisitos: Destreza 13, Inteligência 13, Defesa Corpo a Corpo, bônus base de ataque +4.
+
+Benefício: Como ação de rodada completa, você pode fazer um ataque de área com sua arma corpo a corpo, atingindo todos os alvos dentro do seu alcance. Esse Ataque Turbilhão usa as regras de ataques de área: faça uma única jogada de ataque e aplique o resultado a todos os alvos dentro do alcance.`
     },
     "Ataque Vantajoso (Advantageous Attack)": {
             "source": "Star Wars Saga Edition Legacy Era Campaign Guide / Wiki-Fandom",
@@ -168,12 +209,22 @@ const LIBRARY_ITEM_DETAILS = {
             "text": "Pré-requisito: droide.\n\nBenefício: Uma vez por encontro, como ação rápida, você concede a si mesmo +2 de bônus em uma Defesa à sua escolha por 1 rodada."
     },
     "Atualização Lógica: Tático (Logic Upgrade: Tactician)": {
-            "source": "Star Wars Saga Edition Scavenger's Guide to Droids / Wiki-Fandom",
-            "text": "Pré-requisitos: droide, bônus base de ataque +4.\n\nBenefício: Quando você usa ajudar outro para auxiliar a jogada de ataque de um aliado e a tentativa é bem-sucedida, o aliado recebe +5 de bônus na jogada de ataque em vez do bônus normal de +2."
+        category: 'Talentos',
+        source: 'Star Wars Saga Edition Knights of the Old Republic Campaign Guide / Wiki-Fandom',
+        text: `Pré-requisitos: droide, bônus base de ataque +4.
+
+Benefício: Uma vez por encontro, você pode usar a ação ajudar outro para conceder a um único aliado +5 de bônus na próxima jogada de ataque contra um oponente.
+
+Normal: Uma tentativa bem-sucedida de ajudar uma jogada de ataque normalmente concede +2 de bônus à próxima jogada de ataque do aliado contra o oponente.`
     },
     "Atualização Lógica: Troca de Perícia (Logic Upgrade: Skill Swap)": {
-            "source": "Star Wars Saga Edition Scavenger's Guide to Droids / Saga Edition RPG Omnibus",
-            "text": "Pré-requisito: droide.\n\nBenefício: Você pode trocar temporariamente uma perícia programada por outra. Escolha uma perícia na qual seja treinado; pelo restante do encontro, você deixa de tratá-la como treinada e passa a tratar outra perícia de classe como treinada."
+        category: 'Talentos',
+        source: 'Star Wars Saga Edition Scavenger’s Guide to Droids / Wiki-Fandom',
+        text: `Pré-requisitos: droide, processador básico.
+
+Benefício: Escolha uma perícia na qual você não seja treinado, exceto Usar a Força. Como ação de rodada completa, você pode trocar essa perícia por uma perícia na qual seja treinado. Enquanto a troca durar, você perde os benefícios da perícia treinada original. A perícia escolhida para entrar não conta como treinada; por isso, você não pode usar opções exclusivas de treinado nem recebe o bônus por treinamento. Você ainda soma metade do nível e o modificador de habilidade associado normalmente.
+
+Especial: Se você se tornar treinado na perícia escolhida para este talento, pode escolher outra perícia para substituí-la. Você pode escolher este talento mais de uma vez, selecionando uma perícia diferente a cada vez.`
     },
     "Barragem Coordenada (Coordinated Barrage)": {
             "source": "Star Wars Saga Edition Clone Wars Campaign Guide / Wiki-Fandom",
@@ -184,8 +235,11 @@ const LIBRARY_ITEM_DETAILS = {
             "text": "Pré-requisito: Ataque Coordenado.\n\nBenefício: Quando você faz um ataque com uma arma em modo de fogo automático e causa dano a pelo menos um alvo dentro da área designada, seus aliados recebem +2 de bônus de circunstância em ataques de fogo automático contra esse mesmo alvo até o início do seu próximo turno."
     },
     "Bater Cabeças (Knock Heads)": {
-            "source": "Star Wars Saga Edition Galaxy of Intrigue / Saga Edition RPG Omnibus",
-            "text": "Pré-requisitos: Agarrão Múltiplo, Força 13.\n\nBenefício: Se você estiver agarrando dois inimigos ao mesmo tempo, pode bater um contra o outro como ação padrão. Faça uma jogada de ataque de agarrar contra cada alvo; se acertar, ambos sofrem dano contundente igual ao seu dano desarmado."
+        category: 'Talentos',
+        source: 'Star Wars Saga Edition Legacy Era Campaign Guide / Wiki-Fandom',
+        text: `Pré-requisitos: Força 13, Destreza 13, Agarrão Múltiplo.
+
+Benefício: Depois de usar Agarrão Múltiplo com sucesso contra dois alvos que estejam adjacentes a você e também adjacentes entre si, você pode imediatamente bater a cabeça deles uma contra a outra. Cada criatura sofre dano contundente automático igual a 1d6 + seu modificador de Força. Ao comparar esse dano com o limiar de dano de cada criatura, trate o limiar de dano delas como 5 pontos menor. As duas criaturas continuam agarradas ao fim do uso deste Talento.`
     },
     "Benefícios da Orla (Fringe Benefits)": {
             "source": "Star Wars Saga Edition Rebellion Era Campaign Guide / Saga Edition RPG Omnibus",
@@ -208,20 +262,32 @@ const LIBRARY_ITEM_DETAILS = {
             "text": "Pré-requisito: treinado em Percepção.\n\nBenefício: Quando combate um inimigo que você viu cometer um crime grave, trair um aliado ou ferir um inocente na mesma aventura, você recebe +1 de bônus de moral nas jogadas de ataque contra esse inimigo até o fim do encontro."
     },
     "Caçador de Droides (Droid Hunter)": {
-            "source": "Star Wars Saga Edition Clone Wars Campaign Guide / Wiki-Fandom",
-            "text": "Pré-requisito: proficiência com a arma escolhida.\n\nBenefício: Escolha um grupo de armas com o qual seja proficiente. Você causa +2 de dano contra inimigos droides ao usar uma arma desse grupo. Se a arma causar dano iônico, o bônus aumenta para +4."
+        category: 'Talentos',
+        source: 'Star Wars Saga Edition Clone Wars Campaign Guide / Wiki-Fandom',
+        text: `Pré-requisito: Nenhum.
+
+Benefício: Você causa +2 de dano contra inimigos droides. Se estiver usando uma arma iônica, o bônus aumenta para +4.`
     },
     "Caçador Esportivo (Sport Hunter)": {
-            "source": "Star Wars Saga Edition Unknown Regions / Saga Edition RPG Omnibus",
-            "text": "Pré-requisito: treinado em Sobrevivência.\n\nBenefício: Quando estiver rastreando ou caçando uma criatura não inteligente, você recebe +2 de bônus de competência em testes de Sobrevivência e +1 de bônus nas jogadas de ataque contra essa criatura."
+        category: 'Talentos',
+        source: 'Star Wars Saga Edition Galaxy at War / Wiki-Fandom',
+        text: `Pré-requisito: proficiência com a arma usada.
+
+Benefício: Quando faz um ataque à distância com uma arma slugthrower ou arma esportiva, recebe um benefício conforme a arma usada. Com pistola slugthrower em alcance à queima-roupa, causa +1 dado de dano. Com rifle slugthrower, os dados de dano aumentam de d8 para d12. Com pistola blaster esportiva, role novamente qualquer resultado 1 nos dados de dano até obter outro resultado. Com rifle blaster esportivo, recebe +1 de bônus nas jogadas de ataque quando mirar antes de atirar.`
     },
     "Caçador Ungido (Annointed Hunter)": {
-            "source": "Star Wars Saga Edition Clone Wars Campaign Guide / Wiki-Fandom",
-            "text": "Pré-requisito: Nelvaanian.\n\nBenefício: Se você se mover 2 quadrados ou mais durante seu turno, recebe +1 de bônus nas jogadas de ataque com armas arremessadas até o fim do turno."
+        category: 'Talentos',
+        source: 'Star Wars Saga Edition Clone Wars Campaign Guide / Wiki-Fandom',
+        text: `Pré-requisito: espécie Nelvaanian.
+
+Benefício: Se terminar seu movimento pelo menos 2 quadrados distante do ponto onde começou, recebe +1 de bônus de competência nas jogadas de ataque com armas arremessadas até o fim do seu turno.`
     },
     "Canalizar Fúria (Channel Rage)": {
-            "source": "Star Wars Saga Edition Clone Wars Campaign Guide / Saga Edition RPG Omnibus",
-            "text": "Pré-requisito: característica racial Fúria.\n\nBenefício: Você pode entrar em fúria como ação livre no seu turno. Depois de declarar o uso, a fúria dura até o fim do seu próximo turno."
+        category: 'Talentos',
+        source: 'Star Wars Saga Edition Galaxy of Intrigue / Wiki-Fandom',
+        text: `Pré-requisito: característica racial Fúria.
+
+Benefício: Em vez de entrar em fúria, você pode canalizar sua fúria para fortalecer sua mente, recebendo +5 de bônus na Defesa de Vontade.`
     },
     "Catador (Scavenger)": {
             "source": "Star Wars Saga Edition Rebellion Era Campaign Guide / Saga Edition RPG Omnibus",
@@ -240,23 +306,21 @@ const LIBRARY_ITEM_DETAILS = {
             "text": "Pré-requisito: treinado em Tratar Ferimentos.\n\nBenefício: Você pode instalar uma prótese cibernética em um ser vivo. O procedimento exige 1 hora de trabalho ininterrupto e um teste de Tratar Ferimentos CD 20. Se tiver sucesso, a prótese é instalada corretamente. Se falhar, a prótese não é instalada corretamente; você pode tentar novamente após mais 1 hora ininterrupta de cirurgia.\n\nEspecial: Você pode instalar uma prótese cibernética em si mesmo, mas sofre –5 de penalidade no teste de Tratar Ferimentos. Se possuir Especialização Cirúrgica, pode instalar a prótese em 10 minutos em vez de 1 hora."
     },
     "Agressão Temperada (Tempered Aggression)": {
-            "source": "Star Wars Saga Edition Jedi Academy Training Manual / Wiki-Fandom",
-            "descriptor": "[Forma de Sabre], [Lado Sombrio]",
-            "text": "Tempo: Ação padrão\nAlvo: Um inimigo ao alcance do seu sabre de luz\n\nVocê canaliza agressividade pela Força para transformar um ataque de sabre de luz em um golpe de precisão brutal. Faça uma verificação de Usar a Força como parte do ataque corpo a corpo com sabre de luz. Compare o resultado da tabela abaixo para determinar quando o ataque passa a contar como acerto crítico.",
-            "checks": [
-                    {
-                            "cd": "30",
-                            "effect": "Faça um ataque corpo a corpo com sabre de luz. Se superar a Defesa de Reflexos do alvo por 10 ou mais, o ataque conta como acerto crítico."
-                    },
-                    {
-                            "cd": "35",
-                            "effect": "Como CD 30, porém basta superar a Defesa de Reflexos do alvo por 5 ou mais."
-                    },
-                    {
-                            "cd": "40",
-                            "effect": "Como CD 30, porém basta superar a Defesa de Reflexos do alvo por 2 ou mais."
-                    }
-            ]
+        category: 'Poderes da Força',
+        source: 'Star Wars Saga Edition Jedi Academy Training Manual / Wiki-Fandom',
+        descriptor: '[Forma de Sabre], [Lado Sombrio]',
+        text: `Tempo: Ação padrão
+Alvo: Um inimigo ao alcance do seu sabre de luz
+
+Você se lança contra um oponente, controlando sua agressividade para que ela não o domine. Faça uma verificação de Usar a Força. O resultado da verificação determina o efeito abaixo.
+
+Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de forma não possui o descritor [Lado Sombrio] para você.`
+        , checks: [
+            { cd: '30', effect: 'Você pode fazer um único ataque corpo a corpo com sabre de luz contra o alvo. Se superar a Defesa de Reflexos do alvo por 10 ou mais, o ataque conta como acerto crítico.' },
+            { cd: '35', effect: 'Você pode fazer um único ataque corpo a corpo com sabre de luz contra o alvo. Se superar a Defesa de Reflexos do alvo por 5 ou mais, o ataque conta como acerto crítico.' },
+            { cd: '40', effect: 'Você pode fazer um único ataque corpo a corpo com sabre de luz contra o alvo. Se superar a Defesa de Reflexos do alvo por 2 ou mais, o ataque conta como acerto crítico.' }
+        ]
+        , special: 'Você pode gastar 1 Ponto da Força para causar +2 dados de dano com o ataque se ele acertar. Esses dados adicionais são somados depois de dobrar o dano, caso o ataque seja um acerto crítico.'
     },
     "Aproximar (Draw Closer)": {
             "source": "Star Wars Saga Edition Jedi Academy Training Manual / documento da campanha",
