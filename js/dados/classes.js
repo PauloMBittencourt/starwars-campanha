@@ -14,7 +14,7 @@ const CLASS_DATA = {
             "hp": "30 + CON no 1º nível; 1d10 + CON por nível.",
             "forcePoints": "5 + metade do nível do personagem por nível de classe.",
             "defenses": "Fortitude +1, Reflexos +1, Vontade +1.",
-            "skills": "2 + INT: Acrobacia, Resistência, Iniciativa, Saltar, Conhecimentos, Mecânica, Percepção, Pilotar, Usar a Força.",
+            "skills": "2 + INT: Acrobacia, Tolerância, Iniciativa, Saltar, Conhecimento, Mecânica, Percepção, Pilotar, Usar a Força.",
             "feats": "Sensibilidade à Força, Proficiência com Sabres de Luz, Proficiência com Armas Simples.",
             "defenseBonuses": {
                     "FORT": 1,
@@ -140,7 +140,7 @@ const CLASS_DATA = {
             "hp": "18 + CON no 1º nível; 1d6 + CON por nível.",
             "forcePoints": "5 + metade do nível do personagem por nível de classe.",
             "defenses": "Reflexos +1, Vontade +2.",
-            "skills": "6 + INT: Enganação, Obter Informação, Iniciativa, Conhecimentos, Percepção, Persuasão, Pilotar, Montar, Tratar Ferimentos, Usar Computadores.",
+            "skills": "6 + INT: Enganar, Reunir Informação, Iniciativa, Conhecimento, Percepção, Persuasão, Pilotar, Montar, Tratar Ferimento, Usar Computador.",
             "feats": "Linguista, Proficiência com Pistolas, Proficiência com Armas Simples.",
             "defenseBonuses": {
                     "FORT": 0,
@@ -266,7 +266,7 @@ const CLASS_DATA = {
             "hp": "18 + CON no 1º nível; 1d6 + CON por nível.",
             "forcePoints": "5 + metade do nível do personagem por nível de classe.",
             "defenses": "Reflexos +2, Vontade +1.",
-            "skills": "4 + INT: Acrobacia, Enganação, Obter Informação, Iniciativa, Conhecimentos, Mecânica, Percepção, Persuasão, Pilotar, Furtividade, Usar Computadores.",
+            "skills": "4 + INT: Acrobacia, Enganar, Reunir Informação, Iniciativa, Conhecimento, Mecânica, Percepção, Persuasão, Pilotar, Furtividade, Usar Computador.",
             "feats": "Tiro à Queima-Roupa, Proficiência com Pistolas, Proficiência com Armas Simples.",
             "defenseBonuses": {
                     "FORT": 0,
@@ -392,7 +392,7 @@ const CLASS_DATA = {
             "hp": "24 + CON no 1º nível; 1d8 + CON por nível.",
             "forcePoints": "5 + metade do nível do personagem por nível de classe.",
             "defenses": "Fortitude +1, Reflexos +2.",
-            "skills": "5 + INT: Escalar, Resistência, Iniciativa, Saltar, Conhecimentos, Mecânica, Percepção, Pilotar, Montar, Furtividade, Sobrevivência, Nadar.",
+            "skills": "5 + INT: Escalar, Tolerância, Iniciativa, Saltar, Conhecimento, Mecânica, Percepção, Pilotar, Montar, Furtividade, Sobrevivência, Nadar.",
             "feats": "Shake It Off, Proficiência com Pistolas, Proficiência com Rifles, Proficiência com Armas Simples.",
             "defenseBonuses": {
                     "FORT": 1,
@@ -519,7 +519,7 @@ const CLASS_DATA = {
             "hp": "30 + CON no 1º nível; 1d10 + CON por nível.",
             "forcePoints": "5 + metade do nível do personagem por nível de classe.",
             "defenses": "Reflexos +1, Fortitude +2.",
-            "skills": "3 + INT: Escalar, Resistência, Iniciativa, Saltar, Conhecimento (Táticas), Mecânica, Percepção, Pilotar, Nadar, Tratar Ferimentos, Usar Computadores.",
+            "skills": "3 + INT: Escalar, Tolerância, Iniciativa, Saltar, Conhecimento (Táticas), Mecânica, Percepção, Pilotar, Nadar, Tratar Ferimento, Usar Computador.",
             "feats": "Proficiência com Armaduras (Leve, Média), Proficiência com Pistolas, Proficiência com Rifles, Proficiência com Armas Simples.",
             "defenseBonuses": {
                     "FORT": 2,
@@ -646,7 +646,7 @@ const CLASS_DATA = {
             "hp": "30 + CON no 1º nível; 1d10 + CON por nível.",
             "forcePoints": "5 + metade do nível do personagem por nível de classe.",
             "defenses": "Fortitude +1, Reflexos +1, Vontade +1.",
-            "skills": "2 + INT: Acrobacia, Conhecimentos, Enganação, Iniciativa, Intimidar, Percepção, Persuasão, Pilotar, Saltar, Usar a Força.",
+            "skills": "2 + INT: Acrobacia, Conhecimento, Enganar, Iniciativa, Intimidar, Percepção, Persuasão, Pilotar, Saltar, Usar a Força.",
             "feats": "Sensibilidade à Força, Proficiência com Sabres de Luz, Proficiência com Armas Simples.",
             "defenseBonuses": {
                     "FORT": 1,

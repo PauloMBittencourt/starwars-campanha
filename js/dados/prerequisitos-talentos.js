@@ -902,7 +902,7 @@ const TALENT_PREREQUISITES = {
         {
             "tipo": "talento",
             "nome": "Foco em Perícia (Skill Focus)",
-            "detalhe": "Enganação"
+            "detalhe": "Enganar"
         }
     ],
     "Movimento Impetuoso (Impetuous Move)": [
@@ -1808,7 +1808,7 @@ const TALENT_PREREQUISITES = {
         {
             "tipo": "talento",
             "nome": "Foco em Perícia (Skill Focus)",
-            "detalhe": "Enganação"
+            "detalhe": "Enganar"
         },
         {
             "tipo": "pericia",

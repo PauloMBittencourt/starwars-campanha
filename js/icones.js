@@ -66,6 +66,11 @@ function renderSkillIcon(skill) {
     return `<span class="skill-icon" data-attr="${skill.attr}" aria-hidden="true">${img}</span>`;
 }
 
+// Imagem das defesas e do Limiar de Dano (img/defesas/<nome>.png); sem o arquivo, fica só a moldura
+function renderDefenseIcon(name) {
+    return `<span class="defense-icon" aria-hidden="true"><img src="img/defesas/${name}.png" alt="" draggable="false" onerror="this.remove()"></span>`;
+}
+
 function renderWeaponIcon(weaponName) {
     if (!String(weaponName || '').trim()) {
         return '<span class="item-icon" data-weapon-icon aria-hidden="true"></span>';
@@ -76,9 +81,18 @@ function renderWeaponIcon(weaponName) {
 }
 
 // ===== Imagens da Biblioteca =====
-// Talentos, aptidões e poderes usam as imagens de img/talentos/, listadas em
-// js/dados/imagens-talentos.js (gerado por dev/atualizar-imagens-talentos.html).
+// Cada categoria da Biblioteca tem sua pasta em img/ (abaixo), listadas em
+// js/dados/imagens-biblioteca.js (gerado por dev/atualizar-imagens-biblioteca.html).
 // A imagem é achada pelo nome em inglês entre parênteses: "Esquiva (Dodge)" -> dodge.jpg
+
+// Categoria da Biblioteca -> pasta em img/
+const LIBRARY_IMAGE_FOLDERS = {
+    talents: 'talentos',
+    aptitudes: 'aptidoes',
+    forcePowers: 'poderes',
+    forceTechniques: 'tecnicas',
+    forceSecrets: 'segredos',
+};
 
 // Itens com nome só em português, ou cuja imagem tem outro nome -> imagem (sem extensão)
 const LIBRARY_IMAGE_ALIASES = {
@@ -105,16 +119,22 @@ const libraryImageAliases = Object.fromEntries(
     Object.entries(LIBRARY_IMAGE_ALIASES).map(([name, image]) => [toImageSlug(name), image])
 );
 
-function getLibraryImageUrl(itemName) {
-    const files = window.TALENT_IMAGE_FILES || {};
+// Sem categoria (ou categoria sem pasta), procura em todas as pastas
+function getLibraryImageUrl(itemName, categoryKey) {
+    const allFiles = window.LIBRARY_IMAGE_FILES || {};
+    const folders = LIBRARY_IMAGE_FOLDERS[categoryKey] ? [LIBRARY_IMAGE_FOLDERS[categoryKey]] : Object.values(LIBRARY_IMAGE_FOLDERS);
     const english = String(itemName || '').match(/\(([^()]*)\)\s*$/)?.[1];
-    const image = [libraryImageAliases[toImageSlug(itemName)], english && toImageSlug(english), toImageSlug(itemName)]
-        .find(candidate => candidate && files[candidate]);
-    return image ? `img/talentos/${files[image]}` : '';
+    const candidates = [libraryImageAliases[toImageSlug(itemName)], english && toImageSlug(english), toImageSlug(itemName)];
+    for (const folder of folders) {
+        const files = allFiles[folder] || {};
+        const image = candidates.find(candidate => candidate && files[candidate]);
+        if (image) return `img/${folder}/${files[image]}`;
+    }
+    return '';
 }
 
-function renderLibraryIcon(itemName, extraClass = '') {
-    const url = getLibraryImageUrl(itemName);
+function renderLibraryIcon(itemName, categoryKey, extraClass = '') {
+    const url = getLibraryImageUrl(itemName, categoryKey);
     return url
         ? `<img class="library-icon ${extraClass}" src="${url}" alt="" loading="lazy" draggable="false">`
         : `<span class="library-icon empty ${extraClass}" aria-hidden="true"></span>`;

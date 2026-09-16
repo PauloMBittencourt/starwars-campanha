@@ -5,24 +5,24 @@
 // icon = sufixo da imagem img/pericias/skill-training-<icon>.jpg (null = sem imagem; mostra o atributo)
 const SKILLS = [
     { key: 'acrobacia',      label: 'Acrobacia',         attr: 'DES', icon: 'acrobatics' },
-    { key: 'conhecimentos',  label: 'Conhecimentos',     attr: 'INT', icon: null, group: 'knowledge' },
-    { key: 'enganacao',      label: 'Enganação',         attr: 'CAR', icon: 'deception' },
+    { key: 'conhecimentos',  label: 'Conhecimento',      attr: 'INT', icon: null, group: 'knowledge' },
+    { key: 'enganacao',      label: 'Enganar',           attr: 'CAR', icon: 'deception' },
     { key: 'escalar',        label: 'Escalar',           attr: 'FOR', icon: 'climb' },
     { key: 'furtividade',    label: 'Furtividade',       attr: 'DES', icon: 'stealth' },
     { key: 'iniciativa',     label: 'Iniciativa',        attr: 'DES', icon: 'initiative' },
     { key: 'mecanica',       label: 'Mecânica',          attr: 'INT', icon: 'mechanics' },
     { key: 'montaria',       label: 'Montar',            attr: 'DES', icon: 'ride' },
     { key: 'nadar',          label: 'Nadar',             attr: 'FOR', icon: 'swim' },
-    { key: 'obterInfo',      label: 'Obter Informação',  attr: 'CAR', icon: 'gather-information' },
     { key: 'percepcao',      label: 'Percepção',         attr: 'SAB', icon: 'perception' },
     { key: 'persuasao',      label: 'Persuasão',         attr: 'CAR', icon: 'persuasion' },
     { key: 'pilotar',        label: 'Pilotar',           attr: 'DES', icon: 'pilot' },
-    { key: 'resistencia',    label: 'Resistência',       attr: 'CON', icon: 'endurance' },
+    { key: 'obterInfo',      label: 'Reunir Informação', attr: 'CAR', icon: 'gather-information' },
     { key: 'saltar',         label: 'Saltar',            attr: 'FOR', icon: 'jump' },
     { key: 'sobrevivencia',  label: 'Sobrevivência',     attr: 'SAB', icon: 'survival' },
-    { key: 'primeiros',      label: 'Tratar Ferimentos', attr: 'SAB', icon: 'treat-injury' },
+    { key: 'resistencia',    label: 'Tolerância',        attr: 'CON', icon: 'endurance' },
+    { key: 'primeiros',      label: 'Tratar Ferimento',  attr: 'SAB', icon: 'treat-injury' },
     { key: 'usarForca',      label: 'Usar a Força',      attr: 'CAR', icon: 'use-the-force' },
-    { key: 'usarComputador', label: 'Usar Computadores', attr: 'INT', icon: 'use-computer' },
+    { key: 'usarComputador', label: 'Usar Computador',   attr: 'INT', icon: 'use-computer' },
 ];
 
 // Áreas de Conhecimento: cada uma é treinada separadamente, como no Saga Edition
@@ -51,10 +51,11 @@ const openKnowledgeGroups = new Set();
 
 const ATTRIBUTES = ['FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'];
 
+// icon = nome da imagem em img/defesas/ (sem extensão)
 const DEFENSES = [
-    { key: 'FORT', label: 'Fortitude', attr: 'CON' },
-    { key: 'REF',  label: 'Reflexos',  attr: 'DES' },
-    { key: 'VON',  label: 'Vontade',   attr: 'SAB' },
+    { key: 'FORT', label: 'Fortitude', attr: 'CON', icon: 'fortitude' },
+    { key: 'REF',  label: 'Reflexos',  attr: 'DES', icon: 'reflex' },
+    { key: 'VON',  label: 'Vontade',   attr: 'SAB', icon: 'will' },
 ];
 
 const DEFENSE_PARTS = [
@@ -753,6 +754,7 @@ function renderDamageThreshold(sheet) {
         <div class="card" data-threshold>
             <div class="card-header"><h3 class="card-title">Limiar de Dano</h3></div>
             <div class="threshold-layout ${speciesThreshold ? 'with-species' : ''}">
+                ${renderDefenseIcon('damage-threshold')}
                 <div class="field">
                     <label for="threshold-total-${sheet.id}">Total</label>
                     <input id="threshold-total-${sheet.id}" class="stat-input locked highlight" type="number" value="${calculateDamageThreshold(sheet)}" readonly tabindex="-1" data-threshold-total>
@@ -813,10 +815,13 @@ function renderDefenses(sheet) {
                 ${DEFENSES.filter(def => sheet.defenses[def.key]).map(def => `
                     <div class="defense-card">
                         <div class="defense-head">
-                            <span class="defense-name">${def.label}</span>
+                            ${renderDefenseIcon(def.icon)}
+                            <div class="defense-title">
+                                <span class="defense-name">${def.label}</span>
+                                <div class="defense-attr" data-def-attr="${def.key}">${renderDefenseAttribute(sheet, def.key)}</div>
+                            </div>
                             <strong class="defense-total" data-def-total="${def.key}">${calculateDefense(sheet, def.key)}</strong>
                         </div>
-                        <div class="defense-attr" data-def-attr="${def.key}">${renderDefenseAttribute(sheet, def.key)}</div>
                         <div class="defense-parts">
                             ${DEFENSE_PARTS.map(part => `
                                 <div>
@@ -929,7 +934,7 @@ function renderSkillRow(sheet, skill, extraClass = '') {
     `;
 }
 
-// Conhecimentos: linha de grupo que abre/fecha as áreas. Usa um <tbody> próprio para
+// Conhecimento: linha de grupo que abre/fecha as áreas. Usa um <tbody> próprio para
 // poder esconder as áreas só com CSS (.knowledge-group sem .open).
 function renderKnowledgeGroup(sheet, skill) {
     const isOpen = openKnowledgeGroups.has(sheet.id);

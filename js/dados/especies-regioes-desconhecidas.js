@@ -235,7 +235,7 @@ Object.assign(SPECIES_DATA, {
         aventureiros: 'Poucos saem do planeta (alguns são exilados); a maioria deveria ter um ou dois níveis de Soldado.',
         tracos: [
             { nome: 'Percepção Aguçada', texto: 'Podem rolar novamente qualquer teste de Percepção, mas devem aceitar o novo resultado.' },
-            { nome: 'Persistente', texto: 'Podem rolar novamente qualquer teste de Resistência, mas devem aceitar o novo resultado.' },
+            { nome: 'Persistente', texto: 'Podem rolar novamente qualquer teste de Tolerância, mas devem aceitar o novo resultado.' },
         ],
         idades: ['1–9 anos', '10–14 anos', '15–45 anos', '46–64 anos', '65–89 anos', '90+ anos'],
         nomesExemplo: 'Maximus, Magnus, Janus, Vesta, Felicitas.',
@@ -384,8 +384,8 @@ Object.assign(SPECIES_DATA, {
         aparencia: 'Cabeça grande com olhos violeta largos, orelhas coladas ao crânio, membros curtos, pele bege com espirais douradas e mandíbula com duas bocas.',
         aventureiros: 'Nômades que veem família e lar como fraqueza; conhecem bem as próprias capacidades e raramente miram além do seu posto.',
         tracos: [
-            { nome: 'Bioconhecimento', texto: 'Podem rolar novamente testes de Conhecimento (Ciências da Vida) e Tratar Ferimentos, aceitando o novo resultado.' },
-            { nome: 'Talento Bônus Condicional', texto: 'Treinados em Enganação, recebem Foco em Perícia (Enganação) como Talento bônus.' },
+            { nome: 'Bioconhecimento', texto: 'Podem rolar novamente testes de Conhecimento (Ciências da Vida) e Tratar Ferimento, aceitando o novo resultado.' },
+            { nome: 'Talento Bônus Condicional', texto: 'Treinados em Enganar, recebem Foco em Perícia (Enganar) como Talento bônus.' },
             { nome: 'Aparência Assustadora', texto: 'Podem rolar novamente testes de Persuasão para Intimidar, ficando com o melhor resultado.' },
         ],
         idades: ['1–8 anos', '9–13 anos', '14–96 anos', '97–119 anos', '120–134 anos', '135+ anos'],

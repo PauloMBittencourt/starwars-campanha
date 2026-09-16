@@ -16,8 +16,8 @@ Object.assign(SPECIES_DATA, {
         aparencia: 'Cabelo áspero, corpo frágil, pele doentia e antenas retráteis (antenapalpos) no alto da cabeça.',
         aventureiros: 'Muitos deixam o planeta em busca de vida melhor; podem ser de qualquer classe heroica.',
         tracos: [
-            { nome: 'Percepção Aguçada', texto: 'Com as antenas estendidas, podem rolar novamente qualquer teste de Percepção, aceitando o novo resultado. Recolher ou estender as antenas é Ação Livre; recolhidas, passam por Humanos sem teste de Enganação.' },
-            { nome: 'Fortaleza Mental', texto: '+2 de bônus de espécie na Defesa de Vontade contra testes de Enganação e Persuasão.' },
+            { nome: 'Percepção Aguçada', texto: 'Com as antenas estendidas, podem rolar novamente qualquer teste de Percepção, aceitando o novo resultado. Recolher ou estender as antenas é Ação Livre; recolhidas, passam por Humanos sem teste de Enganar.' },
+            { nome: 'Fortaleza Mental', texto: '+2 de bônus de espécie na Defesa de Vontade contra testes de Enganar e Persuasão.' },
             { nome: 'Resistência Tóxica', texto: '+5 de bônus de espécie na Defesa de Fortitude contra Venenos e Atmosferas Tóxicas.' },
         ],
         idades: ['1–12 anos', '13–15 anos', '16–39 anos', '40–52 anos', '53–64 anos', '65+ anos'],
@@ -57,8 +57,8 @@ Object.assign(SPECIES_DATA, {
         aparencia: 'Na forma natural são reptilianos, de couro verde ou ocre, olhos amarelos felinos e rosto que poderia passar por humano.',
         aventureiros: 'Caçadores de recompensas, assassinos ou espiões; excelentes Malandros ou Batedores.',
         tracos: [
-            { nome: 'Metamorfose', texto: 'Mudam a aparência à vontade: +10 de bônus de espécie em Enganação para se disfarçar, e disfarçam-se como Ação de Rodada Completa sem penalidade. Não mudam de tamanho sem o Talento Metamorfo.' },
-            { nome: 'Sobressalto', texto: 'Uma vez por encontro, como Reação a um ataque, teste de Enganação contra a Vontade do atacante; se passar, o ataque sofre −5.' },
+            { nome: 'Metamorfose', texto: 'Mudam a aparência à vontade: +10 de bônus de espécie em Enganar para se disfarçar, e disfarçam-se como Ação de Rodada Completa sem penalidade. Não mudam de tamanho sem o Talento Metamorfo.' },
+            { nome: 'Sobressalto', texto: 'Uma vez por encontro, como Reação a um ataque, teste de Enganar contra a Vontade do atacante; se passar, o ataque sofre −5.' },
         ],
         idades: ['1–11 anos', '12–15 anos', '16–30 anos', '31–49 anos', '50–69 anos', '70+ anos'],
         nomesExemplo: 'Durbat, Renneyn, Rolsat Noviee, Torsayn, Zam Wesell.',
@@ -77,7 +77,7 @@ Object.assign(SPECIES_DATA, {
         aparencia: 'Forma humana coberta de escamas azul-esverdeadas, mais grossas na coluna; longos cabelos negros presos em coques ou tranças ornamentadas.',
         aventureiros: 'Jovens privilegiados em peregrinação pela galáxia para aprender sobre outras culturas antes de assumir seu lugar entre os governantes.',
         tracos: [
-            { nome: 'Prender a Respiração', texto: 'Podem prender a respiração por 25 × Constituição rodadas antes de precisar de testes de Resistência.' },
+            { nome: 'Prender a Respiração', texto: 'Podem prender a respiração por 25 × Constituição rodadas antes de precisar de testes de Tolerância.' },
             { nome: 'Feromônios', texto: 'Como Ação Padrão, ataque especial (nível de personagem + modificador de Carisma) contra a Fortitude de uma criatura adjacente não Hostil: se acertar, desce −1 passo na Trilha de Condição; ao chegar a −5, em vez de desmaiar sua Atitude vira Amistosa. Se errar, o alvo fica imune por 24 horas. Funciona como Veneno Inalado.' },
             { nome: 'Aclimatação a Feromônios', texto: '+5 de bônus de espécie na Fortitude contra os Feromônios de outros Falleen.' },
         ],
@@ -163,8 +163,8 @@ Object.assign(SPECIES_DATA, {
         aparencia: 'Um pouco mais baixos que Humanos, pelo cinza-fumaça, cabelo branco, cauda preênsil com tufo branco e nariz quitinoso perfurado que produz música.',
         aventureiros: 'Nascidos para a aventura; pouco adequados a Jedi, mas usam a Força sem perceber, e os mais fortes viram adeptos espirituais.',
         tracos: [
-            { nome: 'Contatos', texto: 'Ao usar Obter Informação para Descobrir Informações Secretas, podem dispensar o custo em créditos; se falharem, podem tentar de novo pagando normalmente.' },
-            { nome: 'Ofuscação Musical', texto: 'Podem rolar novamente testes de Enganação para Transmitir Informação Enganosa, ficando com o melhor (alcance de 10 quadrados). Como Ação Rápida, podem Criar uma Distração para se Esconder.' },
+            { nome: 'Contatos', texto: 'Ao usar Reunir Informação para Descobrir Informações Secretas, podem dispensar o custo em créditos; se falharem, podem tentar de novo pagando normalmente.' },
+            { nome: 'Ofuscação Musical', texto: 'Podem rolar novamente testes de Enganar para Transmitir Informação Enganosa, ficando com o melhor (alcance de 10 quadrados). Como Ação Rápida, podem Criar uma Distração para se Esconder.' },
             { nome: 'Cauda Preênsil', texto: 'Seguram (mas não empunham) um item Pequeno ou menor com a cauda; um item Médio ou maior os deixa Sobrecarregados.' },
         ],
         idades: ['1–10 anos', '11–20 anos', '21–40 anos', '41–60 anos', '61–80 anos', '81+ anos'],
@@ -184,7 +184,7 @@ Object.assign(SPECIES_DATA, {
         aparencia: 'Rechonchudos, membros finos e um par de asas agitadas; pele azul, verde ou rosada.',
         aventureiros: 'Tendem a Malandros, mas também Nobres e Batedores (pela mobilidade).',
         tracos: [
-            { nome: 'Talento Bônus Condicional', texto: 'Com Enganação como Perícia Treinada, recebem Foco em Perícia (Enganação) como Talento bônus.' },
+            { nome: 'Talento Bônus Condicional', texto: 'Com Enganar como Perícia Treinada, recebem Foco em Perícia (Enganar) como Talento bônus.' },
             { nome: 'Voo', texto: 'Voam, mas não se estiverem com Carga Pesada.' },
             { nome: 'Resistência à Força', texto: '+5 na Defesa de Vontade contra qualquer uso da perícia Usar a Força.' },
         ],

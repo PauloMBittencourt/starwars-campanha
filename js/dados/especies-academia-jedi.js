@@ -39,7 +39,7 @@ Object.assign(SPECIES_DATA, {
         aventureiros: 'Quase todos que saem de Orax se unem aos Cavaleiros de Ferro como Jedi ou Prodígios da Força.',
         tracos: [
             { nome: 'Constituição Mantida', texto: 'Mantêm o valor de Constituição mesmo dentro do corpo de droide.' },
-            { nome: 'Perícia Treinada Bônus', texto: 'Recebem Usar Computadores como Perícia Treinada bônus, qualquer que seja a classe.' },
+            { nome: 'Perícia Treinada Bônus', texto: 'Recebem Usar Computador como Perícia Treinada bônus, qualquer que seja a classe.' },
             { nome: 'Carcaça de Droide', texto: 'Precisam de Manutenção como droides; imunes a Veneno, Radiação, Perigos Atmosféricos não corrosivos e Vácuo; só recuperam PV com Reparar Droide (Mecânica), sem cura natural (salvo o Talento Reparo pela Força); contam como criaturas cibernéticas para dano de íons; podem usar Apêndices, Armadura, Comunicação, Compartimentos, Sensores e Tradutores de droide (custo ×1).' },
         ],
         idades: ['Não envelhecem', '—', '—', '—', '—', '—'],

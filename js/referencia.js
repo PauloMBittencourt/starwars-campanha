@@ -111,6 +111,44 @@ function openLibrary() {
     showLibraryCategory('forcePowers');
 }
 
+// Abre a Biblioteca direto num item (usado pelos talentos e aptidões da ficha)
+const CHOICE_LIBRARY_CATEGORIES = { talento: 'talents', aptidao: 'aptitudes', tecnica: 'forceTechniques', segredo: 'forceSecrets' };
+
+function openLibraryItem(itemName, tipo) {
+    const preferred = CHOICE_LIBRARY_CATEGORIES[tipo];
+    const keys = [preferred, ...Object.keys(LIBRARY_DATA).filter(key => key !== preferred)].filter(key => LIBRARY_DATA[key]);
+    openModal('libraryModal');
+
+    for (const key of keys) {
+        const category = LIBRARY_DATA[key];
+        if (category.trees) {
+            const treeIndex = category.trees.findIndex(tree => tree.items.includes(itemName));
+            if (treeIndex < 0) continue;
+            showLibraryCategory(key);
+            showLibraryTree(key, treeIndex);
+            showLibraryItem(key, treeIndex, category.trees[treeIndex].items.indexOf(itemName));
+            scrollLibraryListToActive();
+            return;
+        }
+        const itemIndex = category.items.indexOf(itemName);
+        if (itemIndex < 0) continue;
+        showLibraryCategory(key);
+        showLibraryItem(key, null, itemIndex);
+        scrollLibraryListToActive();
+        return;
+    }
+
+    // Não achou pelo nome exato: abre a categoria já buscando pelo nome
+    showLibraryCategory(preferred && LIBRARY_DATA[preferred] ? preferred : 'forcePowers');
+    const search = document.getElementById('librarySearch');
+    search.value = itemName;
+    filterLibraryList(itemName);
+}
+
+function scrollLibraryListToActive() {
+    document.querySelector('#libraryList .library-item-btn.active')?.scrollIntoView({ block: 'center' });
+}
+
 function closeLibrary() {
     closeModal('libraryModal');
 }
@@ -154,7 +192,7 @@ function showLibraryCategory(categoryKey) {
         btn.className = 'library-item-btn';
         btn.dataset.index = index;
         btn.dataset.search = normalizeSearch(item);
-        btn.innerHTML = `${renderLibraryIcon(item)}<span class="library-item-name">${escapeHtml(item)}</span>${LIBRARY_ITEM_DETAILS[item] ? '' : '<span class="library-pending">sem texto</span>'}`;
+        btn.innerHTML = `${renderLibraryIcon(item, categoryKey)}<span class="library-item-name">${escapeHtml(item)}</span>${LIBRARY_ITEM_DETAILS[item] ? '' : '<span class="library-pending">sem texto</span>'}`;
         btn.onclick = () => showLibraryItem(categoryKey, null, index);
         list.appendChild(btn);
     });
@@ -187,7 +225,7 @@ function showLibraryTree(categoryKey, treeIndex) {
         <div class="library-tree-items">
             ${tree.items.map((item, itemIndex) => `
                 <button class="library-item-btn" onclick="showLibraryItem('${categoryKey}', ${treeIndex}, ${itemIndex})">
-                    ${renderLibraryIcon(item)}
+                    ${renderLibraryIcon(item, categoryKey)}
                     <span class="library-item-name">${escapeHtml(item)}</span>
                     ${LIBRARY_ITEM_DETAILS[item] ? '' : '<span class="library-pending">sem texto</span>'}
                 </button>
@@ -263,7 +301,7 @@ function showLibraryItem(categoryKey, treeIndex, itemIndex) {
     details.innerHTML = `
         ${tree ? `<button class="library-back" onclick="showLibraryTree('${categoryKey}', ${treeIndex})">← ${escapeHtml(shortTreeName(tree.name))}</button>` : ''}
         <div class="library-item-head">
-            ${getLibraryImageUrl(itemName) ? renderLibraryIcon(itemName, 'large') : ''}
+            ${getLibraryImageUrl(itemName, categoryKey) ? renderLibraryIcon(itemName, categoryKey, 'large') : ''}
             <h3 class="library-tree-title">${escapeHtml(itemName)}</h3>
         </div>
         <div class="library-meta">

@@ -109,7 +109,7 @@ function applyPreviewState(state) {
     if (state === 'biblioteca-talentos') {
         openLibrary();
         showLibraryCategory('talents');
-        showLibraryItem('talents', null, LIBRARY_DATA.talents.items.findIndex(item => getLibraryImageUrl(item)));
+        showLibraryItem('talents', null, LIBRARY_DATA.talents.items.findIndex(item => getLibraryImageUrl(item, 'talents')));
     }
     if (state === 'racas') openSpeciesReference();
     if (state === 'raca-form') { openSpeciesReference(); openSpeciesForm('wookiee'); }

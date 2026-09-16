@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atualizar imagens de talentos</title>
-<!-- Gera js/dados/imagens-talentos.js com a lista de imagens de img/talentos/.
-     Abra este arquivo direto no navegador (dois cliques), escolha a pasta img/talentos
-     e baixe o arquivo gerado. Use de novo sempre que colocar ou tirar imagens da pasta.
+<title>Atualizar imagens da Biblioteca</title>
+<!-- Gera js/dados/imagens-biblioteca.js com a lista de imagens das pastas da Biblioteca
+     (img/talentos, img/aptidoes, img/poderes, img/tecnicas, img/segredos).
+     Abra este arquivo direto no navegador (dois cliques), escolha a pasta img
+     e baixe o arquivo gerado. Use de novo sempre que colocar ou tirar imagens dessas pastas.
 
      Por que existe: o site não consegue listar uma pasta sozinho (hospedado ou em file://),
-     então a Biblioteca usa esta lista para saber quais talentos têm imagem. -->
+     então a Biblioteca usa esta lista para saber quais itens têm imagem. -->
 <style>
     body { margin: 0; padding: 20px; background: #0c1119; color: #e8edf5; font: 14px 'Segoe UI', sans-serif; }
     main { max-width: 760px; margin: 0 auto; }
@@ -20,30 +21,32 @@
     button, label.button { display: inline-block; padding: 8px 14px; border: 0; border-radius: 8px; background: #ffe81f; color: #0c1119; font: 600 14px 'Segoe UI', sans-serif; cursor: pointer; }
     button:disabled { opacity: .4; cursor: default; }
     input[type=file] { display: none; }
-    #status { margin: 10px 0 0; }
+    #status { margin: 10px 0 0; white-space: pre-line; }
     textarea { box-sizing: border-box; width: 100%; height: 260px; margin-top: 10px; padding: 10px; background: #0c1119; color: #e8edf5; border: 1px solid rgba(160,180,215,.15); border-radius: 8px; font: 12px Consolas, monospace; }
 </style>
 </head>
 <body>
 <main>
-    <h1>Atualizar imagens de talentos</h1>
-    <p>Gera o <code>js/dados/imagens-talentos.js</code>, a lista que a Biblioteca usa para saber quais talentos têm imagem.</p>
+    <h1>Atualizar imagens da Biblioteca</h1>
+    <p>Gera o <code>js/dados/imagens-biblioteca.js</code>, a lista que a Biblioteca usa para saber quais talentos, aptidões, poderes, técnicas e segredos têm imagem.</p>
 
     <div class="step">
-        <p><strong>1.</strong> Escolha a pasta <code>img/talentos</code> do projeto (o navegador pode pedir para confirmar o envio; nada sai do seu computador).</p>
+        <p><strong>1.</strong> Escolha a pasta <code>img</code> do projeto (o navegador pode pedir para confirmar o envio; nada sai do seu computador).</p>
         <label class="button" for="folder">Escolher pasta</label>
         <input type="file" id="folder" webkitdirectory multiple>
         <p id="status"></p>
     </div>
 
     <div class="step">
-        <p><strong>2.</strong> Baixe o arquivo e substitua o <code>js/dados/imagens-talentos.js</code> do projeto por ele.</p>
-        <button id="download" disabled>Baixar imagens-talentos.js</button>
+        <p><strong>2.</strong> Baixe o arquivo e substitua o <code>js/dados/imagens-biblioteca.js</code> do projeto por ele.</p>
+        <button id="download" disabled>Baixar imagens-biblioteca.js</button>
         <button id="copy" disabled>Copiar texto</button>
         <textarea id="output" readonly></textarea>
     </div>
 </main>
 <script>
+    // Mesmas pastas de LIBRARY_IMAGE_FOLDERS em js/icones.js
+    const FOLDERS = ['talentos', 'aptidoes', 'poderes', 'tecnicas', 'segredos'];
     const EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
     const output = document.getElementById('output');
     const status = document.getElementById('status');
@@ -52,24 +55,33 @@
     const stemOf = name => name.replace(/\.[^.]*$/, '');
 
     document.getElementById('folder').addEventListener('change', event => {
-        // Só arquivos soltos na pasta escolhida (sem subpastas)
-        const files = [...event.target.files]
-            .filter(file => file.webkitRelativePath.split('/').length === 2)
-            .map(file => file.name)
-            .filter(name => EXTENSIONS.includes(extensionOf(name)))
-            .sort();
-
-        // nome sem extensão -> nome do arquivo
+        const files = [...event.target.files];
         const index = {};
-        files.forEach(name => { index[stemOf(name)] = name; });
+        FOLDERS.forEach(folder => {
+            // Só arquivos soltos em img/<pasta>/ (sem subpastas)
+            const names = files
+                .map(file => file.webkitRelativePath.split('/'))
+                .filter(parts => parts.length === 3 && parts[1] === folder)
+                .map(parts => parts[2])
+                .filter(name => EXTENSIONS.includes(extensionOf(name)))
+                .sort();
+            // nome sem extensão -> nome do arquivo
+            index[folder] = {};
+            names.forEach(name => { index[folder][stemOf(name)] = name; });
+        });
+
+        const total = FOLDERS.reduce((sum, folder) => sum + Object.keys(index[folder]).length, 0);
+        if (!total) {
+            status.textContent = 'Nenhuma imagem encontrada. Confira se escolheu a pasta img (a que tem talentos, aptidoes, poderes...).';
+            return;
+        }
 
         output.value =
-            '// Gerado por: dev/atualizar-imagens-talentos.html (não editar à mão)\n' +
-            '// Nome da imagem (sem extensão) -> arquivo em img/talentos/\n' +
-            `window.TALENT_IMAGE_FILES = ${JSON.stringify(index, null, 4)};\n`;
+            '// Gerado por: dev/atualizar-imagens-biblioteca.html (não editar à mão)\n' +
+            '// Pasta em img/ -> nome da imagem (sem extensão) -> arquivo\n' +
+            `window.LIBRARY_IMAGE_FILES = ${JSON.stringify(index, null, 4)};\n`;
 
-        const folder = event.target.files[0]?.webkitRelativePath.split('/')[0] || '?';
-        status.textContent = `${Object.keys(index).length} imagens listadas da pasta "${folder}".`;
+        status.textContent = FOLDERS.map(folder => `img/${folder}: ${Object.keys(index[folder]).length} imagens`).join('\n');
         document.getElementById('download').disabled = false;
         document.getElementById('copy').disabled = false;
     });
@@ -77,7 +89,7 @@
     document.getElementById('download').addEventListener('click', () => {
         const link = document.createElement('a');
         link.href = URL.createObjectURL(new Blob([output.value], { type: 'text/javascript' }));
-        link.download = 'imagens-talentos.js';
+        link.download = 'imagens-biblioteca.js';
         link.click();
         setTimeout(() => URL.revokeObjectURL(link.href), 1000);
     });
@@ -85,7 +97,7 @@
     document.getElementById('copy').addEventListener('click', () => {
         output.select();
         navigator.clipboard.writeText(output.value)
-            .then(() => { status.textContent += ' Texto copiado.'; })
+            .then(() => { status.textContent += '\nTexto copiado.'; })
             .catch(() => document.execCommand('copy'));
     });
 </script>

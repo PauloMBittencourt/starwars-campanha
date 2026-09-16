@@ -62,7 +62,7 @@ Object.assign(SPECIES_DATA, {
         tracos: [
             { nome: 'Sem Constituição', texto: 'Como outros droides, não têm valor de Constituição.' },
             { nome: 'Equipamento Bônus', texto: 'Vêm com dois destes Sistemas de Droide: Comunicador Interno, Visão no Escuro, Pacote de Diagnóstico, Pacote de Sensores Aprimorado, Armazenamento Interno ou Unidade Tradutora (CD 15).' },
-            { nome: 'Talento Bônus Condicional', texto: 'Com Enganação como Perícia Treinada, recebem Foco em Perícia (Enganação) como Talento bônus.' },
+            { nome: 'Talento Bônus Condicional', texto: 'Com Enganar como Perícia Treinada, recebem Foco em Perícia (Enganar) como Talento bônus.' },
             { nome: 'Traços de Droide', texto: 'Funcionam como Droides de 4º Grau, com todas as Imunidades de Droide, mas ignoram a exigência de Manutenção.' },
         ],
         idades: ['Não envelhecem', '—', '—', '—', '—', '—'],

@@ -77,8 +77,8 @@ Object.assign(SPECIES_DATA, {
         aparencia: 'Pequenos e graciosos, ossos ocos, bico curto, duas antenas, penas na cabeça que mudam de cor com o humor e olhos como gemas.',
         aventureiros: 'Normalmente Nobres ou Malandros. Usuários da Força são comuns, mas poucos viram Jedi; raramente Soldados.',
         tracos: [
-            { nome: 'Enganador', texto: 'Podem rolar novamente qualquer teste de Enganação, mas devem aceitar o novo resultado.' },
-            { nome: 'Glândulas Curativas', texto: 'Sempre contam como tendo Medpac ou Kit Médico em testes de Tratar Ferimentos e podem usar aplicações “somente treinada” dessa perícia sem treinamento.' },
+            { nome: 'Enganador', texto: 'Podem rolar novamente qualquer teste de Enganar, mas devem aceitar o novo resultado.' },
+            { nome: 'Glândulas Curativas', texto: 'Sempre contam como tendo Medpac ou Kit Médico em testes de Tratar Ferimento e podem usar aplicações “somente treinada” dessa perícia sem treinamento.' },
         ],
         idades: ['1–11 anos', '12–17 anos', '18–55 anos', '56–70 anos', '71–84 anos', '85+ anos'],
         nomesExemplo: 'Larerre, Ootorr, Kourere, Vergere, Villatee.',
@@ -140,7 +140,7 @@ Object.assign(SPECIES_DATA, {
         aparencia: 'Muito largos e musculosos, sem pelos, pele do cinza-azulado ao negro (às vezes com barriga ou listras brancas) e olhos grandes, geralmente negros.',
         aventureiros: 'Mercadores de cargas especulativas, exploradores e até espiões; normalmente Nobres, Malandros ou Batedores.',
         tracos: [
-            { nome: 'Talento Bônus Condicional', texto: 'Com Obter Informação como Perícia Treinada, recebem Foco em Perícia (Obter Informação) como Talento bônus.' },
+            { nome: 'Talento Bônus Condicional', texto: 'Com Reunir Informação como Perícia Treinada, recebem Foco em Perícia (Reunir Informação) como Talento bônus.' },
             { nome: 'Robusto', texto: 'Ao Retomar o Fôlego, recuperam PV adicionais iguais a 5 + metade do nível.' },
         ],
         idades: ['1–15 anos', '16–19 anos', '20–55 anos', '56–79 anos', '80–95 anos', '96+ anos'],
@@ -181,7 +181,7 @@ Object.assign(SPECIES_DATA, {
         aparencia: 'Magros, sem pelos, grandes olhos vermelhos, boca larga sem lábios e pele cinza-azulada; sempre em roupas caras e insígnias.',
         aventureiros: 'Chantagistas, informantes, negociadores, cobradores e espiões corporativos; normalmente Nobres ou Malandros.',
         tracos: [
-            { nome: 'Talentos Bônus Condicionais', texto: 'Com Enganação treinada, recebem Foco em Perícia (Enganação); com Persuasão treinada, Foco em Perícia (Persuasão). A ficha só aplica o de Enganação: some o +5 em Persuasão à mão, se for o caso.' },
+            { nome: 'Talentos Bônus Condicionais', texto: 'Treinados em Enganar, recebem Foco em Perícia (Enganar); com Persuasão treinada, Foco em Perícia (Persuasão). A ficha só aplica o de Enganar: some o +5 em Persuasão à mão, se for o caso.' },
         ],
         idades: ['1–11 anos', '12–16 anos', '17–40 anos', '41–57 anos', '58–79 anos', '80+ anos'],
         nomesExemplo: 'Daultay Dofine, Hath Monchar, Jurnel Arrant, Kund Ekorr, Lott Dod, Nute Gunray, Rune Haako, Tey How.',
@@ -222,7 +222,7 @@ Object.assign(SPECIES_DATA, {
         aventureiros: 'Deslumbrados com histórias de viajantes; fora de casa muitos acabam vagabundos, criminosos ou escravos. Normalmente Malandros ou Nobres.',
         tracos: [
             { nome: 'Nadador Especialista', texto: 'Podem rolar novamente qualquer teste de Nadar, mas devem aceitar o novo resultado. Também podem Escolher 10 em Nadar mesmo distraídos ou ameaçados.' },
-            { nome: 'Prender a Respiração', texto: 'Podem prender a respiração por 25 × Constituição rodadas antes de precisar de testes de Resistência.' },
+            { nome: 'Prender a Respiração', texto: 'Podem prender a respiração por 25 × Constituição rodadas antes de precisar de testes de Tolerância.' },
             { nome: 'Primitivo', texto: 'Não recebem Proficiência com Arma (Armas Pesadas, Pistolas ou Rifles) como Talentos iniciais, mesmo que a classe os conceda.' },
         ],
         idades: ['1–11 anos', '12–16 anos', '17–44 anos', '45–59 anos', '60–74 anos', '75+ anos'],
@@ -242,7 +242,7 @@ Object.assign(SPECIES_DATA, {
         aparencia: 'Humanoides magros, olhos fundos e pele pálida do branco ao azul-claro.',
         aventureiros: 'Solitários antissociais: caçadores de recompensas, exploradores, espiões. Qualquer classe, sobretudo Malandros e Batedores.',
         tracos: [
-            { nome: 'Talento Bônus Condicional', texto: 'Com Obter Informação como Perícia Treinada, recebem Foco em Perícia (Obter Informação) como Talento bônus.' },
+            { nome: 'Talento Bônus Condicional', texto: 'Com Reunir Informação como Perícia Treinada, recebem Foco em Perícia (Reunir Informação) como Talento bônus.' },
             { nome: 'Visão no Escuro', texto: 'Ignoram Camuflagem (inclusive Camuflagem Total) causada por escuridão, mas não distinguem cores na escuridão total.' },
             { nome: 'Furtivo', texto: 'Podem rolar novamente qualquer teste de Furtividade, mas devem aceitar o novo resultado.' },
         ],

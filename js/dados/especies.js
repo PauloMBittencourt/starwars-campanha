@@ -57,7 +57,7 @@ const SPECIES_DATA = {
         aparencia: 'Cobertos de pelos que se ondulam conforme as emoções, com orelhas pontudas; machos e fêmeas têm barba. Vivem um pouco mais que os Humanos.',
         aventureiros: 'Muitas vezes agentes da Rede de Espionagem em missões arriscadas. Também servem como Soldados, Malandros e Nobres; a curiosidade leva alguns a serem Batedores.',
         tracos: [
-            { nome: 'Talento Bônus Condicional', texto: 'Um Bothan com Obter Informação como Perícia Treinada recebe Foco em Perícia (Obter Informação) como Talento bônus.' },
+            { nome: 'Talento Bônus Condicional', texto: 'Um Bothan com Reunir Informação como Perícia Treinada recebe Foco em Perícia (Reunir Informação) como Talento bônus.' },
             { nome: 'Vontade de Ferro', texto: 'Recebem +2 de bônus de espécie na Defesa de Vontade.' },
         ],
         idades: ['1–11 anos', '12–16 anos', '17–45 anos', '46–65 anos', '66–84 anos', '85+ anos'],
@@ -161,7 +161,7 @@ const SPECIES_DATA = {
         aventureiros: 'Muitos deixam as cidades subaquáticas para explorar como Batedores. Desde o tratado com os Humanos de Naboo, alguns buscam recuperar o espírito guerreiro como Soldados.',
         tracos: [
             { nome: 'Nadador Especialista', texto: 'Podem rolar novamente qualquer teste de Nadar, mas devem aceitar o novo resultado. Também podem Escolher 10 em Nadar mesmo distraídos ou ameaçados.' },
-            { nome: 'Prender a Respiração', texto: 'Podem prender a respiração por um número de rodadas igual a 25 × o valor de Constituição antes de precisar de testes de Resistência.' },
+            { nome: 'Prender a Respiração', texto: 'Podem prender a respiração por um número de rodadas igual a 25 × o valor de Constituição antes de precisar de testes de Tolerância.' },
             { nome: 'Reflexos Rápidos', texto: 'Recebem +2 de bônus de espécie na Defesa de Reflexos.' },
             { nome: 'Visão na Penumbra', texto: 'Ignoram Camuflagem (mas não Camuflagem Total) causada por escuridão.' },
             { nome: 'Familiaridade com Arma', texto: 'Tratam Atlatl, Cesta e Eletrobastão como Armas Simples (Corpo a Corpo) em vez de Armas Exóticas.' },
@@ -355,7 +355,7 @@ const SPECIES_DATA = {
         aparencia: 'Humanoides com longos lekku, de 1,6 a 2 m, com pele branca, verde, azul, vermelha, laranja e outras cores.',
         aventureiros: 'Preferem agir nos bastidores como Malandros. Muitos acabam em negócios (legais ou não), como artistas ou diplomatas (Nobres).',
         tracos: [
-            { nome: 'Enganador', texto: 'Podem rolar novamente qualquer teste de Enganação, mas devem aceitar o novo resultado.' },
+            { nome: 'Enganador', texto: 'Podem rolar novamente qualquer teste de Enganar, mas devem aceitar o novo resultado.' },
             { nome: 'Grande Fortitude', texto: 'Recebem +2 de bônus de espécie na Defesa de Fortitude, graças à resistência natural a toxinas e doenças.' },
             { nome: 'Visão na Penumbra', texto: 'Ignoram Camuflagem (mas não Camuflagem Total) causada por escuridão.' },
         ],

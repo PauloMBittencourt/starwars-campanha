@@ -181,7 +181,7 @@ Object.assign(SPECIES_DATA, {
         aparencia: 'Pele de couro grosso do bege ao marrom-escuro, rosto sem lábios, nariz achatado e babados nas mandíbulas; machos com longas tranças, fêmeas carecas.',
         aventureiros: 'Raramente viajam sozinhos; bandos de Batedores e Soldados servem como guardas e capangas de Hutts e sindicatos.',
         tracos: [
-            { nome: 'Talento Bônus Condicional', texto: 'Com Resistência como Perícia Treinada, recebem Foco em Perícia (Resistência) como Talento bônus.' },
+            { nome: 'Talento Bônus Condicional', texto: 'Com Tolerância como Perícia Treinada, recebem Foco em Perícia (Tolerância) como Talento bônus.' },
             { nome: 'Feromônios Expressivos', texto: 'Comunicam-se em silêncio com membros da tribo por feromônios, a até 20 quadrados. Espécies com Faro sentem o cheiro, mas não entendem.' },
             { nome: 'Armadura Natural', texto: '+1 de bônus de Armadura Natural na Defesa de Reflexos.' },
         ],

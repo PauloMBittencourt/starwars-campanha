@@ -103,7 +103,7 @@ Object.assign(SPECIES_DATA, {
             { nome: 'Talento Bônus Condicional', texto: 'Com Sobrevivência como Perícia Treinada, recebem Foco em Perícia (Sobrevivência) como Talento bônus.' },
             { nome: 'Visão no Escuro', texto: 'Ignoram Camuflagem (inclusive Camuflagem Total) causada por escuridão, mas não distinguem cores na escuridão total.' },
             { nome: 'Determinado', texto: '+5 de bônus de espécie na Defesa de Vontade contra efeitos de Afetar a Mente.' },
-            { nome: 'Persistente', texto: 'Podem rolar novamente qualquer teste de Resistência, mas devem aceitar o novo resultado.' },
+            { nome: 'Persistente', texto: 'Podem rolar novamente qualquer teste de Tolerância, mas devem aceitar o novo resultado.' },
         ],
         idades: ['1–9 anos', '10–24 anos', '25–40 anos', '41–55 anos', '56–79 anos', '80+ anos'],
         nomesExemplo: 'Qymaen jai Sheelal, Ronderu lij Kummar, Bentilais san Sk’ar.',
@@ -122,7 +122,7 @@ Object.assign(SPECIES_DATA, {
         aparencia: 'Altos e magros, pele pálida, pescoço longo, mãos de três dedos e grandes olhos negros; machos têm crista na cabeça.',
         aventureiros: 'Excelentes Nobres, Batedores e Soldados; Malandros são raros e Jedi quase inexistentes.',
         tracos: [
-            { nome: 'Talento Bônus Condicional', texto: 'Com Tratar Ferimentos como Perícia Treinada, recebem Foco em Perícia (Tratar Ferimentos) como Talento bônus.' },
+            { nome: 'Talento Bônus Condicional', texto: 'Com Tratar Ferimento como Perícia Treinada, recebem Foco em Perícia (Tratar Ferimento) como Talento bônus.' },
             { nome: 'Resiliente', texto: '+1 de bônus de espécie na Defesa de Fortitude.' },
         ],
         idades: ['1–6 anos', '7–10 anos', '11–39 anos', '40–59 anos', '60–79 anos', '80+ anos'],
@@ -143,7 +143,7 @@ Object.assign(SPECIES_DATA, {
         aventureiros: 'Soldados são comuns; também excelentes Nobres e Malandros. Os que temperam a agressividade podem virar Jedi.',
         tracos: [
             { nome: 'Herança Predadora', texto: '+2 de bônus de espécie no dano contra um alvo que tenha sofrido dano desde o início do último turno do Kerkoiden.' },
-            { nome: 'Astúcia Social', texto: 'Usam o modificador de Sabedoria no lugar do de Carisma em testes de Enganação e Persuasão.' },
+            { nome: 'Astúcia Social', texto: 'Usam o modificador de Sabedoria no lugar do de Carisma em testes de Enganar e Persuasão.' },
         ],
         idades: ['1–11 anos', '12–18 anos', '19–45 anos', '46–70 anos', '71–90 anos', '91+ anos'],
         nomesExemplo: 'Dram Bothren, Var Cashral, Pheel Hoshar, Whorm Loathsom.',

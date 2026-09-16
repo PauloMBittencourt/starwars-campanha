@@ -230,9 +230,9 @@ Object.assign(SPECIES_DATA, {
         aparencia: 'Mãos de três dedos com unhas negras, focinho proeminente com tufos de pelo e corpo coberto de pelo curto, geralmente bege.',
         aventureiros: 'Normalmente Nobres ou Malandros; alianças costumam ser frágeis por causa da fama. Poucos usam a Força.',
         tracos: [
-            { nome: 'Perícia de Classe Bônus', texto: 'Obter Informação é sempre Perícia de Classe.' },
-            { nome: 'Confusão', texto: 'Uma vez por encontro, como Ação Padrão, teste de Enganação contra a Vontade de todos a até 6 quadrados; quem for superado não ameaça nenhum quadrado até o fim do próximo turno do Yarkora. Efeito de Afetar a Mente.' },
-            { nome: 'Enganador', texto: 'Podem rolar novamente qualquer teste de Enganação, mas devem aceitar o novo resultado.' },
+            { nome: 'Perícia de Classe Bônus', texto: 'Reunir Informação é sempre Perícia de Classe.' },
+            { nome: 'Confusão', texto: 'Uma vez por encontro, como Ação Padrão, teste de Enganar contra a Vontade de todos a até 6 quadrados; quem for superado não ameaça nenhum quadrado até o fim do próximo turno do Yarkora. Efeito de Afetar a Mente.' },
+            { nome: 'Enganador', texto: 'Podem rolar novamente qualquer teste de Enganar, mas devem aceitar o novo resultado.' },
         ],
         idades: ['1–10 anos', '11–18 anos', '19–64 anos', '65–94 anos', '95–124 anos', '125+ anos'],
         nomesExemplo: 'Adaka-Vanae, Haesh-Rulan, Nemor-Jelak, Rault-Sanik, Saelt-Marae, Schurk-Heren.',

@@ -60,7 +60,7 @@ Object.assign(SPECIES_DATA, {
         aparencia: 'Machos: sem pelos, pele avermelhada, incisivos afiados e dois grandes chifres na testa, como os demônios de mil mitos.',
         aventureiros: 'Machos tendem a Malandros ou Batedores, em ocupações que permitam viajar; muitos entraram na Rebelião porque o Império atrapalhava suas viagens.',
         tracos: [
-            { nome: 'Talento Bônus Condicional', texto: 'Com Enganação como Perícia Treinada, recebem Foco em Perícia (Enganação) como Talento bônus.' },
+            { nome: 'Talento Bônus Condicional', texto: 'Com Enganar como Perícia Treinada, recebem Foco em Perícia (Enganar) como Talento bônus.' },
             { nome: 'Curiosidade Natural', texto: 'Uma vez por encontro, como Ação Padrão, teste de Percepção contra um alvo na linha de visão (CD 15 ou Furtividade oposta, se ele estiver se escondendo); se passar, +1 de bônus de intuição nos ataques contra ele.' },
         ],
         idades: ['1–12 anos', '13–17 anos', '18–44 anos', '45–64 anos', '65–79 anos', '80+ anos'],
@@ -80,7 +80,7 @@ Object.assign(SPECIES_DATA, {
         aparencia: 'Fêmeas: cobertas de pelo grosso do marrom ao branco, sem chifres e com caninos proeminentes.',
         aventureiros: 'Em Devaron costumam ser Nobres e Batedoras; uma heroína fora de casa já desafiou as tradições e pode ser de qualquer classe.',
         tracos: [
-            { nome: 'Talento Bônus Condicional', texto: 'Com Enganação como Perícia Treinada, recebem Foco em Perícia (Enganação) como Talento bônus.' },
+            { nome: 'Talento Bônus Condicional', texto: 'Com Enganar como Perícia Treinada, recebem Foco em Perícia (Enganar) como Talento bônus.' },
             { nome: 'Curiosidade Natural', texto: 'Uma vez por encontro, como Ação Padrão, teste de Percepção contra um alvo na linha de visão (CD 15 ou Furtividade oposta, se ele estiver se escondendo); se passar, +1 de bônus de intuição nos ataques contra ele.' },
         ],
         idades: ['1–12 anos', '13–17 anos', '18–44 anos', '45–64 anos', '65–79 anos', '80+ anos'],
@@ -160,7 +160,7 @@ Object.assign(SPECIES_DATA, {
         aparencia: 'Pele cinza lisa, rosto sem traços exceto os olhos negros, mãos hábeis de três dedos longos e polegar; usam macacões com cintos de utilidades.',
         aventureiros: 'Nobres e Batedores; raramente Soldados. Jedi e Malandros são inéditos, embora a telepatia os torne bons candidatos a Jedi.',
         tracos: [
-            { nome: 'Talento Bônus Condicional', texto: 'Com Tratar Ferimentos como Perícia Treinada, recebem Foco em Perícia (Tratar Ferimentos) como Talento bônus.' },
+            { nome: 'Talento Bônus Condicional', texto: 'Com Tratar Ferimento como Perícia Treinada, recebem Foco em Perícia (Tratar Ferimento) como Talento bônus.' },
             { nome: 'Visão no Escuro', texto: 'Ignoram Camuflagem (inclusive Camuflagem Total) causada por escuridão, mas não distinguem cores na escuridão total.' },
             { nome: 'Telepatia Limitada', texto: 'Usam Telepatia (Usar a Força) sem treinamento, mesmo sem Sensibilidade à Força; com alvos a até 10 quadrados, não precisam de teste para iniciar o contato.' },
             { nome: 'Mudo', texto: 'Sem cordas vocais, comunicam-se por sinais, computadores e telepatia; entendem idiomas novos, mas não os falam.' },
@@ -184,7 +184,7 @@ Object.assign(SPECIES_DATA, {
         tracos: [
             { nome: 'Talento Bônus', texto: 'Recebem Proficiência com Armadura (Leve) como Talento bônus no 1º nível.' },
             { nome: 'Talento Bônus Condicional', texto: 'Com Mecânica como Perícia Treinada, recebem Foco em Perícia (Mecânica) como Talento bônus.' },
-            { nome: 'Sábio Mecânico', texto: 'Uma vez por encontro, fazem como Ação Rápida um teste de Mecânica ou Usar Computadores que exigiria Ação Padrão.' },
+            { nome: 'Sábio Mecânico', texto: 'Uma vez por encontro, fazem como Ação Rápida um teste de Mecânica ou Usar Computador que exigiria Ação Padrão.' },
             { nome: 'Equipamento Especial', texto: 'Sem Traje Pressurizado sofrem 1d6 de dano por rodada e começam a Sufocar. Começam com um Traje Pressurizado Leve de graça.' },
         ],
         idades: ['1–11 anos', '12–15 anos', '16–44 anos', '45–59 anos', '60–69 anos', '70+ anos'],

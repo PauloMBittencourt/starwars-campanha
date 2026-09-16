@@ -17,7 +17,7 @@ Object.assign(SPECIES_DATA, {
         aventureiros: 'Normalmente Nobres, Batedores ou Malandros, muitos tentando desfazer a fama de cientistas gananciosos. Até Jedi Arkanianos são vistos com desconfiança.',
         tracos: [
             { nome: 'Visão no Escuro', texto: 'Ignoram Camuflagem (inclusive Camuflagem Total) causada por escuridão, mas não distinguem cores na escuridão total.' },
-            { nome: 'Lampejo de Genialidade', texto: 'Uma vez por encontro, somam +5 de bônus de circunstância a um teste de Conhecimento, Mecânica ou Usar Computadores.' },
+            { nome: 'Lampejo de Genialidade', texto: 'Uma vez por encontro, somam +5 de bônus de circunstância a um teste de Conhecimento, Mecânica ou Usar Computador.' },
             { nome: 'Reputação Intelectual', texto: 'Podem usar o modificador de Inteligência no lugar do de Carisma em testes de Persuasão.' },
         ],
         idades: ['1–12 anos', '13–18 anos', '19–44 anos', '45–76 anos', '77–99 anos', '100+ anos'],
@@ -37,7 +37,7 @@ Object.assign(SPECIES_DATA, {
         aparencia: 'Quase humanos, de pele branca pura e mãos de cinco dedos; alguns têm orelhas pontudas ou olhos de cor exótica.',
         aventureiros: 'Qualquer classe heroica não Jedi ligada à função para a qual foram criados; fora de Arkania costumam virar Malandros. Os raros sensíveis à Força treinam sozinhos.',
         tracos: [
-            { nome: 'Talento Bônus Condicional', texto: 'Recebem Foco em Perícia em uma destas perícias em que sejam treinados: Resistência, Mecânica, Pilotar, Sobrevivência ou Tratar Ferimentos.' },
+            { nome: 'Talento Bônus Condicional', texto: 'Recebem Foco em Perícia em uma destas perícias em que sejam treinados: Tolerância, Mecânica, Pilotar, Sobrevivência ou Tratar Ferimento.' },
             { nome: 'Determinação', texto: 'Uma vez por encontro, podem rolar novamente um teste falho de uma Perícia Treinada, mesmo depois de saber o resultado, e ficam com o novo resultado.' },
         ],
         idades: ['1–8 anos', '9–13 anos', '14–30 anos', '31–45 anos', '46–55 anos', '56+ anos'],
@@ -57,7 +57,7 @@ Object.assign(SPECIES_DATA, {
         aparencia: 'Quase humanos, de pele branca pura e mãos de cinco dedos; alguns têm orelhas pontudas ou olhos de cor exótica.',
         aventureiros: 'Qualquer classe heroica não Jedi ligada à função para a qual foram criados; fora de Arkania costumam virar Malandros. Os raros sensíveis à Força treinam sozinhos.',
         tracos: [
-            { nome: 'Talento Bônus Condicional', texto: 'Recebem Foco em Perícia em uma destas perícias em que sejam treinados: Resistência, Mecânica, Pilotar, Sobrevivência ou Tratar Ferimentos.' },
+            { nome: 'Talento Bônus Condicional', texto: 'Recebem Foco em Perícia em uma destas perícias em que sejam treinados: Tolerância, Mecânica, Pilotar, Sobrevivência ou Tratar Ferimento.' },
             { nome: 'Determinação', texto: 'Uma vez por encontro, podem rolar novamente um teste falho de uma Perícia Treinada, mesmo depois de saber o resultado, e ficam com o novo resultado.' },
         ],
         idades: ['1–8 anos', '9–13 anos', '14–30 anos', '31–45 anos', '46–55 anos', '56+ anos'],
@@ -143,7 +143,7 @@ Object.assign(SPECIES_DATA, {
         aparencia: 'Pele verde-doentia e tentáculos carnosos (hullepi) pendendo onde deveria ficar a boca.',
         aventureiros: 'Não gostam de explorar, preferem seguir o rastro de outros; podem ser de qualquer classe, e alguns viram Jedi.',
         tracos: [
-            { nome: 'Espírito Cooperativo', texto: 'Podem Ajudar Outro como Ação Rápida em testes de aliados adjacentes (e receber ajuda assim) em Escalar, Resistência, Obter Informação, Saltar, Conhecimento, Mecânica, Pilotar, Montar, Sobrevivência, Nadar, Tratar Ferimentos e Usar Computadores.' },
+            { nome: 'Espírito Cooperativo', texto: 'Podem Ajudar Outro como Ação Rápida em testes de aliados adjacentes (e receber ajuda assim) em Escalar, Tolerância, Reunir Informação, Saltar, Conhecimento, Mecânica, Pilotar, Montar, Sobrevivência, Nadar, Tratar Ferimento e Usar Computador.' },
             { nome: 'Trabalhador Confiável', texto: 'Uma vez por encontro, em uma dessas mesmas perícias, podem tratar o teste como se tivessem Escolhido 10, mesmo após rolar (antes de saber o resultado).' },
             { nome: 'Autossustentável', texto: 'Absorvem nutrientes pelos hullepi e não sofrem Fome, exceto em ambientes estéreis.' },
         ],
@@ -228,7 +228,7 @@ Object.assign(SPECIES_DATA, {
         aparencia: 'Humanoides de cabeça cônica alta, olhos laterais em pedúnculos curtos, mãos de três dedos em garra e pele cinza ou cinza-amarronzada.',
         aventureiros: 'Quase todos ficam em Lehon até a destruição da Forja Estelar; depois, alguns exploram a galáxia. Apesar da criação primitiva, aprendem tecnologia avançada.',
         tracos: [
-            { nome: 'Conhecimento Ancestral', texto: 'Penalidade por não proficiência em arma cai de −5 para −2, e a de armadura não proficiente cai um passo. Uma vez por encontro, podem usar uma aplicação “somente treinada” de Mecânica, Pilotar, Tratar Ferimentos ou Usar Computadores sem treinamento.' },
+            { nome: 'Conhecimento Ancestral', texto: 'Penalidade por não proficiência em arma cai de −5 para −2, e a de armadura não proficiente cai um passo. Uma vez por encontro, podem usar uma aplicação “somente treinada” de Mecânica, Pilotar, Tratar Ferimento ou Usar Computador sem treinamento.' },
             { nome: 'Talento Bônus Condicional', texto: 'Com Proficiência com Arma (Armas Simples) ou com uma Arma Exótica corpo a corpo, recebem Foco em Arma (nessa arma) como Talento bônus.' },
             { nome: 'Cegos à Força', texto: 'Não podem pegar Sensibilidade à Força, mas ainda aumentam Pontuação do Lado Sombrio e são afetados por poderes da Força normalmente.' },
             { nome: 'Primitivo', texto: 'Não recebem Proficiência com Arma (Armas Pesadas, Pistolas ou Rifles) como Talentos iniciais, mesmo que a classe os conceda.' },
@@ -274,7 +274,7 @@ Object.assign(SPECIES_DATA, {
         aventureiros: 'Muitas vezes Malandros, mas de qualquer classe; costumam ter várias classes para ampliar experiências.',
         tracos: [
             { nome: 'Resistência ao Frio', texto: '+5 de bônus de espécie na Defesa de Fortitude contra Frio Extremo.' },
-            { nome: 'Observador', texto: 'Uma vez por encontro, podem usar o modificador de Percepção no lugar do de Enganação ou Persuasão.' },
+            { nome: 'Observador', texto: 'Uma vez por encontro, podem usar o modificador de Percepção no lugar do de Enganar ou Persuasão.' },
         ],
         idades: ['1–11 anos', '12–17 anos', '18–49 anos', '50–79 anos', '80–105 anos', '106+ anos'],
         nomesExemplo: 'Bakken, Dezzen, Dezirdna, Elinselor, Geezum, Marn Heirogryph, Nejet, Prinzan, Rachalt Hyst, Takeel, Thasca Knarr, Zutton.',

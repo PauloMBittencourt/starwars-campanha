@@ -469,14 +469,43 @@ function prepareSheetChoices(sheet) {
         changed = true;
     }
     if (resolveLegacyChoices(sheet)) changed = true;
+    if (renameOldSkillDetails(sheet)) changed = true;
     if (syncChoiceNameLists(sheet)) changed = true;
+    return changed;
+}
+
+// Perícias renomeadas para o nome do livro: atualiza o complemento salvo (ex.: Foco em Perícia — Enganação)
+const RENAMED_SKILL_LABELS = {
+    'Enganação': 'Enganar',
+    'Obter Informação': 'Reunir Informação',
+    'Resistência': 'Tolerância',
+    'Tratar Ferimentos': 'Tratar Ferimento',
+    'Usar Computadores': 'Usar Computador',
+};
+
+function renameOldSkillDetails(sheet) {
+    const aptitudeOptions = typeof APTITUDE_DETAIL_OPTIONS !== 'undefined' ? APTITUDE_DETAIL_OPTIONS : {};
+    let changed = false;
+    sheet.escolhas.forEach(entry => {
+        const isSkillDetail = (TALENT_DETAIL_OPTIONS[entry.nome] || aptitudeOptions[entry.nome]) === 'pericia';
+        if (isSkillDetail && RENAMED_SKILL_LABELS[entry.detalhe]) {
+            entry.detalhe = RENAMED_SKILL_LABELS[entry.detalhe];
+            changed = true;
+        }
+    });
     return changed;
 }
 
 // ===== Cards na aba Ficha =====
 
-function renderChoiceIcon(nome) {
-    return typeof renderLibraryIcon === 'function' ? renderLibraryIcon(nome) : '';
+function renderChoiceIcon(nome, tipo) {
+    return typeof renderLibraryIcon === 'function' ? renderLibraryIcon(nome, CHOICE_LIBRARY_CATEGORIES[tipo]) : '';
+}
+
+// Nome que abre o item na Biblioteca (talentos iniciais e extras, que não têm vaga para trocar)
+function renderLibraryChoiceName(entry) {
+    const args = escapeHtml(`${JSON.stringify(entry.nome)}, ${JSON.stringify(entry.tipo)}`);
+    return `<span class="choice-name"><button type="button" title="Ver na Biblioteca" onclick="openLibraryItem(${args})">${escapeHtml(choiceLabel(entry))}</button></span>`;
 }
 
 function renderChoiceCard(sheet, tipo) {
@@ -492,8 +521,8 @@ function renderChoiceCard(sheet, tipo) {
     getAutomaticChoices(sheet).filter(entry => entry.tipo === tipo).forEach(entry => {
         rows.push(`
             <div class="choice-row">
-                ${renderChoiceIcon(entry.nome)}
-                <span class="choice-name">${escapeHtml(choiceLabel(entry))}</span>
+                ${renderChoiceIcon(entry.nome, entry.tipo)}
+                ${renderLibraryChoiceName(entry)}
                 <span class="choice-source auto">${escapeHtml(entry.fonte)}</span>
             </div>
         `);
@@ -509,7 +538,7 @@ function renderChoiceCard(sheet, tipo) {
         if (entry) {
             rows.push(`
                 <div class="choice-row">
-                    ${renderChoiceIcon(entry.nome)}
+                    ${renderChoiceIcon(entry.nome, entry.tipo)}
                     <span class="choice-name"><button type="button" title="Ver ou trocar" onclick="openChoicePicker(${sheet.id}, ${slotArg})">${escapeHtml(choiceLabel(entry))}</button></span>
                     <span class="choice-source">${escapeHtml(slot.fonte)}</span>
                     <button class="icon-btn btn-remove" title="Desfazer escolha" onclick="removeChoice(${sheet.id}, ${slotArg})">×</button>
@@ -535,8 +564,8 @@ function renderChoiceCard(sheet, tipo) {
         const slotArg = escapeHtml(JSON.stringify(entry.vaga));
         rows.push(`
             <div class="choice-row ${isExtra ? '' : 'orphan'}">
-                ${renderChoiceIcon(entry.nome)}
-                <span class="choice-name">${escapeHtml(choiceLabel(entry))}</span>
+                ${renderChoiceIcon(entry.nome, entry.tipo)}
+                ${renderLibraryChoiceName(entry)}
                 ${isExtra
                     ? `<span class="choice-source extra">Extra · ${escapeHtml(entry.motivo || 'sem motivo')}</span>`
                     : '<span class="choice-source warn" title="O nível ou a classe que dava esta vaga mudou">Sem vaga</span>'}
@@ -691,7 +720,7 @@ function renderChoiceList() {
         html.push(`
             <button class="library-item-btn ${effective} ${index === choiceState.selected ? 'active' : ''}" data-index="${index}" data-search="${escapeHtml(normalizeSearch(label + ' ' + (candidate.grupo || '')))}" onclick="showChoiceDetails(${index})">
                 <span class="choice-status ${effective}">${icon}</span>
-                ${renderChoiceIcon(candidate.nome)}
+                ${renderChoiceIcon(candidate.nome, candidate.tipo)}
                 <span class="library-item-name">${escapeHtml(label)}</span>
             </button>
         `);
@@ -757,7 +786,7 @@ function showChoiceDetails(index, keepDetail = false) {
     document.getElementById('choiceDetails').innerHTML = `
         <div class="library-kicker">${CHOICE_TYPE_LABELS[candidate.tipo].singular}${candidate.grupo ? ' · ' + escapeHtml(candidate.grupo) : ''}</div>
         <div class="library-item-head">
-            ${typeof getLibraryImageUrl === 'function' && getLibraryImageUrl(candidate.nome) ? renderLibraryIcon(candidate.nome, 'large') : ''}
+            ${typeof getLibraryImageUrl === 'function' && getLibraryImageUrl(candidate.nome, CHOICE_LIBRARY_CATEGORIES[candidate.tipo]) ? renderLibraryIcon(candidate.nome, CHOICE_LIBRARY_CATEGORIES[candidate.tipo], 'large') : ''}
             <h3 class="library-tree-title">${escapeHtml(candidate.nome)}${candidate.detalheFixo ? ' — ' + escapeHtml(candidate.detalheFixo) : ''}</h3>
         </div>
         <h4 class="section-label">Pré-requisitos</h4>

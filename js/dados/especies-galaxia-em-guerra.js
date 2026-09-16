@@ -64,7 +64,7 @@ Object.assign(SPECIES_DATA, {
         aventureiros: 'Por curiosidade ou rebeldia; preferem funções sem violência, como manutenção de naves ou medicina.',
         tracos: [
             { nome: 'Escalador Especialista', texto: 'Podem Escolher 10 em Escalar mesmo distraídos ou ameaçados.' },
-            { nome: 'Curandeiro', texto: 'Treinados em Tratar Ferimentos reduzem a CD de todas as aplicações dessa perícia pelo modificador de Sabedoria.' },
+            { nome: 'Curandeiro', texto: 'Treinados em Tratar Ferimento reduzem a CD de todas as aplicações dessa perícia pelo modificador de Sabedoria.' },
             { nome: 'Primitivo', texto: 'Não recebem Proficiência com Arma (Armas Pesadas, Pistolas ou Rifles) como Talentos iniciais, mesmo que a classe os conceda.' },
             { nome: 'Rolador', texto: 'Como Ação Rápida, enrolam-se em bola e ganham +4 quadrados de deslocamento; assim só podem Mover, Recuar, Retomar o Fôlego, Largar Item, Recuperar-se e Correr. Desenrolar também é Ação Rápida.' },
         ],

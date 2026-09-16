@@ -52,7 +52,7 @@ Benefício: Enquanto pilota um veículo de tamanho Colossal ou menor, você conc
     },
     "Amigos em Lugares Baixos (Friends in Low Places)": {
               "source": "Star Wars Saga Edition Scum and Villainy / Wiki-Fandom",
-              "text": "Pré-requisito: Treinado em Obter Informação.\n\nBenefício: Você pode usar Obter Informação para adquirir licenças e localizar itens restritos por canais informais. Ao procurar itens restritos no mercado negro, reduza em 1 o multiplicador de custo aplicado a esses itens."
+              "text": "Pré-requisito: Treinado em Reunir Informação.\n\nBenefício: Você pode usar Reunir Informação para adquirir licenças e localizar itens restritos por canais informais. Ao procurar itens restritos no mercado negro, reduza em 1 o multiplicador de custo aplicado a esses itens."
     },
     "Aproximação Desimpedida (Unhindered Approach)": {
             "source": "Star Wars Saga Edition Galaxy at War / Saga Edition RPG Omnibus",
@@ -84,7 +84,7 @@ Benefício: Enquanto pilota um veículo de tamanho Colossal ou menor, você conc
     },
     "Aspecto Horrendo (Hideous Visage)": {
               "source": "Star Wars Saga Edition Scum and Villainy / Wiki-Fandom",
-              "text": "Pré-requisito: traço de espécie Metamorfo.\n\nBenefício: Uma vez por encontro, como ação rápida, você pode distorcer sua aparência para assustar um oponente que possa vê-lo. Faça uma verificação de Enganação contra a Defesa de Vontade do alvo. Se tiver sucesso, o alvo se move 1 quadrado para longe de você e sofre –1 de penalidade em todas as jogadas de ataque até o início do seu próximo turno. Este é um efeito de medo e de afetar a mente."
+              "text": "Pré-requisito: traço de espécie Metamorfo.\n\nBenefício: Uma vez por encontro, como ação rápida, você pode distorcer sua aparência para assustar um oponente que possa vê-lo. Faça uma verificação de Enganar contra a Defesa de Vontade do alvo. Se tiver sucesso, o alvo se move 1 quadrado para longe de você e sofre –1 de penalidade em todas as jogadas de ataque até o início do seu próximo turno. Este é um efeito de medo e de afetar a mente."
     },
     "Assalto com Fogo Automático (Autofire Assault)": {
         category: 'Talentos',
@@ -111,7 +111,7 @@ Especial: Este Talento não pode ser usado com Varredura com Fogo Automático ou
     },
     "Ataque Coordenado (Coordinated Attack)": {
               "source": "Star Wars Saga Edition Core Rulebook / Starships of the Galaxy / Wiki-Fandom",
-              "text": "Pré-requisito: Bônus base de ataque +2.\n\nBenefício: Você tem sucesso automático ao usar a ação ajudar outro para auxiliar a jogada de ataque de um aliado ou suprimir o ataque de um inimigo, desde que o alvo esteja adjacente a você ou dentro do alcance à queima-roupa.\n\nNormal: Sem este Talento, você precisa fazer uma jogada de ataque contra Defesa de Reflexos 10 para receber os benefícios da ação ajudar outro.\n\nEfeito adicional em combate veicular: Você pode usar este Talento para ajudar o ataque veicular de um aliado. Você não pode usar ajudar outro para suprimir um veículo inteiro, mas pode suprimir um artilheiro específico, como o artilheiro principal de uma bateria de armas. Você também pode usar este Talento ao ajudar como operador de sensores com Usar Computadores ou como comandante com Conhecimento (táticas)."
+              "text": "Pré-requisito: Bônus base de ataque +2.\n\nBenefício: Você tem sucesso automático ao usar a ação ajudar outro para auxiliar a jogada de ataque de um aliado ou suprimir o ataque de um inimigo, desde que o alvo esteja adjacente a você ou dentro do alcance à queima-roupa.\n\nNormal: Sem este Talento, você precisa fazer uma jogada de ataque contra Defesa de Reflexos 10 para receber os benefícios da ação ajudar outro.\n\nEfeito adicional em combate veicular: Você pode usar este Talento para ajudar o ataque veicular de um aliado. Você não pode usar ajudar outro para suprimir um veículo inteiro, mas pode suprimir um artilheiro específico, como o artilheiro principal de uma bateria de armas. Você também pode usar este Talento ao ajudar como operador de sensores com Usar Computador ou como comandante com Conhecimento (táticas)."
     },
     "Ataque Demolidor (Battering Attack)": {
             "source": "Star Wars Saga Edition Galaxy at War / Wiki-Fandom",
@@ -299,11 +299,11 @@ Benefício: Em vez de entrar em fúria, você pode canalizar sua fúria para for
     },
     "Cirurgia Biotecnológica (Biotech Surgery)": {
             "source": "Star Wars Saga Edition Legacy Era Campaign Guide / Saga Edition RPG Omnibus",
-            "text": "Pré-requisito: treinado em Tratar Ferimentos.\n\nBenefício: Você pode instalar uma prótese biotecnológica em um ser vivo. O procedimento exige 1 hora de trabalho ininterrupto e um teste de Tratar Ferimentos CD 20. Se tiver sucesso, a prótese é instalada corretamente. Se falhar, a prótese não é instalada corretamente; você pode tentar novamente após mais 1 hora ininterrupta de cirurgia.\n\nEspecial: Você pode instalar uma prótese biotecnológica em si mesmo, mas sofre –5 de penalidade no teste de Tratar Ferimentos. Se possuir Especialização Cirúrgica, pode instalar a prótese em 10 minutos em vez de 1 hora."
+            "text": "Pré-requisito: treinado em Tratar Ferimento.\n\nBenefício: Você pode instalar uma prótese biotecnológica em um ser vivo. O procedimento exige 1 hora de trabalho ininterrupto e um teste de Tratar Ferimento CD 20. Se tiver sucesso, a prótese é instalada corretamente. Se falhar, a prótese não é instalada corretamente; você pode tentar novamente após mais 1 hora ininterrupta de cirurgia.\n\nEspecial: Você pode instalar uma prótese biotecnológica em si mesmo, mas sofre –5 de penalidade no teste de Tratar Ferimento. Se possuir Especialização Cirúrgica, pode instalar a prótese em 10 minutos em vez de 1 hora."
     },
     "Cirurgia Cibernética (Cybernetic Surgery)": {
             "source": "Star Wars Saga Edition Core Rulebook / Wiki-Fandom",
-            "text": "Pré-requisito: treinado em Tratar Ferimentos.\n\nBenefício: Você pode instalar uma prótese cibernética em um ser vivo. O procedimento exige 1 hora de trabalho ininterrupto e um teste de Tratar Ferimentos CD 20. Se tiver sucesso, a prótese é instalada corretamente. Se falhar, a prótese não é instalada corretamente; você pode tentar novamente após mais 1 hora ininterrupta de cirurgia.\n\nEspecial: Você pode instalar uma prótese cibernética em si mesmo, mas sofre –5 de penalidade no teste de Tratar Ferimentos. Se possuir Especialização Cirúrgica, pode instalar a prótese em 10 minutos em vez de 1 hora."
+            "text": "Pré-requisito: treinado em Tratar Ferimento.\n\nBenefício: Você pode instalar uma prótese cibernética em um ser vivo. O procedimento exige 1 hora de trabalho ininterrupto e um teste de Tratar Ferimento CD 20. Se tiver sucesso, a prótese é instalada corretamente. Se falhar, a prótese não é instalada corretamente; você pode tentar novamente após mais 1 hora ininterrupta de cirurgia.\n\nEspecial: Você pode instalar uma prótese cibernética em si mesmo, mas sofre –5 de penalidade no teste de Tratar Ferimento. Se possuir Especialização Cirúrgica, pode instalar a prótese em 10 minutos em vez de 1 hora."
     },
     "Agressão Temperada (Tempered Aggression)": {
         category: 'Poderes da Força',
@@ -732,7 +732,7 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
             "source": "Star Wars Saga Edition Knights of the Old Republic Campaign Guide / Wiki-Fandom",
             "descriptor": "[Lado Sombrio]",
             "text": "Tempo: Ação padrão\nAlvo: Uma criatura a até 6 quadrados e em sua linha de visão\n\nVocê provoca espasmos dolorosos nos pulmões do alvo. Faça uma verificação de Usar a Força contra a Defesa de Fortitude do alvo. Se o resultado igualar ou superar a defesa, o alvo sofre 4d6 de dano de Força. Alvos maiores que Médio somam o modificador de tamanho à Defesa de Fortitude contra este poder: Grande +5, Enorme +10, Imenso +20 e Colossal +50.",
-            "special": "Você pode gastar 1 Ponto da Força para aumentar o dano em +2d6. Se o alvo descer na trilha de condição por causa do dano deste poder, a condição se torna persistente até receber cirurgia com Tratar Ferimentos CD 20."
+            "special": "Você pode gastar 1 Ponto da Força para aumentar o dano em +2d6. Se o alvo descer na trilha de condição por causa do dano deste poder, a condição se torna persistente até receber cirurgia com Tratar Ferimento CD 20."
     },
     "Ferocidade do Vornskr (Vornskr's Ferocity)": {
             "source": "Star Wars Saga Edition Jedi Academy Training Manual / Wiki-Fandom",
@@ -1527,7 +1527,7 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
                                                     "effect": "Receba uma leitura detalhada de histórico recente e propósito oculto do sistema."
                                     }
                     ],
-                    "special": "Tecnometria não substitui Mecânica ou Usar Computadores para reparar ou invadir sistemas. Você pode gastar 1 Ponto da Força para receber +5 em uma verificação relacionada ao dispositivo lido."
+                    "special": "Tecnometria não substitui Mecânica ou Usar Computador para reparar ou invadir sistemas. Você pode gastar 1 Ponto da Força para receber +5 em uma verificação relacionada ao dispositivo lido."
     },
     "Tempestade da Força (Force Storm)": {
                     "source": "Star Wars Saga Edition Force Unleashed Campaign Guide / Wiki-Fandom",
@@ -1727,7 +1727,7 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
     },
     "Condicionamento (Conditioning)": {
             "source": "Star Wars Saga Edition Core Rulebook / Wiki-Fandom",
-            "text": "Pré-requisito: Nenhum.\n\nBenefício: Você recebe +5 de bônus de competência em verificações de Resistência. Esse bônus representa treino físico, controle respiratório e preparo para esforço prolongado."
+            "text": "Pré-requisito: Nenhum.\n\nBenefício: Você recebe +5 de bônus de competência em verificações de Tolerância. Esse bônus representa treino físico, controle respiratório e preparo para esforço prolongado."
     },
     "Condutor de Banthas (Bantha Herder)": {
             "source": "Star Wars Saga Edition Galaxy at War / Wiki-Fandom",
@@ -1831,7 +1831,7 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
     },
     "Determinação Inabalável (Unswerving Resolve)": {
             "source": "Star Wars Saga Edition Wiki-Fandom",
-            "text": "Pré-requisito: Nenhum.\n\nBenefício: Você recebe +5 de bônus de competência em verificações para resistir a tentativas de mudar sua atitude, intimidá-lo, desviá-lo de uma missão assumida ou forçá-lo a abandonar uma decisão tomada. Esse bônus se aplica a usos apropriados de Persuasão, Enganação ou efeitos semelhantes que pressionem sua vontade."
+            "text": "Pré-requisito: Nenhum.\n\nBenefício: Você recebe +5 de bônus de competência em verificações para resistir a tentativas de mudar sua atitude, intimidá-lo, desviá-lo de uma missão assumida ou forçá-lo a abandonar uma decisão tomada. Esse bônus se aplica a usos apropriados de Persuasão, Enganar ou efeitos semelhantes que pressionem sua vontade."
     },
     "Disparo de Artilharia (Artillery Shot)": {
             "source": "Star Wars Saga Edition Clone Wars Campaign Guide / Wiki-Fandom",
@@ -1855,7 +1855,7 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
     },
     "Engenhoqueiro (Gearhead)": {
             "source": "Star Wars Saga Edition Core Rulebook / Wiki-Fandom",
-            "text": "Pré-requisito: Nenhum.\n\nBenefício: Você recebe +2 de bônus de competência em verificações de Mecânica e Usar Computadores. Esse bônus representa familiaridade prática com máquinas, códigos, circuitos, reparos e sistemas técnicos."
+            "text": "Pré-requisito: Nenhum.\n\nBenefício: Você recebe +2 de bônus de competência em verificações de Mecânica e Usar Computador. Esse bônus representa familiaridade prática com máquinas, códigos, circuitos, reparos e sistemas técnicos."
     },
     "Enxamear (Swarm)": {
             "source": "Star Wars Saga Edition Galaxy at War / Wiki-Fandom",
@@ -1867,11 +1867,11 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
     },
     "Equipe de Slicers (Slicer Team)": {
             "source": "Star Wars Saga Edition Galaxy at War / Wiki-Fandom",
-            "text": "Pré-requisito: Nenhum.\n\nBenefício: Você recebe +2 de bônus de competência em verificações de Usar Computadores. Para cada aliado a até 12 quadrados que também possua este Talento e possa se comunicar com você, esse bônus aumenta em +1, até o máximo de +5."
+            "text": "Pré-requisito: Nenhum.\n\nBenefício: Você recebe +2 de bônus de competência em verificações de Usar Computador. Para cada aliado a até 12 quadrados que também possua este Talento e possa se comunicar com você, esse bônus aumenta em +1, até o máximo de +5."
     },
     "Equipe Médica (Medical Team)": {
             "source": "Star Wars Saga Edition Galaxy at War / Wiki-Fandom",
-            "text": "Pré-requisito: Nenhum.\n\nBenefício: Você recebe +2 de bônus de competência em verificações de Tratar Ferimentos. Para cada aliado a até 12 quadrados que também possua este Talento e possa ajudar no atendimento, esse bônus aumenta em +1, até o máximo de +5."
+            "text": "Pré-requisito: Nenhum.\n\nBenefício: Você recebe +2 de bônus de competência em verificações de Tratar Ferimento. Para cada aliado a até 12 quadrados que também possua este Talento e possa ajudar no atendimento, esse bônus aumenta em +1, até o máximo de +5."
     },
     "Escalador Seguro (Sure Climber)": {
             "source": "Star Wars Saga Edition Galaxy of Intrigue / Wiki-Fandom",
@@ -1895,7 +1895,7 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
     },
     "Espacial Veterano (Veteran Spacer)": {
             "source": "Star Wars Saga Edition Galaxy of Intrigue / Wiki-Fandom",
-            "text": "Pré-requisito: Espécie Duros.\n\nBenefício: Você recebe +5 de bônus de espécie em verificações de Usar Computadores feitas para astrogração e cálculos de salto no hiperespaço. Esse bônus também se aplica a verificações para reconhecer rotas espaciais, perigos de navegação e procedimentos comuns de viagem interestelar."
+            "text": "Pré-requisito: Espécie Duros.\n\nBenefício: Você recebe +5 de bônus de espécie em verificações de Usar Computador feitas para astrogração e cálculos de salto no hiperespaço. Esse bônus também se aplica a verificações para reconhecer rotas espaciais, perigos de navegação e procedimentos comuns de viagem interestelar."
     },
     "Recuperar o Fôlego (Second Wind)": {
             "source": "Guia de Cura Star Wars RPG - Edição Saga",
@@ -1911,7 +1911,7 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
     },
     "Cirurgia": {
             "source": "Guia de Cura Star Wars RPG - Edição Saga",
-            "text": "Categoria: Cura\n\nUso: Procedimento médico avançado para estabilizar o corpo, reparar ferimentos graves, restaurar Pontos de Vida e tratar condições persistentes.\n\nRequisito: Kit de Cirurgia.\n\nTempo: 1 hora de trabalho ininterrupto.\n\nCD: 30.\n\nEfeito: Com sucesso, o paciente recupera todos os Pontos de Vida.\n\nCondição persistente: Se a cirurgia for feita para tratar uma condição persistente causada por ferimento físico, trauma, veneno, radiação, doença ou dano corporal, uma cirurgia bem-sucedida também remove essa condição.\n\nSem treinamento: Um personagem que não seja treinado em Tratar Ferimentos pode tentar realizar a cirurgia, mas sofre –10 na verificação.\n\nSucesso excepcional: Se a verificação superar a CD por 10 ou mais, o paciente também sobe +1 passo na Trilha de Condição.\n\nFalha: Se a verificação falhar, o paciente recupera apenas Pontos de Vida iguais ao nível dele, e os recursos usados são perdidos.\n\nFalha grave: Se a verificação falhar por 5 ou mais, o paciente não recupera Pontos de Vida e recebe dano igual ao seu Limiar de Dano. Se esse dano reduzir seus Pontos de Vida a 0, ele morre.\n\nAutocirurgia: Você pode realizar cirurgia em si mesmo, mas sofre –5 na verificação de Tratar Ferimentos e não pode obter o benefício de sucesso excepcional."
+            "text": "Categoria: Cura\n\nUso: Procedimento médico avançado para estabilizar o corpo, reparar ferimentos graves, restaurar Pontos de Vida e tratar condições persistentes.\n\nRequisito: Kit de Cirurgia.\n\nTempo: 1 hora de trabalho ininterrupto.\n\nCD: 30.\n\nEfeito: Com sucesso, o paciente recupera todos os Pontos de Vida.\n\nCondição persistente: Se a cirurgia for feita para tratar uma condição persistente causada por ferimento físico, trauma, veneno, radiação, doença ou dano corporal, uma cirurgia bem-sucedida também remove essa condição.\n\nSem treinamento: Um personagem que não seja treinado em Tratar Ferimento pode tentar realizar a cirurgia, mas sofre –10 na verificação.\n\nSucesso excepcional: Se a verificação superar a CD por 10 ou mais, o paciente também sobe +1 passo na Trilha de Condição.\n\nFalha: Se a verificação falhar, o paciente recupera apenas Pontos de Vida iguais ao nível dele, e os recursos usados são perdidos.\n\nFalha grave: Se a verificação falhar por 5 ou mais, o paciente não recupera Pontos de Vida e recebe dano igual ao seu Limiar de Dano. Se esse dano reduzir seus Pontos de Vida a 0, ele morre.\n\nAutocirurgia: Você pode realizar cirurgia em si mesmo, mas sofre –5 na verificação de Tratar Ferimento e não pode obter o benefício de sucesso excepcional."
     },
     "Reanimar": {
             "source": "Guia de Cura Star Wars RPG - Edição Saga",
@@ -1923,15 +1923,15 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
     },
     "Microrrobôs de Reparação": {
             "source": "Guia de Cura Star Wars RPG - Edição Saga",
-            "text": "Categoria: Cura\n\nTipo: Equipamento médico.\n\nDescrição: Cura automática aplicada ao alvo, permitindo que o médico continue atuando em combate.\n\nAção: Padrão para aplicar.\n\nEfeito: O alvo recupera 2 Pontos de Vida no início de cada turno dele por uma quantidade de rodadas igual ao bônus de Sabedoria do aplicador, mínimo de 1 rodada.\n\nEfeito adicional, CD 20: Se aplicado por um personagem treinado em Tratar Ferimentos, o alvo recupera 5 Pontos de Vida no início de cada turno dele pela mesma duração. Esse valor substitui a cura de 2 Pontos de Vida.\n\nPreço: 1200 créditos."
+            "text": "Categoria: Cura\n\nTipo: Equipamento médico.\n\nDescrição: Cura automática aplicada ao alvo, permitindo que o médico continue atuando em combate.\n\nAção: Padrão para aplicar.\n\nEfeito: O alvo recupera 2 Pontos de Vida no início de cada turno dele por uma quantidade de rodadas igual ao bônus de Sabedoria do aplicador, mínimo de 1 rodada.\n\nEfeito adicional, CD 20: Se aplicado por um personagem treinado em Tratar Ferimento, o alvo recupera 5 Pontos de Vida no início de cada turno dele pela mesma duração. Esse valor substitui a cura de 2 Pontos de Vida.\n\nPreço: 1200 créditos."
     },
     "Medpac de Combate": {
             "source": "Guia de Cura Star Wars RPG - Edição Saga",
-            "text": "Categoria: Cura\n\nTipo: Equipamento médico.\n\nDescrição: Injeção rápida de bacta concentrado para uso em situação de combate.\n\nAção: Movimento. Se o personagem for treinado em Tratar Ferimentos, a ação é rápida.\n\nEfeito: Cura 2d8 + modificador de Sabedoria.\n\nBônus de especialista, CD 30: Se o personagem for treinado em Tratar Ferimentos, soma +1d6 à cura total, mais +1d6 adicional para cada 5 pontos pelos quais superar a CD.\n\nPreço: 1000 créditos."
+            "text": "Categoria: Cura\n\nTipo: Equipamento médico.\n\nDescrição: Injeção rápida de bacta concentrado para uso em situação de combate.\n\nAção: Movimento. Se o personagem for treinado em Tratar Ferimento, a ação é rápida.\n\nEfeito: Cura 2d8 + modificador de Sabedoria.\n\nBônus de especialista, CD 30: Se o personagem for treinado em Tratar Ferimento, soma +1d6 à cura total, mais +1d6 adicional para cada 5 pontos pelos quais superar a CD.\n\nPreço: 1000 créditos."
     },
     "Medpac de Combate Avançado": {
             "source": "Guia de Cura Star Wars RPG - Edição Saga",
-            "text": "Categoria: Cura\n\nTipo: Equipamento médico.\n\nDescrição: Cartucho pressurizado de bacta densa com seladores dérmicos.\n\nAção: Padrão. Se o personagem for treinado em Tratar Ferimentos, a ação é de movimento.\n\nEfeito: Cura 3d10 + modificador de Sabedoria.\n\nBônus de especialista, CD 30: Se o personagem for treinado em Tratar Ferimentos, soma +1d8 à cura total, mais +1d8 adicional para cada 5 pontos pelos quais superar a CD.\n\nPreço: 1500 créditos."
+            "text": "Categoria: Cura\n\nTipo: Equipamento médico.\n\nDescrição: Cartucho pressurizado de bacta densa com seladores dérmicos.\n\nAção: Padrão. Se o personagem for treinado em Tratar Ferimento, a ação é de movimento.\n\nEfeito: Cura 3d10 + modificador de Sabedoria.\n\nBônus de especialista, CD 30: Se o personagem for treinado em Tratar Ferimento, soma +1d8 à cura total, mais +1d8 adicional para cada 5 pontos pelos quais superar a CD.\n\nPreço: 1500 créditos."
     },
     "Especialista da Natureza (Nature Specialist)": {
             "source": "Star Wars Saga Edition Galaxy of Intrigue / Wiki-Fandom",
@@ -1943,7 +1943,7 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
     },
     "Especialista em Biotecnologia (Biotech Specialist)": {
             "source": "Star Wars Saga Edition Legacy Era Campaign Guide / Wiki-Fandom",
-            "text": "Pré-requisito: Treinado em Tratar Ferimentos.\n\nBenefício: Você pode modificar equipamentos biotecnológicos, armas biotecnológicas, armaduras biotecnológicas, criaturas bioengenheiradas e veículos biotecnológicos seguindo as regras de modificação apropriadas. Você também pode fazer verificações de Tratar Ferimentos em biotecnologia sem sofrer a penalidade normal de –5."
+            "text": "Pré-requisito: Treinado em Tratar Ferimento.\n\nBenefício: Você pode modificar equipamentos biotecnológicos, armas biotecnológicas, armaduras biotecnológicas, criaturas bioengenheiradas e veículos biotecnológicos seguindo as regras de modificação apropriadas. Você também pode fazer verificações de Tratar Ferimento em biotecnologia sem sofrer a penalidade normal de –5."
     },
     "Especialista Técnico (Tech Specialist)": {
             "source": "Star Wars Saga Edition Starships of the Galaxy / Wiki-Fandom",
@@ -1967,7 +1967,7 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
     },
     "Especialização Cirúrgica (Surgical Expertise)": {
             "source": "Star Wars Saga Edition Galaxy of Intrigue / Wiki-Fandom",
-            "text": "Pré-requisito: Treinado em Tratar Ferimentos.\n\nBenefício: Quando realizar cirurgia, você pode escolher novamente o resultado da verificação de Tratar Ferimentos, mas deve ficar com o segundo resultado, mesmo que ele seja pior. Além disso, em procedimentos cirúrgicos, você reduz a chance de complicações causadas por falhas comuns e aplica seu treinamento com maior precisão."
+            "text": "Pré-requisito: Treinado em Tratar Ferimento.\n\nBenefício: Quando realizar cirurgia, você pode escolher novamente o resultado da verificação de Tratar Ferimento, mas deve ficar com o segundo resultado, mesmo que ele seja pior. Além disso, em procedimentos cirúrgicos, você reduz a chance de complicações causadas por falhas comuns e aplica seu treinamento com maior precisão."
     },
     "Especialização em Sistemas de Veículos (Vehicle Systems Expertise)": {
             "source": "Star Wars Saga Edition Starships of the Galaxy / Wiki-Fandom",
@@ -2219,7 +2219,7 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
     },
     "Incapacitar (Disabler)": {
             "source": "Star Wars Saga Edition Scavenger's Guide to Droids / Wiki-Fandom",
-            "text": "Pré-requisitos: Treinado em Mecânica ou Usar Computadores.\n\nBenefício: Você recebe +2 de bônus em ataques ou verificações feitas para desativar, sabotar, desligar ou comprometer o funcionamento de droides, dispositivos eletrônicos e sistemas mecânicos. Quando causa dano iônico a um droide ou veículo, pode aplicar esse conhecimento para dificultar sua recuperação."
+            "text": "Pré-requisitos: Treinado em Mecânica ou Usar Computador.\n\nBenefício: Você recebe +2 de bônus em ataques ou verificações feitas para desativar, sabotar, desligar ou comprometer o funcionamento de droides, dispositivos eletrônicos e sistemas mecânicos. Quando causa dano iônico a um droide ou veículo, pode aplicar esse conhecimento para dificultar sua recuperação."
     },
     "Influência Duradoura (Lasting Influence)": {
             "source": "Star Wars Saga Edition Galaxy of Intrigue / Wiki-Fandom",
@@ -2227,7 +2227,7 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
     },
     "Informante (Informer)": {
             "source": "Star Wars Saga Edition Galaxy of Intrigue / Wiki-Fandom",
-            "text": "Pré-requisitos: Treinado em Obter Informação.\n\nBenefício: Você pode usar Obter Informação em menos tempo e com menor exposição. Quando busca rumores, nomes, rotas, contatos ou atividades ilegais em uma comunidade, recebe +2 de bônus de competência na verificação e reduz o tempo necessário para obter respostas úteis."
+            "text": "Pré-requisitos: Treinado em Reunir Informação.\n\nBenefício: Você pode usar Reunir Informação em menos tempo e com menor exposição. Quando busca rumores, nomes, rotas, contatos ou atividades ilegais em uma comunidade, recebe +2 de bônus de competência na verificação e reduz o tempo necessário para obter respostas úteis."
     },
     "Inseto Retornante (Returning Bug)": {
             "source": "Star Wars Saga Edition Unknown Regions / Wiki-Fandom",
@@ -2279,7 +2279,7 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
     },
     "Líder de Droides (Leader of Droids)": {
             "source": "Star Wars Saga Edition Scavenger's Guide to Droids / Wiki-Fandom",
-            "text": "Pré-requisitos: Treinado em Mecânica ou Usar Computadores.\n\nBenefício: Droides aliados que possam receber suas ordens recebem +1 de bônus de moral em jogadas de ataque enquanto estiverem a até 12 quadrados de você e puderem ver, ouvir ou receber suas instruções por comunicação eletrônica. Esse bônus termina se você ficar inconsciente ou incapaz de comandar."
+            "text": "Pré-requisitos: Treinado em Mecânica ou Usar Computador.\n\nBenefício: Droides aliados que possam receber suas ordens recebem +1 de bônus de moral em jogadas de ataque enquanto estiverem a até 12 quadrados de você e puderem ver, ouvir ou receber suas instruções por comunicação eletrônica. Esse bônus termina se você ficar inconsciente ou incapaz de comandar."
     },
     "Limite de Dano Aprimorado (Improved Damage Threshold)": {
             "source": "Star Wars Saga Edition Core Rulebook / Wiki-Fandom",
@@ -2343,7 +2343,7 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
     },
     "Mentiroso Imperceptível (Imperceptible Liar)": {
             "source": "Star Wars Saga Edition Galaxy of Intrigue / Wiki-Fandom",
-            "text": "Pré-requisitos: Enganação treinada.\n\nBenefício: Quando mente, encobre informação ou sustenta uma identidade falsa, criaturas que tentem perceber sua mentira sofrem dificuldade adicional. Você recebe +5 de bônus de competência em Enganação para blefar, ocultar intenção e resistir a tentativas de detectar falsidade."
+            "text": "Pré-requisitos: Treinado em Enganar.\n\nBenefício: Quando mente, encobre informação ou sustenta uma identidade falsa, criaturas que tentem perceber sua mentira sofrem dificuldade adicional. Você recebe +5 de bônus de competência em Enganar para blefar, ocultar intenção e resistir a tentativas de detectar falsidade."
     },
     "Mergulhar para Cobertura (Dive for Cover)": {
             "source": "Star Wars Saga Edition Core Rulebook / Wiki-Fandom",
@@ -2355,7 +2355,7 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
     },
     "Mestre dos Disfarces (Master of Disguise)": {
             "source": "Star Wars Saga Edition Galaxy of Intrigue / Wiki-Fandom",
-            "text": "Pré-requisitos: Enganação treinada.\n\nBenefício: Você pode criar disfarces mais rápido e com maior qualidade. Recebe +5 de bônus de competência em verificações de Enganação feitas para se disfarçar, imitar aparência, ocultar identidade ou sustentar uma persona visualmente convincente."
+            "text": "Pré-requisitos: Treinado em Enganar.\n\nBenefício: Você pode criar disfarces mais rápido e com maior qualidade. Recebe +5 de bônus de competência em verificações de Enganar feitas para se disfarçar, imitar aparência, ocultar identidade ou sustentar uma persona visualmente convincente."
     },
     "Mestre dos Rifles (Riflemaster)": {
             "source": "Star Wars Saga Edition Galaxy at War / Wiki-Fandom",
@@ -2363,7 +2363,7 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
     },
     "Metamorfo (Metamorph)": {
             "source": "Star Wars Saga Edition Unknown Regions / Wiki-Fandom",
-            "text": "Pré-requisitos: Espécie ou habilidade natural de mudança de forma.\n\nBenefício: Você recebe +5 de bônus de competência em verificações feitas para alterar aparência, imitar traços físicos e sustentar uma forma assumida. Esse benefício se aplica a Enganação, resistência contra inspeção física e usos apropriados da habilidade natural de metamorfose."
+            "text": "Pré-requisitos: Espécie ou habilidade natural de mudança de forma.\n\nBenefício: Você recebe +5 de bônus de competência em verificações feitas para alterar aparência, imitar traços físicos e sustentar uma forma assumida. Esse benefício se aplica a Enganar, resistência contra inspeção física e usos apropriados da habilidade natural de metamorfose."
     },
     "Metralhar (Strafe)": {
             "source": "Star Wars Saga Edition Starships of the Galaxy / Wiki-Fandom",
@@ -2439,7 +2439,7 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
     },
     "Personificar (Impersonate)": {
             "source": "Star Wars Saga Edition Galaxy of Intrigue / Wiki-Fandom",
-            "text": "Pré-requisitos: Enganação treinada.\n\nBenefício: Você recebe +5 de bônus de competência em verificações de Enganação feitas para imitar uma pessoa específica. O bônus se aplica a voz, postura, comportamento, etiqueta, maneirismos e pequenas respostas sociais ligadas à identidade copiada."
+            "text": "Pré-requisitos: Treinado em Enganar.\n\nBenefício: Você recebe +5 de bônus de competência em verificações de Enganar feitas para imitar uma pessoa específica. O bônus se aplica a voz, postura, comportamento, etiqueta, maneirismos e pequenas respostas sociais ligadas à identidade copiada."
     },
     "Pés Ligeiros (Fleet‑Footed)": {
             "source": "Star Wars Saga Edition Core Rulebook / Wiki-Fandom",
@@ -2483,7 +2483,7 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
     },
     "Primeiros Socorros Selvagens (Wilderness First Aid)": {
             "source": "Star Wars Saga Edition Unknown Regions / Wiki-Fandom",
-            "text": "Pré-requisitos: Sobrevivência treinada, Tratar Ferimentos treinada.\n\nBenefício: Você pode prestar primeiros socorros usando materiais naturais, plantas, fibras, improvisos e recursos encontrados no ambiente. Quando não possui medpac, pode reduzir penalidades por falta de equipamento em verificações de Tratar Ferimentos feitas fora de instalações médicas."
+            "text": "Pré-requisitos: Sobrevivência treinada, Tratar Ferimento treinada.\n\nBenefício: Você pode prestar primeiros socorros usando materiais naturais, plantas, fibras, improvisos e recursos encontrados no ambiente. Quando não possui medpac, pode reduzir penalidades por falta de equipamento em verificações de Tratar Ferimento feitas fora de instalações médicas."
     },
     "Proficiência com Arma (Weapon Proficiency)": {
             "source": "Star Wars Saga Edition Core Rulebook / Wiki-Fandom",
@@ -2511,7 +2511,7 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
     },
     "Queda Enganosa (Deceptive Drop)": {
             "source": "Star Wars Saga Edition Galaxy of Intrigue / Wiki-Fandom",
-            "text": "Pré-requisitos: Enganação treinada.\n\nBenefício: Você pode se deixar cair, cambalear ou fingir vulnerabilidade para enganar um inimigo. Faça uma verificação de Enganação contra a Defesa de Vontade do alvo. Se tiver sucesso, seu próximo ataque contra esse alvo antes do fim do seu próximo turno recebe +2 de bônus."
+            "text": "Pré-requisitos: Treinado em Enganar.\n\nBenefício: Você pode se deixar cair, cambalear ou fingir vulnerabilidade para enganar um inimigo. Faça uma verificação de Enganar contra a Defesa de Vontade do alvo. Se tiver sucesso, seu próximo ataque contra esse alvo antes do fim do seu próximo turno recebe +2 de bônus."
     },
     "Rajada de Golpes (Flurry)": {
             "source": "Star Wars Saga Edition Core Rulebook / Wiki-Fandom",
@@ -2568,7 +2568,7 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
 },
     "Resolução Inabalável (Unwavering Resolve)": {
               "source": "Star Wars Saga Edition Galaxy at War / Wiki-Fandom",
-              "text": "Pré-requisitos: Treinado em Percepção.\n\nBenefício: Você recebe +5 de bônus na Defesa de Vontade contra usos de Enganação e Persuasão. Esse bônus representa atenção a blefes, pressão social, intimidação, sedução, manipulação verbal e tentativas de conduzir suas decisões por leitura falsa da situação."
+              "text": "Pré-requisitos: Treinado em Percepção.\n\nBenefício: Você recebe +5 de bônus na Defesa de Vontade contra usos de Enganar e Persuasão. Esse bônus representa atenção a blefes, pressão social, intimidação, sedução, manipulação verbal e tentativas de conduzir suas decisões por leitura falsa da situação."
     },
     "Ressurgência (Resurgence)": {
       "source": "Star Wars Saga Edition Galaxy at War / Wiki-Fandom",
@@ -2616,7 +2616,7 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
 },
     "Sobrevivente de Ryloth (Survivor of Ryloth)": {
       "source": "Star Wars Saga Edition Galaxy of Intrigue / Wiki-Fandom",
-      "text": "Pré-requisitos: Twi'lek ou origem em Ryloth.\n\nBenefício: Você recebe +2 de bônus de competência em Tolerância e Sobrevivência contra calor extremo, tempestades, escassez de recursos e perigos ambientais de mundos áridos. Também recebe +2 em Persuasão ou Enganação ao lidar com comunidades marcadas por sobrevivência, escravidão, contrabando ou exílio."
+      "text": "Pré-requisitos: Twi'lek ou origem em Ryloth.\n\nBenefício: Você recebe +2 de bônus de competência em Tolerância e Sobrevivência contra calor extremo, tempestades, escassez de recursos e perigos ambientais de mundos áridos. Também recebe +2 em Persuasão ou Enganar ao lidar com comunidades marcadas por sobrevivência, escravidão, contrabando ou exílio."
 },
     "Subespécie com Garras (Clawed Subspecies)": {
       "source": "Star Wars Saga Edition Unknown Regions / Wiki-Fandom",
@@ -2804,7 +2804,7 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
     },
     "Truque de Combate (Combat Trickery)": {
               "source": "Star Wars Saga Edition Unknown Regions / Wiki-Fandom",
-              "text": "Pré-requisitos: Treinado em Enganação.\n\nBenefício: Você pode gastar duas ações rápidas na mesma rodada para fazer uma verificação de Enganação contra a Defesa de Vontade de um inimigo. Se tiver sucesso, o alvo fica desprevenido contra o seu próximo ataque feito antes do fim do seu turno."
+              "text": "Pré-requisitos: Treinado em Enganar.\n\nBenefício: Você pode gastar duas ações rápidas na mesma rodada para fazer uma verificação de Enganar contra a Defesa de Vontade de um inimigo. Se tiver sucesso, o alvo fica desprevenido contra o seu próximo ataque feito antes do fim do seu turno."
     },
     "Truque Oportunista (Opportunistic Trickery)": {
               "source": "Star Wars Saga Edition Galaxy of Intrigue / Wiki-Fandom",
