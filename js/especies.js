@@ -246,8 +246,8 @@ window.applySpeciesIconDocs = docs => {
 };
 
 // ===== Editor de ícone =====
-// Mesmo processo de dev/icones-especies/gerar_icones.py: apaga o fundo com flood fill a partir
-// das bordas, recorta um quadrado e monta fundo azul + retrato + moldura.
+// Apaga o fundo com flood fill a partir das bordas, recorta um quadrado e monta
+// fundo azul + retrato + moldura.
 
 const iconEditor = {
     slug: null,

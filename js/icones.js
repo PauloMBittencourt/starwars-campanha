@@ -77,7 +77,7 @@ function renderWeaponIcon(weaponName) {
 
 // ===== Imagens da Biblioteca =====
 // Talentos, aptidões e poderes usam as imagens de img/talentos/, listadas em
-// js/dados/imagens-talentos.js (gerado por dev/atualizar-imagens-talentos.py).
+// js/dados/imagens-talentos.js (gerado por dev/atualizar-imagens-talentos.html).
 // A imagem é achada pelo nome em inglês entre parênteses: "Esquiva (Dodge)" -> dodge.jpg
 
 // Itens com nome só em português, ou cuja imagem tem outro nome -> imagem (sem extensão)

@@ -1,4 +1,4 @@
-// Gerado por: python dev/atualizar-imagens-talentos.py (não editar à mão)
+// Gerado por: dev/atualizar-imagens-talentos.html (não editar à mão)
 // Nome da imagem (sem extensão) -> arquivo em img/talentos/
 window.TALENT_IMAGE_FILES = {
     "able-healer": "able-healer.jpg",
