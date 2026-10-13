@@ -96,6 +96,10 @@ const LIBRARY_IMAGE_FOLDERS = {
 
 // Itens com nome só em português, ou cuja imagem tem outro nome -> imagem (sem extensão)
 const LIBRARY_IMAGE_ALIASES = {
+    'Sensibilidade à Força': 'force-sensitivity',
+    'Linguista': 'linguist',
+    'Tiro à Queima-Roupa': 'point-blank-shot',
+    'Proficiência com Armaduras (Leve, Média)': 'armor-proficiency-light',
     'Bloquear': 'block',
     'Defletir': 'deflect',
     'Defesa com Sabre de Luz': 'lightsaber-defense',
@@ -138,4 +142,17 @@ function renderLibraryIcon(itemName, categoryKey, extraClass = '') {
     return url
         ? `<img class="library-icon ${extraClass}" src="${url}" alt="" loading="lazy" draggable="false">`
         : `<span class="library-icon empty ${extraClass}" aria-hidden="true"></span>`;
+}
+
+function renderInitialTalentIcon(talentName) {
+    const weaponImages = {
+        'Proficiência com Sabres de Luz': 'lightsabers.jpg',
+        'Proficiência com Armas Simples': 'simple-weapons.jpg',
+        'Proficiência com Pistolas': 'pistols.jpg',
+        'Proficiência com Rifles': 'rifles.jpg',
+    };
+    const file = weaponImages[talentName];
+    return file
+        ? `<img class="library-icon" src="img/armas/${file}" alt="" loading="lazy" draggable="false">`
+        : renderLibraryIcon(talentName, 'talents');
 }

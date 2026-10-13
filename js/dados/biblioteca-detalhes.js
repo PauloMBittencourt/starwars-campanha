@@ -906,25 +906,25 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
                     ],
                     "special": "Este é um efeito de afeta a mente. Criaturas imunes a efeitos mentais ignoram o poder. Você pode manter a ilusão com uma ação rápida."
     },
-    "Impulso (Surge)": {
-                    "source": "Star Wars Saga Edition Core Rulebook / Wiki-Fandom",
+    "Arremeter (Surge)": {
+                    "source": "Star Wars RPG - Edição Saga (v1.05), p. 96 (PDF p. 97)",
                     "descriptor": "—",
-                    "text": "Tempo: Ação rápida\nAlvo: Você\n\nVocê usa a Força para ampliar sua velocidade e capacidade atlética. Faça uma verificação de Usar a Força. O resultado determina o bônus recebido em Saltar e o aumento do seu deslocamento até o início do seu próximo turno.",
+                    "text": "A Força permite que você salte grandes alturas e distâncias e a se mover mais rapidamente.\n\nTempo: Ação livre.\nAlvo: Você.\n\nFaça um teste de Usar a Força: O resultado do teste determina o efeito, se houver:",
                     "checks": [
                                     {
                                                     "cd": "10",
-                                                    "effect": "Receba +10 de bônus da Força em Saltar e +2 quadrados de deslocamento."
+                                                    "effect": "Você recebe um bônus de Força de +10 em testes de Saltar e sua velocidade aumenta em 2 quadrados até o fim do seu próximo turno. Os bônus de Força em testes de Saltar incluem os ajustes pela velocidade aumentada."
                                     },
                                     {
                                                     "cd": "15",
-                                                    "effect": "Receba +20 de bônus da Força em Saltar e +4 quadrados de deslocamento."
+                                                    "effect": "Como CD 10 exceto que: +20 de bônus de Força em testes de Saltar, velocidade aumentada por 4 quadrados."
                                     },
                                     {
                                                     "cd": "20",
-                                                    "effect": "Receba +30 de bônus da Força em Saltar e +6 quadrados de deslocamento."
+                                                    "effect": "Como CD 10 exceto que: +30 de bônus de Força em testes de Saltar, velocidade aumentada por 6 quadrados."
                                     }
                     ],
-                    "special": "Você pode gastar 1 Ponto da Força para aumentar o bônus de Saltar em +10 e o deslocamento em +2 quadrados adicionais."
+                    "special": "Você pode gastar um Ponto de Força para aumentar o bônus no poder da Força em testes de Saltar por 10 e aumentar sua velocidade em 2 quadrados adicionais.\n\nUsar o poder arremeter conta como o início de corrida para determinar a CD de Saltar. Você pode gastar um Ponto de Destino para receber 4 quadrados de movimento adicionais; quando você faz isso, você também pode usar quaisquer movimentos da rodada como parte de um pulo (não é necessário um teste de Saltar)."
     },
     "Impulso da Força (Force Thrust)": {
                     "source": "Star Wars Saga Edition Core Rulebook / Wiki-Fandom",
@@ -1106,6 +1106,18 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
                     ],
                     "special": "Este é um efeito de medo e de afeta a mente. Usar este poder conta como ato do Lado Sombrio."
     },
+    "Caminhada pela Memória (Memory Walk)": {
+            "source": "Jedi Academy Training Manual / SWSE Wiki: https://swse.fandom.com/wiki/Memory_Walk",
+            "descriptor": "[Lado Sombrio, Afeta a Mente]",
+            "text": "Tempo: Ação padrão.\nAlvo: Uma criatura com Inteligência 3 ou maior, a até 6 quadrados e em sua linha de visão.\n\nO inimigo revive suas piores lembranças. Faça um teste de Usar a Força: alcance a CD indicada e iguale ou supere a Defesa de Vontade do alvo. Em sucesso, ele sofre 2d6 de dano de Força e perde as ações indicadas no próximo turno. Sem cumprir ambas as condições, não há efeito.",
+            "checks": [
+                    { "cd": "20", "effect": "O alvo perde sua ação rápida no próximo turno." },
+                    { "cd": "25", "effect": "O alvo perde sua ação de movimento no próximo turno." },
+                    { "cd": "30", "effect": "O alvo perde sua ação padrão no próximo turno." },
+                    { "cd": "35", "effect": "O alvo perde suas ações padrão e rápida no próximo turno." }
+            ],
+            "special": "Gaste 1 Ponto de Força para acrescentar +2d6 de dano de Força.\n\nManter o poder exige uma ação padrão e um novo teste de Usar a Força a cada rodada. Se sofrer dano enquanto o mantém, passe em Usar a Força, CD 15 + dano recebido, para continuar mantendo-o."
+    },
     "Morichro (Morichro)": {
                     "source": "Star Wars Saga Edition Jedi Academy Training Manual / Wiki-Fandom",
                     "descriptor": "[Lado Luminoso]",
@@ -1276,16 +1288,16 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
                     ],
                     "special": "Você pode gastar 1 Ponto da Força para aplicar o bônus também à sua Defesa de Reflexos até o início do seu próximo turno."
     },
-    "Pressão da Força (Force Grip)": {
-            "source": "Star Wars Saga Edition Core Rulebook / Saga Edition RPG Omnibus",
-            "descriptor": "[Telequinético]",
-            "text": "Tempo: Ação padrão\nAlvo: Um alvo a até 12 quadrados e em sua linha de visão\n\nVocê usa a Força para sufocar ou esmagar o inimigo. Faça uma verificação de Usar a Força. Se o resultado igualar ou superar a Defesa de Fortitude do alvo, ele sofre o dano indicado pela sua CD e só pode realizar uma única ação rápida no próximo turno. Se o resultado for menor que a Defesa de Fortitude, ele sofre metade do dano, age normalmente e você não pode manter o poder. O alvo soma o modificador de tamanho à Defesa de Fortitude: Colossal +50, Imenso +20, Enorme +10, Grande +5, Médio ou menor +0.",
+    "Aperto da Força (Force Grip)": {
+            "source": "Star Wars RPG - Edição Saga (v1.05), p. 96 (PDF p. 97)",
+            "descriptor": "—",
+            "text": "Você usa a Força para sufocar ou esmagar seu inimigo.\n\nTempo: Ação padrão.\nAlvo: Um alvo dentro de um raio de 6 quadrados ou dentro da linha de visão.\n\nFaça um teste de Usar a Força: O resultado do teste determina o efeito, se houver:",
             "checks": [
-                    { "cd": "15", "effect": "Ativação do poder; 2d6 de dano." },
-                    { "cd": "20", "effect": "4d6 de dano." },
-                    { "cd": "25", "effect": "6d6 de dano." }
+                    { "cd": "15", "effect": "Se o seu teste de Usar a Força igualar ou exceder o limiar de dano do alvo, o alvo recebe 2d6 pontos de dano. Se o seu teste de Usar a Força igualar ou superar a Defesa de Fortitude do alvo, o alvo poderá realizar somente uma única ação rápida em seu próximo turno. De outra forma, o alvo recebe metade do dano e poderá agir normalmente, e você não poderá manter o poder." },
+                    { "cd": "20", "effect": "Igual a CD 15, exceto que o alvo recebe 4d6 pontos de dano." },
+                    { "cd": "25", "effect": "Igual a CD 15, exceto que o alvo recebe 6d6 pontos de dano." }
             ],
-            "special": "Você pode manter a concentração no alvo para continuar causando dano rodada a rodada. Manter Pressão da Força exige uma ação padrão e uma nova verificação de Usar a Força a cada rodada. Se sofrer dano enquanto mantém o poder, precisa passar em Usar a Força CD 15 + dano sofrido para continuar. Você pode gastar 1 Ponto da Força para causar +2d6 de dano."
+            "special": "Você pode manter sua concentração na criatura alvo para continuar causando dano a ela rodada após rodada. Manter o aperto da Força é uma ação padrão e você deve fazer um novo teste de Usar a Força a cada rodada. Se você sofrer dano enquanto estiver mantendo um aperto da Força, você deverá ser bem-sucedido em um teste de Usar a Força (CD = 15 + dano recebido) para continuar se concentrando.\n\nVocê pode gastar um Ponto de Força para causar um adicional de 2d6 pontos de dano com o seu aperto da Força."
     },
     "Projeção da Força (Force Projection)": {
                     "source": "Star Wars Saga Edition Jedi Academy Training Manual / Wiki-Fandom",
@@ -1371,15 +1383,15 @@ Forma de Sabre — Vaapad: Se você possui a Aptidão Vaapad, este poder de form
                     ],
                     "special": "Você pode manter Redemoinho da Força de rodada em rodada com uma ação padrão. Você pode gastar 1 Ponto da Força para afetar um alvo uma categoria de tamanho maior."
     },
-    "Refutar (Rebuke)": {
-            "source": "Star Wars Saga Edition Core Rulebook / Saga Edition RPG Omnibus",
+    "Repreender (Rebuke)": {
+            "source": "Star Wars RPG - Edição Saga (v1.05), p. 99 (PDF p. 100)",
             "descriptor": "—",
-            "text": "Tempo: Reação\nAlvo: Um Poder da Força direcionado a você\n\nVocê absorve ou desvia inofensivamente um Poder da Força usado contra você, podendo voltá-lo contra o criador. Faça uma verificação de Usar a Força. Se o resultado igualar ou superar o resultado do poder direcionado a você, você o redireciona e não sofre efeitos nocivos. Se superar o resultado por 5 ou mais, pode voltar o poder contra o usuário original, que sofre o efeito com base na verificação original dele.",
+            "text": "Você absorve ou deflete sem perigos um poder da Força usado contra você, talvez até mesmo voltando-o contra seu criador.\n\nTempo: Reação.\nAlvo: Um poder da Força direcionado a você.\n\nFaça um teste de Usar a Força: Se o seu resultado igualar ou exceder o resultado do teste do poder direcionado a você, você o redireciona sem perigos e não sofre efeitos negativos. Se o seu resultado exceder o resultado do teste do poder direcionado a você em 5 pontos ou mais, você pode escolher tornar o poder da Força contra o seu criador, que sofrerá o efeito.",
             "checks": [
                     { "cd": "Resultado do Poder da Força recebido", "effect": "Você redireciona o poder e não sofre efeitos nocivos." },
-                    { "cd": "Resultado do Poder da Força recebido +5", "effect": "Você pode voltar o poder contra o usuário original, usando a verificação original dele para resolver o efeito." }
+                    { "cd": "Resultado do Poder da Força recebido +5", "effect": "Você pode tornar o poder contra seu criador, que sofrerá o efeito." }
             ],
-            "special": "Se você refletir um Poder da Força de volta ao originador, ele também pode tentar Refutar usando seu resultado como CD. Se ele refletir novamente, você e o originador são afetados pelo poder. Você pode gastar 1 Ponto da Força como reação para não sofrer efeitos nocivos de um Poder da Força que tenha sido Refutado duas vezes."
+            "special": "Se você for bem-sucedido em refletir um poder da Força de volta a sua origem, o criador pode tentar repreender o poder também. Se ele refleti-lo de volta novamente, você e o criador são afetados pelo poder da Força. Você pode gastar um Ponto de Força como uma reação para não sofrer os efeitos negativos de um poder da Força que foi repreendido duas vezes — uma vez por você e uma vez pelo criador do poder."
     },
     "Reorganização (Rearrangement)": {
                     "source": "Star Wars Saga Edition Jedi Academy Training Manual / Wiki-Fandom",

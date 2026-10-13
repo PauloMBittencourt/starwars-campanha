@@ -3655,7 +3655,7 @@ const APTITUDE_PREREQUISITES = {
     "Repelir as Trevas (Rebuke the Dark)": [
         {
             "tipo": "poder",
-            "nome": "Refutar (Rebuke)"
+            "nome": "Repreender (Rebuke)"
         }
     ],
     "Mácula do Lado Sombrio (Taint of the Dark Side)": [
@@ -6035,10 +6035,10 @@ const FORCE_TECHNIQUE_PREREQUISITES = {
             "nome": "Impulso da Força (Force Thrust)"
         }
     ],
-    "Pressão da Força Aprimorada (Improved Force Grip)": [
+    "Aperto da Força Aprimorado (Improved Force Grip)": [
         {
             "tipo": "poder",
-            "nome": "Pressão da Força (Force Grip)"
+            "nome": "Aperto da Força (Force Grip)"
         }
     ],
     "Relâmpago da Força Aprimorado (Improved Force Lightning)": [
@@ -6053,10 +6053,10 @@ const FORCE_TECHNIQUE_PREREQUISITES = {
             "nome": "Truque Mental (Mind Trick)"
         }
     ],
-    "Refutar Aprimorado (Improved Rebuke)": [
+    "Repreender Aprimorado (Improved Rebuke)": [
         {
             "tipo": "poder",
-            "nome": "Refutar (Rebuke)"
+            "nome": "Repreender (Rebuke)"
         }
     ],
     "Repulsa Aprimorada (Improved Repulse)": [
@@ -6185,10 +6185,10 @@ const FORCE_TECHNIQUE_PREREQUISITES = {
             "nome": "Desarmar pela Força (Force Disarm)"
         }
     ],
-    "Pressão da Força Estendida (Extended Force Grip)": [
+    "Aperto da Força Estendido (Extended Force Grip)": [
         {
             "tipo": "poder",
-            "nome": "Pressão da Força (Force Grip)"
+            "nome": "Aperto da Força (Force Grip)"
         }
     ],
     "Impulso da Força Estendido (Extended Force Thrust)": [

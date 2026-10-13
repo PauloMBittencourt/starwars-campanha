@@ -36,6 +36,7 @@ const ATTRIBUTE_NAMES = { FOR: 'Força', DES: 'Destreza', CON: 'Constituição',
 const CHOICE_TYPE_LABELS = {
     talento: { singular: 'Talento', plural: 'Talentos', field: 'talents', notePrefix: 'talent' },
     aptidao: { singular: 'Aptidão', plural: 'Aptidões', field: 'aptitudes', notePrefix: 'aptitude' },
+    poder: { singular: 'Poder da Força', plural: 'Poderes da Força', field: 'forcePowers', notePrefix: 'force' },
     tecnica: { singular: 'Técnica da Força', plural: 'Técnicas da Força' },
     segredo: { singular: 'Segredo da Força', plural: 'Segredos da Força' },
 };
@@ -289,7 +290,9 @@ function evaluateRequirement(sheet, req, owned, detalheEscolhido) {
         }
         case 'poder': {
             const english = (req.nome.match(/\(([^()]*)\)\s*$/) || [])[1] || req.nome;
-            const has = (sheet.forcePowers || []).some(p => normalizeChoiceText(p).includes(normalizeChoiceText(choiceShortName(req.nome)))
+            const name = findForcePowerName(req.nome);
+            const has = (sheet.forcePowers || []).some(p => (name && findForcePowerName(p) === name)
+                || normalizeChoiceText(p).includes(normalizeChoiceText(choiceShortName(req.nome)))
                 || normalizeChoiceText(p).includes(normalizeChoiceText(english)));
             return { status: has ? 'ok' : 'blocked', texto: `Poder da Força ${choiceShortName(req.nome)}` };
         }
@@ -468,6 +471,7 @@ function prepareSheetChoices(sheet) {
         sheet.outrosTalentos = [];
         changed = true;
     }
+    if (renameOldLibraryChoices(sheet)) changed = true;
     if (resolveLegacyChoices(sheet)) changed = true;
     if (renameOldSkillDetails(sheet)) changed = true;
     if (syncChoiceNameLists(sheet)) changed = true;
@@ -483,6 +487,36 @@ const RENAMED_SKILL_LABELS = {
     'Usar Computadores': 'Usar Computador',
 };
 
+function renameOldLibraryChoices(sheet) {
+    let changed = false;
+    (sheet.forcePowers || []).forEach((value, index) => {
+        const name = findForcePowerName(value);
+        if (!name || name === value) return;
+        const oldKey = `force_${encodeURIComponent(value)}`;
+        const newKey = `force_${encodeURIComponent(name)}`;
+        const oldNote = sheet.noteDetails?.[oldKey];
+        const newNote = sheet.noteDetails?.[newKey];
+        if (oldNote && newNote && oldNote !== newNote) {
+            sheet.noteDetails[newKey] = `${newNote}\n\n${oldNote}`;
+            delete sheet.noteDetails[oldKey];
+        } else moveNote(sheet, 'force', value, name);
+        sheet.forcePowers[index] = name;
+        changed = true;
+    });
+    (sheet.escolhas || []).forEach(entry => {
+        const oldLabel = choiceLabel(entry);
+        const name = resolveLibraryItemName(entry.nome, CHOICE_LIBRARY_CATEGORIES[entry.tipo]);
+        const detail = TALENT_DETAIL_OPTIONS[name] === 'poder' ? findForcePowerName(entry.detalhe) : null;
+        if (name === entry.nome && (!detail || choiceShortName(detail) === entry.detalhe)) return;
+        entry.nome = name;
+        if (detail) entry.detalhe = choiceShortName(detail);
+        const prefix = CHOICE_TYPE_LABELS[entry.tipo]?.notePrefix;
+        if (prefix) moveNote(sheet, prefix, oldLabel, choiceLabel(entry));
+        changed = true;
+    });
+    return changed;
+}
+
 function renameOldSkillDetails(sheet) {
     const aptitudeOptions = typeof APTITUDE_DETAIL_OPTIONS !== 'undefined' ? APTITUDE_DETAIL_OPTIONS : {};
     let changed = false;
@@ -497,6 +531,40 @@ function renameOldSkillDetails(sheet) {
 }
 
 // ===== Cards na aba Ficha =====
+
+function findForcePowerName(value) {
+    const typed = normalizeChoiceText(resolveLibraryItemName(value, 'forcePowers'));
+    if (!typed) return null;
+    const english = name => normalizeChoiceText(String(name).match(/\(([^()]*)\)\s*$/)?.[1] || '');
+    return (LIBRARY_DATA.forcePowers?.items || []).find(name =>
+        typed === normalizeChoiceText(name) || typed === normalizeChoiceText(choiceShortName(name))
+        || typed === english(name) || (english(value) && english(value) === english(name))) || null;
+}
+
+function renderForcePowersCard(sheet) {
+    const powers = sheet.forcePowers || [];
+    return `
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Poderes da Força</h3>
+                <span class="card-count">${powers.length}</span>
+                <button class="btn-add" onclick="openForcePowerPicker(${sheet.id})">+ Poder</button>
+            </div>
+            <div id="forcePowers-${sheet.id}" class="choice-list">
+                ${powers.length ? powers.map((value, index) => {
+                    const name = findForcePowerName(value);
+                    return `<div class="choice-row ${name ? '' : 'legacy'}">
+                        ${name ? renderChoiceIcon(name, 'poder') : ''}
+                        <span class="choice-name"><button type="button" title="Ver ou trocar" onclick="openForcePowerPicker(${sheet.id}, ${index})">${escapeHtml(name || value || 'Poder a escolher')}</button>
+                            ${name ? '' : '<small>Da ficha antiga · escolher na Biblioteca</small>'}
+                        </span>
+                        <button class="icon-btn btn-remove" title="Remover poder" onclick="removeDynamicItem(${sheet.id}, 'forcePowers', ${index})">×</button>
+                    </div>`;
+                }).join('') : '<div class="list-empty">Nenhum poder ainda.</div>'}
+            </div>
+        </div>
+    `;
+}
 
 function renderChoiceIcon(nome, tipo) {
     return typeof renderLibraryIcon === 'function' ? renderLibraryIcon(nome, CHOICE_LIBRARY_CATEGORIES[tipo]) : '';
@@ -634,6 +702,7 @@ let choiceState = null;
 
 function buildCandidates(sheet, slot, tipo) {
     const kind = slot?.tipo || tipo;
+    if (kind === 'poder') return (LIBRARY_DATA.forcePowers?.items || []).map(nome => ({ tipo: 'poder', nome }));
     if (kind === 'tecnica' || kind === 'segredo') {
         const category = kind === 'tecnica' ? LIBRARY_DATA.forceTechniques : LIBRARY_DATA.forceSecrets;
         return (category?.items || []).map(nome => ({ tipo: kind, nome }));
@@ -654,6 +723,20 @@ function buildCandidates(sheet, slot, tipo) {
         : (LIBRARY_DATA.talents?.items || []).map(nome => ({ tipo: 'talento', nome }));
     const aptitudes = (slot?.aptidoesPermitidas || []).map(nome => ({ tipo: 'aptidao', nome, grupo: 'Aptidões permitidas' }));
     return [...talents, ...aptitudes];
+}
+
+function openForcePowerPicker(sheetId, powerIndex = null) {
+    const sheet = findSheet(sheetId);
+    if (!sheet || (powerIndex !== null && !Number.isInteger(powerIndex))) return;
+    if (powerIndex !== null && (powerIndex < 0 || powerIndex >= (sheet.forcePowers || []).length)) return;
+    const current = powerIndex === null ? null : sheet.forcePowers[powerIndex];
+    const name = findForcePowerName(current);
+    const candidates = buildCandidates(sheet, null, 'poder');
+    choiceState = { sheetId: sheet.id, slotKey: null, tipo: 'poder', powerIndex, candidates, selected: name ? candidates.findIndex(candidate => candidate.nome === name) : null };
+    document.getElementById('choiceModalTitle').textContent = `${powerIndex === null ? 'Escolher' : 'Ver ou trocar'} Poder da Força`;
+    document.getElementById('choiceModalSubtitle').textContent = sheet.name || 'Personagem';
+    openChoiceWindow(current && !name ? current : '');
+    document.querySelector('#choiceList .library-item-btn.active')?.scrollIntoView({ block: 'nearest' });
 }
 
 function openChoicePicker(sheetId, slotKey) {
@@ -780,7 +863,7 @@ function showChoiceDetails(index, keepDetail = false) {
     const needsDetail = getDetailOptions(candidate.nome) && !detalhe;
     const { status, results } = evaluateChoice(sheet, candidate, detalhe || undefined, choiceState.slotKey);
     const detail = LIBRARY_ITEM_DETAILS[candidate.nome];
-    const isExtra = !choiceState.slotKey;
+    const isExtra = !choiceState.slotKey && candidate.tipo !== 'poder';
     const canChoose = status !== 'blocked' && !needsDetail;
 
     document.getElementById('choiceDetails').innerHTML = `
@@ -806,7 +889,13 @@ function showChoiceDetails(index, keepDetail = false) {
         ${status === 'blocked' ? '<p class="choice-blocked-msg">Não dá para escolher: falta cumprir o que está marcado com ✕.</p>' : ''}
         ${needsDetail && status !== 'blocked' ? '<p class="choice-blocked-msg">Escolha o complemento acima.</p>' : ''}
         <h4 class="section-label">Descrição</h4>
+        <div class="library-meta">
+            ${detail?.descriptor ? `<span class="chip"><strong>Descritor:</strong> ${escapeHtml(detail.descriptor)}</span>` : ''}
+            ${detail?.source ? `<span class="chip"><strong>Fonte:</strong> ${escapeHtml(detail.source)}</span>` : ''}
+        </div>
         <div class="library-text">${detail ? escapeHtml(detail.text).replace(/\n/g, '<br>') : '<em>Texto ainda não traduzido na Biblioteca.</em>'}</div>
+        ${renderLibraryChecks(detail)}
+        ${detail?.special ? `<div class="library-special"><strong>Especial:</strong> ${escapeHtml(detail.special)}</div>` : ''}
     `;
 }
 
@@ -817,6 +906,27 @@ function confirmChoice() {
     const detalhe = (candidate.detalheFixo || choiceState.detalhe || '').trim();
     if (getDetailOptions(candidate.nome) && !detalhe) return;
     if (evaluateChoice(sheet, candidate, detalhe || undefined, choiceState.slotKey).status === 'blocked') return;
+
+    if (candidate.tipo === 'poder') {
+        if (!(LIBRARY_DATA.forcePowers?.items || []).includes(candidate.nome)) return;
+        if (!Array.isArray(sheet.forcePowers)) sheet.forcePowers = [];
+        const index = choiceState.powerIndex;
+        if (index === null) sheet.forcePowers.push(candidate.nome);
+        else {
+            if (!Number.isInteger(index) || index < 0 || index >= sheet.forcePowers.length) return;
+            const oldName = sheet.forcePowers[index];
+            const oldKey = `force_${encodeURIComponent(oldName)}`;
+            const oldNote = sheet.noteDetails?.[oldKey];
+            moveNote(sheet, 'force', oldName, candidate.nome);
+            if (oldNote && sheet.forcePowers.some((name, i) => i !== index && name === oldName)) sheet.noteDetails[oldKey] = oldNote;
+            sheet.forcePowers[index] = candidate.nome;
+        }
+        choiceState = null;
+        closeModal('choiceModal');
+        renderSheets();
+        scheduleSave(sheet.id);
+        return;
+    }
 
     const entry = {
         vaga: choiceState.slotKey || `extra:${Date.now().toString(36)}`,

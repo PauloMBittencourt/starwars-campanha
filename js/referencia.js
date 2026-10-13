@@ -10,6 +10,8 @@ function openModal(modalId) {
 function closeModal(modalId) {
     document.getElementById(modalId).classList.remove('active');
     if (!document.querySelector('.modal.active')) document.body.classList.remove('modal-open');
+    if (modalId === 'skillUsesModal') finishSkillUsesModal();
+    if (modalId === 'inventoryModal') finishInventoryEditor();
 }
 
 document.addEventListener('keydown', e => {
@@ -61,6 +63,7 @@ function showClassDetails(className) {
         ['Perícias', classData.skills],
     ].filter(([, value]) => value);
     const talents = classData.initialTalents || [];
+    const referenceSections = classData.sections || [];
     const table = classData.table || [];
     const prerequisites = (typeof CLASS_PROGRESSION !== 'undefined' && CLASS_PROGRESSION[classData.nome]?.preRequisitos) || [];
 
@@ -70,11 +73,11 @@ function showClassDetails(className) {
             <div>
                 <span class="class-kind">${HEROIC_CLASSES.includes(classData.nome) ? 'Classe Heroica' : 'Classe de Prestígio'}</span>
                 <h3>${classData.nome}</h3>
-                ${classData.desc ? `<p class="class-description">${classData.desc}</p>` : ''}
+                ${classData.desc ? `<p class="class-description">${escapeHtml(classData.desc)}</p>` : ''}
             </div>
         </div>
         <div class="class-facts">
-            ${facts.map(([title, value]) => `<div class="class-fact"><h4>${title}</h4><p>${value}</p></div>`).join('')}
+            ${facts.map(([title, value]) => `<div class="class-fact"><h4>${title}</h4><p>${escapeHtml(value)}</p></div>`).join('')}
         </div>
         ${prerequisites.length ? `
             <h4 class="section-label">Pré-requisitos para entrar</h4>
@@ -82,8 +85,17 @@ function showClassDetails(className) {
         ` : ''}
         ${talents.length ? `
             <h4 class="section-label">Talentos Iniciais</h4>
-            <div class="chip-list">${talents.map(t => `<span class="chip">${t}</span>`).join('')}</div>
+            <div class="chip-list">${talents.map(t => `<span class="chip class-initial-talent">${renderInitialTalentIcon(t)}<span>${escapeHtml(t)}</span></span>`).join('')}</div>
+        ` : classData.feats ? `
+            <h4 class="section-label">Talentos Iniciais</h4>
+            <p>${escapeHtml(classData.feats)}</p>
         ` : ''}
+        ${referenceSections.map(section => `
+            <section class="class-reference-section">
+                <h4 class="section-label">${escapeHtml(section.title)}</h4>
+                ${section.text ? `<p>${escapeHtml(section.text)}</p>` : ''}
+            </section>
+        `).join('')}
         ${table.length ? `
             <h4 class="section-label">Progressão de Classe</h4>
             <div class="table-scroll">
@@ -112,7 +124,14 @@ function openLibrary() {
 }
 
 // Abre a Biblioteca direto num item (usado pelos talentos e aptidões da ficha)
-const CHOICE_LIBRARY_CATEGORIES = { talento: 'talents', aptidao: 'aptitudes', tecnica: 'forceTechniques', segredo: 'forceSecrets' };
+const CHOICE_LIBRARY_CATEGORIES = { talento: 'talents', aptidao: 'aptitudes', poder: 'forcePowers', tecnica: 'forceTechniques', segredo: 'forceSecrets' };
+
+function resolveLibraryItemName(itemName, categoryKey) {
+    const typed = normalizeSearch(itemName).trim();
+    const alias = Object.entries(LIBRARY_ITEM_RENAMES[categoryKey] || {}).find(([oldName]) =>
+        typed === normalizeSearch(oldName) || typed === normalizeSearch(choiceShortName(oldName)));
+    return alias ? alias[1] : itemName;
+}
 
 function openLibraryItem(itemName, tipo) {
     const preferred = CHOICE_LIBRARY_CATEGORIES[tipo];
@@ -121,16 +140,17 @@ function openLibraryItem(itemName, tipo) {
 
     for (const key of keys) {
         const category = LIBRARY_DATA[key];
+        const name = resolveLibraryItemName(itemName, key);
         if (category.trees) {
-            const treeIndex = category.trees.findIndex(tree => tree.items.includes(itemName));
+            const treeIndex = category.trees.findIndex(tree => tree.items.includes(name));
             if (treeIndex < 0) continue;
             showLibraryCategory(key);
             showLibraryTree(key, treeIndex);
-            showLibraryItem(key, treeIndex, category.trees[treeIndex].items.indexOf(itemName));
+            showLibraryItem(key, treeIndex, category.trees[treeIndex].items.indexOf(name));
             scrollLibraryListToActive();
             return;
         }
-        const itemIndex = category.items.indexOf(itemName);
+        const itemIndex = category.items.indexOf(name);
         if (itemIndex < 0) continue;
         showLibraryCategory(key);
         showLibraryItem(key, null, itemIndex);
@@ -276,6 +296,15 @@ function copyLibraryItem(categoryKey, treeIndex, itemIndex) {
     });
 }
 
+function renderLibraryChecks(detail) {
+    return detail?.checks?.length ? `
+        <table class="class-table">
+            <thead><tr><th scope="col">CD</th><th scope="col">Efeito</th></tr></thead>
+            <tbody>${detail.checks.map(row => `<tr><td>${escapeHtml(row.cd)}</td><td>${escapeHtml(row.effect)}</td></tr>`).join('')}</tbody>
+        </table>
+    ` : '';
+}
+
 function showLibraryItem(categoryKey, treeIndex, itemIndex) {
     const details = document.getElementById('libraryDetails');
     const { category, tree, itemName, detail } = getLibraryItem(categoryKey, treeIndex, itemIndex);
@@ -289,15 +318,6 @@ function showLibraryItem(categoryKey, treeIndex, itemIndex) {
         detail?.source && ['Fonte', detail.source],
     ].filter(Boolean);
 
-    const checks = detail?.checks?.length ? `
-        <table class="class-table">
-            <thead><tr><th>CD</th><th>Efeito</th></tr></thead>
-            <tbody>
-                ${detail.checks.map(row => `<tr><td>${escapeHtml(row.cd)}</td><td>${escapeHtml(row.effect)}</td></tr>`).join('')}
-            </tbody>
-        </table>
-    ` : '';
-
     details.innerHTML = `
         ${tree ? `<button class="library-back" onclick="showLibraryTree('${categoryKey}', ${treeIndex})">← ${escapeHtml(shortTreeName(tree.name))}</button>` : ''}
         <div class="library-item-head">
@@ -308,7 +328,7 @@ function showLibraryItem(categoryKey, treeIndex, itemIndex) {
             ${meta.map(([label, value]) => `<span class="chip"><strong>${label}:</strong> ${escapeHtml(value)}</span>`).join('')}
         </div>
         <div class="library-text">${detail ? escapeHtml(detail.text).replace(/\n/g, '<br>') : '<em>Conteúdo ainda não preenchido.</em>'}</div>
-        ${checks}
+        ${renderLibraryChecks(detail)}
         ${detail?.special ? `<div class="library-special"><strong>Especial:</strong> ${escapeHtml(detail.special)}</div>` : ''}
         <div class="library-actions">
             <button class="btn" onclick="copyLibraryItem('${categoryKey}', ${treeIndex}, ${itemIndex})">Copiar texto</button>

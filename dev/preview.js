@@ -74,6 +74,7 @@ function loadSampleSheets() {
     kael.skills.conhecimentoTaticas = { treinada: true, bonus: 0 };
     kael.skills.conhecimentoTradicaoGalactica = { treinada: true, bonus: 1 };
     kael.customNotes = [{ title: 'Missão em Taris', text: 'Encontrar o contato no cantina do setor inferior.' }];
+    delete kael.inventory; // Exercita a importação das listas de armas/equipamentos da ficha antiga.
 
     const mestre = createEmptySheet(1002);
     Object.assign(mestre, { owner: 'mestre', firebaseId: 'exemplo-mestre', name: 'Darth Malgus', classes: [{ name: 'Sith', level: 10 }], level: 10 });

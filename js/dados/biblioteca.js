@@ -13,6 +13,7 @@ const LIBRARY_DATA = {
             'Cambalear (Stagger)',
             'Camuflagem (Cloak)',
             'Carga Desimpedida (Unhindered Charge)',
+            'Caminhada pela Memória (Memory Walk)',
             'Cegueira (Blind)',
             'Círculo de Proteção (Circle of Shelter)',
             'Combate Cinético (Kinetic Combat)',
@@ -50,7 +51,7 @@ const LIBRARY_DATA = {
             'Iluminar (Force Light)',
             'Iluminar Aliado (Enlighten)',
             'Ilusão da Força (Force Illusion)',
-            'Impulso (Surge)',
+            'Arremeter (Surge)',
             'Impulso da Força (Force Thrust)',
             'Inércia (Inertia)',
             'Inspirar (Inspire)',
@@ -69,12 +70,12 @@ const LIBRARY_DATA = {
             'Passar a Lâmina (Pass the Blade)',
             'Ponto de Ruptura (Shatterpoint)',
             'Presciência (Prescience)',
-            'Pressão da Força (Force Grip)',
+            'Aperto da Força (Force Grip)',
             'Projeção da Força (Force Projection)',
             'Rastrear pela Força (Force Track)',
             'Redemoinho Ascendente (Rising Whirlwind)',
             'Redemoinho da Força (Force Whirlwind)',
-            'Refutar (Rebuke)',
+            'Repreender (Rebuke)',
             'Reorganização (Rearrangement)',
             'Repulsa (Repulse)',
             'Resistência a Energia (Energy Resistance)',
@@ -2543,10 +2544,10 @@ const LIBRARY_DATA = {
             'Fúria Sombria Aprimorada (Improved Dark Rage)',
             'Desarmar pela Força Aprimorado (Improved Force Disarm)',
             'Impulso da Força Aprimorado (Improved Force Thrust)',
-            'Pressão da Força Aprimorada (Improved Force Grip)',
+            'Aperto da Força Aprimorado (Improved Force Grip)',
             'Relâmpago da Força Aprimorado (Improved Force Lightning)',
             'Truque Mental Aprimorado (Improved Mind Trick)',
-            'Refutar Aprimorado (Improved Rebuke)',
+            'Repreender Aprimorado (Improved Rebuke)',
             'Repulsa Aprimorada (Improved Repulse)',
             'Transferência Vital Avançada (Advanced Vital Transfer)',
             'Camuflagem Aprimorada (Improved Cloak)',
@@ -2568,7 +2569,7 @@ const LIBRARY_DATA = {
             'Curar Doença (Cure Disease)',
             'Cegueira Estendida (Extended Blind)',
             'Desarmar pela Força Estendido (Extended Force Disarm)',
-            'Pressão da Força Estendida (Extended Force Grip)',
+            'Aperto da Força Estendido (Extended Force Grip)',
             'Impulso da Força Estendido (Extended Force Thrust)',
             'Mover Objeto Estendido (Extended Move Object)',
             'Convecção Aprimorada (Improved Convection)',
@@ -2615,4 +2616,22 @@ const LIBRARY_DATA = {
             'Medpac de Combate Avançado'
         ]
     }
+};
+
+// Nomes anteriores continuam reconhecidos nas fichas; cada categoria tem seu próprio Surge.
+const LIBRARY_ITEM_RENAMES = {
+    forcePowers: {
+        'Impulso (Surge)': 'Arremeter (Surge)',
+        'Pressão da Força (Force Grip)': 'Aperto da Força (Force Grip)',
+        'Refutar (Rebuke)': 'Repreender (Rebuke)',
+    },
+    forceTechniques: {
+        'Pressão da Força Aprimorada (Improved Force Grip)': 'Aperto da Força Aprimorado (Improved Force Grip)',
+        'Aperto da Força Aprimorada (Improved Force Grip)': 'Aperto da Força Aprimorado (Improved Force Grip)',
+        'Refutar Aprimorado (Improved Rebuke)': 'Repreender Aprimorado (Improved Rebuke)',
+        'Pressão da Força Estendida (Extended Force Grip)': 'Aperto da Força Estendido (Extended Force Grip)',
+    },
+    aptitudes: {
+        'Arremter (Surge)': 'Impulso (Surge)',
+    },
 };

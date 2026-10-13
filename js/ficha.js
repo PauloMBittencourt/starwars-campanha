@@ -82,14 +82,6 @@ const SHEET_TABS = [
     { key: 'lore',     label: 'História' },
 ];
 
-const LIST_SECTIONS = {
-    talents:     { title: 'Talentos',         add: 'Talento',     empty: 'Nenhum talento ainda.' },
-    aptitudes:   { title: 'Aptidões',         add: 'Aptidão',     empty: 'Nenhuma aptidão ainda.' },
-    forcePowers: { title: 'Poderes da Força', add: 'Poder',       empty: 'Nenhum poder ainda.' },
-    weapons:     { title: 'Armas',            add: 'Arma',        empty: 'Nenhuma arma ainda.' },
-    equipments:  { title: 'Equipamentos',     add: 'Equipamento', empty: 'Nenhum equipamento ainda.' },
-};
-
 // Seções da aba Notas geradas a partir das listas da aba Ficha.
 // O prefixo compõe a chave em noteDetails; mudar quebraria as notas já salvas.
 const NOTE_SECTIONS = {
@@ -144,7 +136,7 @@ function createEmptySheet(id) {
             VON: { level: 0, class: 0, hab: 0, other: 0 }
         },
         combat: { speed: "", init: "", perc: "", bab: "", forcePoints: "" },
-        weapons: [],
+        inventory: [],
         specialActions: ["", "", ""],
         skills: Object.fromEntries(SKILL_ROWS.map(skill => [skill.key, { treinada: false, bonus: 0 }])),
         // talents/aptitudes são recalculados a partir de "escolhas" (js/talentos.js cria esse campo na
@@ -152,7 +144,6 @@ function createEmptySheet(id) {
         talents: [],
         aptitudes: [],
         forcePowers: [],
-        equipments: [],
         lore: "",
         noteDetails: {},
         generalNotes: "",
@@ -541,6 +532,7 @@ function renderSheets() {
         if (syncDerivedValues(sheet)) scheduleSave(sheet.id);
         // Talentos e Aptidões por nível (js/talentos.js); converte a lista digitada das fichas antigas
         if (prepareSheetChoices(sheet)) scheduleSave(sheet.id);
+        if (prepareInventory(sheet)) scheduleSave(sheet.id);
 
         const sheetDiv = document.createElement('div');
         sheetDiv.className = `sheet-content ${sheet.id === activeSheetId ? 'active' : ''}`;
@@ -591,11 +583,12 @@ function renderFichaTab(sheet) {
         <section class="grid-section">
             ${renderChoiceCard(sheet, 'talento')}
             ${renderChoiceCard(sheet, 'aptidao')}
-            ${renderListCard(sheet, 'forcePowers')}
+            ${renderForcePowersCard(sheet)}
         </section>
 
-        <section class="grid-section">
-            ${['weapons', 'equipments'].map(field => renderListCard(sheet, field)).join('')}
+        <section class="combat-equipment-section">
+            ${renderAttacksCard(sheet)}
+            ${renderInventoryCard(sheet)}
         </section>
     `;
 }
@@ -732,6 +725,7 @@ function renderHitPoints(sheet) {
         <div class="card">
             <div class="card-header"><h3 class="card-title">Pontos de Vida</h3></div>
             <div class="hp-layout">
+                <span class="defense-icon" aria-hidden="true"><img src="img/defesas/hit-points.jpg" alt="" draggable="false"></span>
                 <div class="field">
                     <label for="hp-current-${sheet.id}">Atual</label>
                     <input id="hp-current-${sheet.id}" class="stat-input" type="number" min="0" ${total > 0 ? `max="${total}"` : ''} value="${toInt(sheet.hp?.current)}" onchange="updateHitPoints(${sheet.id}, 'current', this.value)">
@@ -841,35 +835,6 @@ function renderDefenses(sheet) {
     `;
 }
 
-function renderListCard(sheet, field) {
-    const section = LIST_SECTIONS[field];
-    const items = sheet[field] || [];
-    return `
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">${section.title}</h3>
-                <span class="card-count">${items.length}</span>
-                <button class="btn-add" onclick="addDynamicItem(${sheet.id}, '${field}')">+ ${section.add}</button>
-            </div>
-            <div id="${field}-${sheet.id}" class="dynamic-list">
-                ${items.length
-                    ? items.map((value, idx) => renderDynamicItem(sheet.id, field, idx, value)).join('')
-                    : `<div class="list-empty">${section.empty}</div>`}
-            </div>
-        </div>
-    `;
-}
-
-function renderDynamicItem(sheetId, field, index, value) {
-    return `
-        <div class="dynamic-item">
-            ${field === 'weapons' ? renderWeaponIcon(value) : ''}
-            <input type="text" value="${escapeHtml(value)}" aria-label="${LIST_SECTIONS[field]?.add || 'Item'}" onchange="updateDynamicItem(${sheetId}, '${field}', ${index}, this.value)">
-            <button class="icon-btn btn-remove" title="Remover" onclick="removeDynamicItem(${sheetId}, '${field}', ${index})">×</button>
-        </div>
-    `;
-}
-
 function renderSkillsTab(sheet) {
     return `
         <div class="card">
@@ -918,7 +883,7 @@ function renderSkillRow(sheet, skill, extraClass = '') {
     const total = calculateSkillTotal(sheet, skill);
     return `
         <tr data-skill="${skill.key}" class="${extraClass} ${sk.treinada ? 'trained' : ''}">
-            <td class="skill-name"><span class="skill-label">${renderSkillIcon(skill)}<span>${skill.label}</span></span></td>
+            <td class="skill-name"><button type="button" class="skill-uses-toggle" aria-haspopup="dialog" aria-controls="skillUsesModal" onclick="openSkillUsesModal(${sheet.id}, '${skill.key}')"><span class="skill-label">${renderSkillIcon(skill)}<span>${skill.label}</span></span></button></td>
             <td><span class="skill-attr">${skill.attr}</span></td>
             <td class="skill-half-level">${formatBonus(getHalfLevel(sheet))}</td>
             <td>
@@ -1193,6 +1158,7 @@ function updateField(id, field, value) {
     }
     if (field === 'condition' || field === 'level') {
         refreshSkillTotals(id, sheet);
+        refreshAttacks(id, sheet);
     }
 }
 
@@ -1213,6 +1179,7 @@ function refreshSkillTotals(id, sheet) {
         row.querySelector('.skill-half-level').textContent = halfLevel;
         row.querySelector('[data-skill-species]').innerHTML = renderSkillSpeciesBonus(sheet, skill.key);
         row.classList.toggle('trained', !!sheet.skills?.[skill.key]?.treinada);
+        refreshSkillUses(sheet, skill);
     });
 }
 
@@ -1267,6 +1234,7 @@ function refreshCharacterLevel(id, sheet) {
     if (levelInput) levelInput.value = toInt(sheet.level);
     refreshSkillTotals(id, sheet);
     refreshDefenseTotals(id, sheet);
+    refreshAttacks(id, sheet);
 }
 
 // O valor digitado é o valor real do atributo (já com a raça) e fica exatamente assim
@@ -1281,6 +1249,7 @@ function updateAttr(id, attr, value) {
     // Atualiza totais de perícias e defesas que usam esse atributo
     refreshSkillTotals(id, sheet);
     refreshDefenseTotals(id, sheet);
+    refreshAttacks(id, sheet);
     scheduleSave(sheet.id);
 }
 
@@ -1325,38 +1294,11 @@ function updateDefense(id, def, field, value) {
     }
 }
 
-function updateDynamicItem(id, field, index, value) {
-    const sheet = findSheet(id);
-    if (sheet && sheet[field]) {
-        sheet[field][index] = value;
-        // Só re-renderiza a seção de notas correspondente quando o nome do item muda
-        if (NOTE_SECTIONS[field]) {
-            const notesSection = document.getElementById(`notes-${field}-${id}`);
-            if (notesSection) notesSection.innerHTML = renderNotesSection(sheet, field);
-        }
-        if (field === 'weapons') {
-            const icon = document.querySelectorAll(`#weapons-${id} .dynamic-item`)[index]?.querySelector('[data-weapon-icon]');
-            if (icon) icon.outerHTML = renderWeaponIcon(value);
-        }
-        scheduleSave(sheet.id);
-    }
-}
-
 function removeDynamicItem(id, field, index) {
     const sheet = findSheet(id);
     if (sheet && sheet[field]) {
         sheet[field].splice(index, 1);
         renderSheets();
-        scheduleSave(sheet.id);
-    }
-}
-
-function addDynamicItem(id, field) {
-    const sheet = findSheet(id);
-    if (sheet && sheet[field] !== undefined) {
-        sheet[field].push("");
-        renderSheets();
-        document.querySelector(`#${field}-${sheet.id} .dynamic-item:last-child input`)?.focus();
         scheduleSave(sheet.id);
     }
 }

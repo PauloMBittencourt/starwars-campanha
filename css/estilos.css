@@ -756,7 +756,8 @@ label {
 
 .hp-layout {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 46px repeat(2, minmax(0, 1fr));
+    align-items: end;
     gap: 10px;
 }
 
@@ -983,34 +984,6 @@ input.locked.highlight { color: var(--yellow); border-color: var(--yellow-line);
     margin-bottom: 16px;
 }
 
-.dynamic-list { display: flex; flex-direction: column; gap: 6px; }
-
-.dynamic-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 3px 3px 3px 5px;
-    background: var(--field);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    transition: border-color 0.15s, box-shadow 0.15s;
-}
-
-.dynamic-item:hover { border-color: var(--line-strong); }
-
-.dynamic-item:focus-within {
-    border-color: var(--yellow);
-    box-shadow: 0 0 0 3px var(--yellow-dim);
-}
-
-.dynamic-item input {
-    padding: 6px 4px;
-    border-color: transparent;
-    background: transparent;
-}
-
-.dynamic-item input:focus { box-shadow: none; border-color: transparent; }
-
 .item-icon {
     flex-shrink: 0;
     width: 30px;
@@ -1029,6 +1002,56 @@ input.locked.highlight { color: var(--yellow); border-color: var(--yellow-line);
 }
 
 /* ===== Perícias ===== */
+
+/* Ataques da ficha e inventário manual */
+.combat-equipment-section { display: grid; gap: 16px; margin-bottom: 16px; }
+.attack-list { display: grid; gap: 12px; }
+.attack-entry { padding: 16px; border: 1px solid var(--line-strong); border-radius: 12px; background: var(--field); }
+.attack-main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(90px, .2fr) minmax(120px, .25fr); gap: 16px; align-items: center; }
+.attack-weapon { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.attack-weapon .item-icon { width: 42px; height: 42px; }
+.attack-label, .attack-details dt { display: block; color: var(--text-faint); font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.attack-stat strong { display: block; margin-top: 4px; font-family: var(--font-display); font-size: 26px; color: var(--yellow); overflow-wrap: anywhere; }
+.inventory-name { border: none; background: none; color: var(--text); font: inherit; font-weight: 600; text-align: left; padding: 3px 0; cursor: pointer; overflow-wrap: anywhere; }
+.inventory-name:hover { color: var(--yellow); }
+.inventory-name:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; border-radius: 3px; }
+.inventory-review { display: block; color: var(--yellow); font-size: 11px; margin-top: 3px; }
+.attack-details { display: flex; flex-wrap: wrap; gap: 12px 30px; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--line); }
+.attack-details dd { margin: 4px 0 0; color: var(--text-dim); font-size: 13px; overflow-wrap: anywhere; }
+.attack-calculation { margin: 12px 0 0; color: var(--text-faint); font-size: 11px; }
+.attack-notes { margin: 10px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--text-dim); font-size: 13px; line-height: 1.6; }
+.inventory-summary { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-bottom: 16px; color: var(--text-faint); font-size: 12px; }
+.inventory-summary strong { margin-left: 6px; color: var(--text); }
+.inventory-list { display: grid; gap: 8px; }
+.inventory-row { display: grid; grid-template-columns: minmax(140px, 1fr) 70px 100px 115px 30px; gap: 12px; align-items: center; padding: 12px; background: var(--field); border: 1px solid var(--line); border-radius: 10px; }
+.inventory-item-name { display: flex; gap: 10px; align-items: center; min-width: 0; }
+.inventory-item-name small { display: block; color: var(--text-faint); font-size: 11px; }
+.inventory-quantity { color: var(--text-faint); font-size: 10px; }
+.inventory-quantity input { padding: 5px; margin-top: 3px; text-align: center; }
+.inventory-unit-weight { font-size: 12px; color: var(--text-dim); }
+.inventory-equipped, .inventory-editor-equipped, .inventory-form-checks label { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-dim); cursor: pointer; }
+.inventory-equipped input, .inventory-editor-equipped input, .inventory-form-checks input { width: 16px; height: 16px; flex: 0 0 16px; accent-color: var(--yellow); }
+#inventoryModal .modal-content { max-width: 850px; }
+.inventory-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 16px; }
+.inventory-wide { grid-column: 1 / -1; }
+#inventoryWeaponFields { margin: 18px 0; padding: 16px; border: 1px solid var(--line-strong); border-radius: 12px; min-width: 0; }
+#inventoryWeaponFields legend { padding: 0 8px; font-weight: 600; color: var(--yellow); }
+.inventory-form-checks { display: grid; gap: 10px; align-content: center; }
+.inventory-editor-equipped { margin: 20px 0; }
+.inventory-form-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 16px; }
+.inventory-form-error { color: var(--red); font-size: 13px; margin-top: 12px; }
+@media (max-width: 700px) {
+    .attack-main { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .attack-weapon { grid-column: 1 / -1; }
+    .inventory-row { grid-template-columns: minmax(0, 1fr) 65px 30px; gap: 10px; }
+    .inventory-item-name { grid-column: 1; grid-row: 1; }
+    .inventory-quantity { grid-column: 2; grid-row: 1; }
+    .inventory-row > .btn-remove { grid-column: 3; grid-row: 1; }
+    .inventory-unit-weight { grid-column: 1; grid-row: 2; }
+    .inventory-equipped { grid-column: 2 / -1; grid-row: 2; }
+    .inventory-form-grid { grid-template-columns: minmax(0, 1fr); }
+    #inventoryWeaponFields { padding: 12px; }
+}
 
 .table-scroll { overflow-x: auto; }
 
@@ -1068,6 +1091,46 @@ input.locked.highlight { color: var(--yellow); border-color: var(--yellow-line);
     display: flex;
     align-items: center;
     gap: 12px;
+}
+
+.skill-uses-toggle {
+    display: block;
+    width: 100%;
+    border: 0;
+    padding: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+.skill-uses-toggle:hover { color: var(--yellow); }
+.skill-uses-toggle:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; border-radius: 6px; }
+#skillUsesModal .modal-content { max-width: 960px; }
+.skill-uses-panel { padding: 16px; border: 1px solid var(--line-strong); border-radius: 12px; background: var(--panel); }
+.skill-uses-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.skill-uses-header h4 { color: var(--yellow); font-size: 16px; }
+.skill-training-status { color: var(--text-dim); font-size: 12px; }
+.skill-uses-hint, .skill-uses-note, .skill-uses-source { margin: 10px 0; color: var(--text-dim); font-size: 12px; line-height: 1.6; }
+.skill-uses-source a { color: var(--yellow); }
+.skill-uses-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+.skill-use { padding: 18px 0; border-bottom: 1px solid var(--line); }
+.skill-use h5 { margin: 0 0 8px; color: var(--text); font-size: 17px; }
+.skill-use p, .skill-reference-intro p { margin: 14px 0 0; color: var(--text-dim); line-height: 1.8; font-size: 14px; }
+.skill-table-scroll { max-width: 100%; overflow-x: auto; }
+.skill-use-table { width: 100%; margin: 20px 0; border-collapse: collapse; font-size: 13px; overflow-wrap: normal; }
+.skill-general-rules { margin-top: 24px; color: var(--text-dim); line-height: 1.7; }
+.skill-general-rules h5 { color: var(--text); font-size: 16px; }
+.skill-use-table caption { text-align: left; color: var(--text-dim); margin-bottom: 8px; }
+.skill-use-table th, .skill-use-table td { padding: 10px 12px; border: 1px solid var(--line-strong); text-align: left; }
+.skill-use-table th { color: var(--text); background: var(--panel-raised); }
+.skill-use-tags { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.skill-use-tag { font-size: 10px; border: 1px solid var(--line-strong); border-radius: 5px; padding: 2px 5px; color: var(--text); }
+.skill-use-status { font-size: 11px; color: var(--yellow); }
+.skill-use-untrained { opacity: 0.48; border-bottom-style: dashed; }
+.skill-use-untrained:hover { opacity: 0.85; }
+@media (max-width: 700px) {
+    .skill-uses-panel { padding: 10px; }
 }
 
 /* Ícone Skill Training; sem imagem, mostra a sigla do atributo */
@@ -1121,7 +1184,7 @@ input.locked.highlight { color: var(--yellow); border-color: var(--yellow-line);
 
 .skill-group-row:hover .group-chevron { border-color: var(--yellow); }
 
-.knowledge-group.open .group-chevron { transform: translateY(-3px) rotate(45deg); }
+.knowledge-group.open .group-toggle .group-chevron { transform: translateY(-3px) rotate(45deg); }
 
 .knowledge-group:not(.open) .skill-sub { display: none; }
 
@@ -1534,6 +1597,27 @@ input.locked.highlight { color: var(--yellow); border-color: var(--yellow-line);
 }
 
 .class-fact p { margin: 0; line-height: 1.55; }
+
+.class-initial-talent {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px 6px 6px;
+    border-radius: 10px;
+}
+
+#classDetails .class-description,
+#classDetails .class-fact p,
+.class-reference-section p {
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+.class-reference-section p {
+    line-height: 1.6;
+}
+
+.class-reference-section p { margin: 0; }
 
 .class-table {
     width: 100%;
@@ -2125,6 +2209,7 @@ input.locked.highlight { color: var(--yellow); border-color: var(--yellow-line);
 .library-panel .class-table { margin-top: 16px; }
 
 .library-special {
+    white-space: pre-line;
     margin-top: 16px;
     padding: 12px 14px;
     border-left: 3px solid var(--yellow);

@@ -1,3 +1,6 @@
+// Descrições e seções copiadas da fonte indicada pelo GM em 2026-10-13; dados básicos em formato compacto.
+// Fonte: https://willemon.github.io/starwars-campanha/star_wars_firebase.html
+// Algumas classes também têm descrições curtas na fonte. Classes ausentes nela são preservadas.
 const HEROIC_CLASSES = ["Jedi", "Sith", "Nobre", "Malandro", "Batedor", "Soldado"];
 const PRESTIGE_CLASSES = [
     "Piloto Ás", "Caçador de Recompensas", "Senhor do Crime", "Soldado de Elite", 
@@ -14,7 +17,7 @@ const CLASS_DATA = {
             "hp": "30 + CON no 1º nível; 1d10 + CON por nível.",
             "forcePoints": "5 + metade do nível do personagem por nível de classe.",
             "defenses": "Fortitude +1, Reflexos +1, Vontade +1.",
-            "skills": "2 + INT: Acrobacia, Tolerância, Iniciativa, Saltar, Conhecimento, Mecânica, Percepção, Pilotar, Usar a Força.",
+            "skills": "2 + INT: Acrobacia, Resistência, Iniciativa, Saltar, Conhecimentos, Mecânica, Percepção, Pilotar, Usar a Força.",
             "feats": "Sensibilidade à Força, Proficiência com Sabres de Luz, Proficiência com Armas Simples.",
             "defenseBonuses": {
                     "FORT": 1,
@@ -140,7 +143,7 @@ const CLASS_DATA = {
             "hp": "18 + CON no 1º nível; 1d6 + CON por nível.",
             "forcePoints": "5 + metade do nível do personagem por nível de classe.",
             "defenses": "Reflexos +1, Vontade +2.",
-            "skills": "6 + INT: Enganar, Reunir Informação, Iniciativa, Conhecimento, Percepção, Persuasão, Pilotar, Montar, Tratar Ferimento, Usar Computador.",
+            "skills": "6 + INT: Enganação, Obter Informação, Iniciativa, Conhecimentos, Percepção, Persuasão, Pilotar, Montar, Tratar Ferimentos, Usar Computadores.",
             "feats": "Linguista, Proficiência com Pistolas, Proficiência com Armas Simples.",
             "defenseBonuses": {
                     "FORT": 0,
@@ -266,7 +269,7 @@ const CLASS_DATA = {
             "hp": "18 + CON no 1º nível; 1d6 + CON por nível.",
             "forcePoints": "5 + metade do nível do personagem por nível de classe.",
             "defenses": "Reflexos +2, Vontade +1.",
-            "skills": "4 + INT: Acrobacia, Enganar, Reunir Informação, Iniciativa, Conhecimento, Mecânica, Percepção, Persuasão, Pilotar, Furtividade, Usar Computador.",
+            "skills": "4 + INT: Acrobacia, Enganação, Obter Informação, Iniciativa, Conhecimentos, Mecânica, Percepção, Persuasão, Pilotar, Furtividade, Usar Computadores.",
             "feats": "Tiro à Queima-Roupa, Proficiência com Pistolas, Proficiência com Armas Simples.",
             "defenseBonuses": {
                     "FORT": 0,
@@ -392,7 +395,7 @@ const CLASS_DATA = {
             "hp": "24 + CON no 1º nível; 1d8 + CON por nível.",
             "forcePoints": "5 + metade do nível do personagem por nível de classe.",
             "defenses": "Fortitude +1, Reflexos +2.",
-            "skills": "5 + INT: Escalar, Tolerância, Iniciativa, Saltar, Conhecimento, Mecânica, Percepção, Pilotar, Montar, Furtividade, Sobrevivência, Nadar.",
+            "skills": "5 + INT: Escalar, Resistência, Iniciativa, Saltar, Conhecimentos, Mecânica, Percepção, Pilotar, Montar, Furtividade, Sobrevivência, Nadar.",
             "feats": "Shake It Off, Proficiência com Pistolas, Proficiência com Rifles, Proficiência com Armas Simples.",
             "defenseBonuses": {
                     "FORT": 1,
@@ -519,7 +522,7 @@ const CLASS_DATA = {
             "hp": "30 + CON no 1º nível; 1d10 + CON por nível.",
             "forcePoints": "5 + metade do nível do personagem por nível de classe.",
             "defenses": "Reflexos +1, Fortitude +2.",
-            "skills": "3 + INT: Escalar, Tolerância, Iniciativa, Saltar, Conhecimento (Táticas), Mecânica, Percepção, Pilotar, Nadar, Tratar Ferimento, Usar Computador.",
+            "skills": "3 + INT: Escalar, Resistência, Iniciativa, Saltar, Conhecimento (Táticas), Mecânica, Percepção, Pilotar, Nadar, Tratar Ferimentos, Usar Computadores.",
             "feats": "Proficiência com Armaduras (Leve, Média), Proficiência com Pistolas, Proficiência com Rifles, Proficiência com Armas Simples.",
             "defenseBonuses": {
                     "FORT": 2,
@@ -642,11 +645,11 @@ const CLASS_DATA = {
     },
     "Sith": {
             "nome": "Sith",
-            "desc": "Manifestam a Força através de emoções intensas. São os antagonistas naturais dos Jedi, buscando poder e domínio.",
+            "desc": "A energia do Lado Sombrio da Força corre através do Sith, concedendo-lhe poderes terríveis e a capacidade de dominar. Este personagem frequentemente manifesta a Força através de emoções intensas como ódio, raiva e ambição. O Carisma e a Sabedoria são as habilidades mais importantes para um Sith, pois governam a manipulação e o poder da Força, embora o Vigor e a Força sejam cruciais para aqueles que seguem o caminho do Guerreiro Sith.",
             "hp": "30 + CON no 1º nível; 1d10 + CON por nível.",
             "forcePoints": "5 + metade do nível do personagem por nível de classe.",
             "defenses": "Fortitude +1, Reflexos +1, Vontade +1.",
-            "skills": "2 + INT: Acrobacia, Conhecimento, Enganar, Iniciativa, Intimidar, Percepção, Persuasão, Pilotar, Saltar, Usar a Força.",
+            "skills": "2 + INT: Acrobacia, Conhecimentos, Enganação, Iniciativa, Intimidar, Percepção, Persuasão, Pilotar, Saltar, Usar a Força.",
             "feats": "Sensibilidade à Força, Proficiência com Sabres de Luz, Proficiência com Armas Simples.",
             "defenseBonuses": {
                     "FORT": 1,
@@ -667,7 +670,7 @@ const CLASS_DATA = {
                     [
                             "1º",
                             "+1",
-                            "Bônus de Defesa, Sabre de Luz, Aptidão, Talentos Iniciais"
+                            "Bônus de Defesa, Sabre de Luz, Aptidão, Talentos Iniciais, Acólito Sith"
                     ],
                     [
                             "2º",
@@ -682,7 +685,7 @@ const CLASS_DATA = {
                     [
                             "4º",
                             "+4",
-                            "Talento Bônus (Sith)"
+                            "Talento Bônus (Sith), Aprendiz Sith"
                     ],
                     [
                             "5º",
@@ -697,7 +700,7 @@ const CLASS_DATA = {
                     [
                             "7º",
                             "+7",
-                            "Construir Sabre de Luz, Aptidão"
+                            "Construir Sabre de Luz, Aptidão, Sith"
                     ],
                     [
                             "8º",
@@ -717,7 +720,7 @@ const CLASS_DATA = {
                     [
                             "11º",
                             "+11",
-                            "Aptidão"
+                            "Aptidão, Lorde Sith"
                     ],
                     [
                             "12º",
@@ -742,7 +745,7 @@ const CLASS_DATA = {
                     [
                             "16º",
                             "+16",
-                            "Talento Bônus (Sith)"
+                            "Talento Bônus (Sith), Lorde Negro (Darth)"
                     ],
                     [
                             "17º",
@@ -764,14 +767,44 @@ const CLASS_DATA = {
                             "+20",
                             "Talento Bônus (Sith)"
                     ]
+            ],
+            "sections": [
+                    {
+                            "title": "Sabre de Luz",
+                            "text": "Você começa o jogo com um sabre de luz providenciado pelo seu Mestre ou, se for um Acólito, um sabre de luz de treinamento. Mais tarde, você pode construir seu próprio sabre de luz (ver Construir Sabre de Luz, abaixo)."
+                    },
+                    {
+                            "title": "Seleção de Aptidões",
+                            "text": "No 1º nível e a cada nível de número ímpar seguinte (3º, 5º, 7º, etc.), você seleciona uma aptidão de qualquer uma das seguintes árvores de aptidão. Você pode escolher uma aptidão de qualquer árvore que você desejar, mas você deve atender aos pré-requisitos (se houver) da aptidão escolhida. Aptidões não podem ser selecionadas mais de uma vez a menos que expressamente indicado."
+                    },
+                    {
+                            "title": "Hierarquia Sith (Velha República)",
+                            "text": "A progressão na classe Sith reflete a hierarquia do Império Sith na Velha República, onde a Ordem é vasta e hierárquica.\n\n• Acólito Sith (1º Nível): O personagem começa como um Acólito, um estudante na Academia Sith em Korriban ou em outro mundo Sith. O foco é na sobrevivência e na demonstração de poder.\n\n• Aprendiz Sith (4º Nível): O Acólito provou seu valor e foi escolhido por um Lorde Sith para ser seu aprendiz pessoal. O treinamento se torna mais focado e brutal.\n\n• Sith (7º Nível): O Aprendiz completou seus testes e se tornou um membro pleno da Ordem, assumindo o título de Guerreiro Sith, Inquisidor Sith ou similar.\n\n• Lorde Sith (11º Nível): O Sith alcança o domínio do Lado Sombrio e pode tomar seu próprio aprendiz.\n\n• Lorde Negro (Darth) (16º Nível): O Sith mais poderoso, que pode ser um membro do Conselho Sombrio ou um mestre de grande influência."
+                    },
+                    {
+                            "title": "Construindo um Sabre de Luz",
+                            "text": "Esta seção é idêntica à seção Construindo um Sabre de Luz da classe Jedi. Você pode construir um sabre de luz se você possuir ao menos sete níveis heróicos além dos talentos Sensibilidade da Força e Proficiência com Armas (sabres de luz). Você deve gastar 1.500 créditos para obter os componentes básicos e 24 horas ininterruptas construindo a arma. Ao final deste tempo, faça um teste de Usar a Força com CD 20; você não pode escolher 20 neste teste. Se obtiver um sucesso neste teste, você completa a construção do sabre de luz. Se o teste falhar, você deve passar outras 24 horas desmontando e reconstruindo a arma defeituosa. Depois que seu sabre de luz for construído, você deve gastar um Ponto de Força para afiná-lo (uma ação de rodada completa). Deste ponto em diante, você recebe um bônus de +1 em rolagens de ataque com o seu sabre de luz feito sob medida. Ninguém mais que brandir a arma recebe este bônus. Você pode construir um sabre de luz duplo ao invés de um sabre de luz normal, mas o custo dos componentes aumenta para 3.000 créditos."
+                    },
+                    {
+                            "title": "Talentos Bônus",
+                            "text": "A cada nível de número par (2º, 4º, 6º, etc.), você recebe um talento bônus. Este talento deve ser selecionado da lista a seguir, e você deve atender qualquer pré-requisito para este talento. Ataque Acrobático, Trespassar, Reflexos de Combate, Esquiva, Ataque Duplo, Domínio de Armas Duplas I, Domínio de Armas Duplas II, Domínio de Armas Duplas III, Trespassar Maior, Investida Aprimorada, Desarme Aprimorado, Artes Marciais I, Artes Marciais II, Artes Marciais III, Defesa de Ataque Físico, Mobilidade, Saque Rápido, Ataque Poderoso, Investida Poderosa, Ataque Rápido, Ataque em Corrida, Foco em Perícia, Treinamento em Perícia, Forte na Força, Ataque Triplo, Triplo Crítico, Acuidade Mente, Foco em Arma (sabres de luz), Poder do Lado Sombrio, Adepto do Lado Sombrio."
+                    },
+                    {
+                            "title": "Explorações",
+                            "text": "Todos os Sith viajam pela galáxia para impor a vontade do Império e buscar poder. Eles assumem a responsabilidade de esmagar a oposição e eliminar a fraqueza, tanto em si mesmos quanto nos outros. Muitos Sith seguem o Lado Sombrio por pura ambição e desejo de poder. Eles caminham em um mundo maior do que aqueles que não sentem ou não consideram a Força."
+                    },
+                    {
+                            "title": "Créditos Iniciais",
+                            "text": "Um Sith de 1º nível começa o jogo com 3d4 × 100 créditos."
+                    }
             ]
     },
     "Ace Pilot": {
             "nome": "Piloto Ás",
-            "desc": "Classe de Prestígio.",
-            "hp": "1d8 por nível + CON.",
-            "forcePoints": "6 + metade do nível de personagem a cada nível nesta classe.",
-            "defenses": "Fortitude +2, Reflexos +4.",
+            "desc": "Classe de Prestígio. Requisitos: Nível 7+, Pilotar (Treinada), Vehicular Combat",
+            "hp": "1d8 + CON por nível.",
+            "forcePoints": "1 por nível de personagem.",
+            "defenses": "Bônus de Classe: Reflexos +2",
             "skills": "Não ganha perícias treinadas adicionais.",
             "feats": "Não ganha talentos iniciais.",
             "defenseBonuses": {
@@ -788,62 +821,62 @@ const CLASS_DATA = {
                     ],
                     [
                             "1º",
-                            "+0",
-                            "Bônus de Defesa, Aptidão"
+                            "+0.75",
+                            "Aptidão"
                     ],
                     [
                             "2º",
-                            "+1",
-                            "Esquiva Veicular +1"
+                            "+0.75",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "3º",
-                            "+2",
+                            "+0.75",
                             "Aptidão"
                     ],
                     [
                             "4º",
-                            "+3",
-                            "Esquiva Veicular +2"
+                            "+0.75",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "5º",
-                            "+3",
+                            "+0.75",
                             "Aptidão"
                     ],
                     [
                             "6º",
-                            "+4",
-                            "Esquiva Veicular +3"
+                            "+0.75",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "7º",
-                            "+5",
+                            "+0.75",
                             "Aptidão"
                     ],
                     [
                             "8º",
-                            "+6",
-                            "Esquiva Veicular +4"
+                            "+0.75",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "9º",
-                            "+6",
+                            "+0.75",
                             "Aptidão"
                     ],
                     [
                             "10º",
-                            "+7",
-                            "Esquiva Veicular +5"
+                            "+0.75",
+                            "Segredo da Força ou Outra"
                     ]
             ]
     },
     "Bounty Hunter": {
             "nome": "Caçador de Recompensas",
-            "desc": "Classe de Prestígio.",
-            "hp": "1d10 por nível + CON.",
-            "forcePoints": "6 + metade do nível de personagem a cada nível nesta classe.",
-            "defenses": "Fortitude +2, Reflexos +4.",
+            "desc": "Classe de Prestígio. Requisitos: Nível 7+, Sobrevivência (Treinada), 2 Awareness Talents",
+            "hp": "1d10 + CON por nível.",
+            "forcePoints": "1 por nível de personagem.",
+            "defenses": "Bônus de Classe: Reflexos +1, Fortitude +1, Vontade +1",
             "skills": "Não ganha perícias treinadas adicionais.",
             "feats": "Não ganha talentos iniciais.",
             "defenseBonuses": {
@@ -861,61 +894,61 @@ const CLASS_DATA = {
                     [
                             "1º",
                             "+1",
-                            "Bônus de Defesa, Aptidão"
+                            "Aptidão"
                     ],
                     [
                             "2º",
-                            "+2",
-                            "Inimigo Familiar +1"
+                            "+1",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "3º",
-                            "+3",
+                            "+1",
                             "Aptidão"
                     ],
                     [
                             "4º",
-                            "+4",
-                            "Inimigo Familiar +2"
+                            "+1",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "5º",
-                            "+5",
+                            "+1",
                             "Aptidão"
                     ],
                     [
                             "6º",
-                            "+6",
-                            "Inimigo Familiar +3"
+                            "+1",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "7º",
-                            "+7",
+                            "+1",
                             "Aptidão"
                     ],
                     [
                             "8º",
-                            "+8",
-                            "Inimigo Familiar +4"
+                            "+1",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "9º",
-                            "+9",
+                            "+1",
                             "Aptidão"
                     ],
                     [
                             "10º",
-                            "+10",
-                            "Inimigo Familiar +5"
+                            "+1",
+                            "Segredo da Força ou Outra"
                     ]
             ]
     },
     "Crime Lord": {
             "nome": "Senhor do Crime",
-            "desc": "Classe de Prestígio.",
-            "hp": "1d8 por nível + CON.",
-            "forcePoints": "6 + metade do nível de personagem a cada nível nesta classe.",
-            "defenses": "Reflexos +2, Vontade +4.",
+            "desc": "Classe de Prestígio. Requisitos: Nível 7+, Enganação e Persuasão (Treinadas), 1 Fortune/Lineage/Misfortune Talent",
+            "hp": "1d8 + CON por nível.",
+            "forcePoints": "1 por nível de personagem.",
+            "defenses": "Bônus de Classe: Vontade +2, Reflexos +1",
             "skills": "Não ganha perícias treinadas adicionais.",
             "feats": "Não ganha talentos iniciais.",
             "defenseBonuses": {
@@ -932,62 +965,62 @@ const CLASS_DATA = {
                     ],
                     [
                             "1º",
-                            "+0",
-                            "Bônus de Defesa, Aptidão"
+                            "+0.75",
+                            "Aptidão"
                     ],
                     [
                             "2º",
-                            "+1",
-                            "Cobertura de Comando +1, Aptidão"
+                            "+0.75",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "3º",
-                            "+2",
+                            "+0.75",
                             "Aptidão"
                     ],
                     [
                             "4º",
-                            "+3",
-                            "Cobertura de Comando +2, Aptidão"
+                            "+0.75",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "5º",
-                            "+3",
+                            "+0.75",
                             "Aptidão"
                     ],
                     [
                             "6º",
-                            "+4",
-                            "Cobertura de Comando +3, Aptidão"
+                            "+0.75",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "7º",
-                            "+5",
+                            "+0.75",
                             "Aptidão"
                     ],
                     [
                             "8º",
-                            "+6",
-                            "Cobertura de Comando +4, Aptidão"
+                            "+0.75",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "9º",
-                            "+6",
+                            "+0.75",
                             "Aptidão"
                     ],
                     [
                             "10º",
-                            "+7",
-                            "Cobertura de Comando +5, Aptidão"
+                            "+0.75",
+                            "Segredo da Força ou Outra"
                     ]
             ]
     },
     "Elite Trooper": {
             "nome": "Soldado de Elite",
-            "desc": "Classe de Prestígio.",
-            "hp": "1d12 por nível + CON.",
-            "forcePoints": "6 + metade do nível de personagem a cada nível nesta classe.",
-            "defenses": "Fortitude +4, Reflexos +2.",
+            "desc": "Classe de Prestígio. Requisitos: BBA +7, AP (Medium), Martial Arts I, Point-Blank Shot ou Flurry, 1 Armor/Commando/Mercenary/Weapon Talent",
+            "hp": "1d12 + CON por nível.",
+            "forcePoints": "1 por nível de personagem.",
+            "defenses": "Bônus de Classe: Fortitude +2, Reflexos +1",
             "skills": "Não ganha perícias treinadas adicionais.",
             "feats": "Não ganha talentos iniciais.",
             "defenseBonuses": {
@@ -1005,61 +1038,61 @@ const CLASS_DATA = {
                     [
                             "1º",
                             "+1",
-                            "Bônus de Defesa, Adiar Dano, Aptidão"
+                            "Aptidão"
                     ],
                     [
                             "2º",
-                            "+2",
-                            "Damage Reduction 1"
+                            "+1",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "3º",
-                            "+3",
+                            "+1",
                             "Aptidão"
                     ],
                     [
                             "4º",
-                            "+4",
-                            "Damage Reduction 2"
+                            "+1",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "5º",
-                            "+5",
+                            "+1",
                             "Aptidão"
                     ],
                     [
                             "6º",
-                            "+6",
-                            "Damage Reduction 3"
+                            "+1",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "7º",
-                            "+7",
+                            "+1",
                             "Aptidão"
                     ],
                     [
                             "8º",
-                            "+8",
-                            "Damage Reduction 4"
+                            "+1",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "9º",
-                            "+9",
+                            "+1",
                             "Aptidão"
                     ],
                     [
                             "10º",
-                            "+10",
-                            "Damage Reduction 5"
+                            "+1",
+                            "Segredo da Força ou Outra"
                     ]
             ]
     },
     "Force Adept": {
             "nome": "Adepto da Força",
-            "desc": "Classe de Prestígio.",
-            "hp": "1d8 por nível + CON.",
-            "forcePoints": "6 + metade do nível de personagem a cada nível nesta classe.",
-            "defenses": "Fortitude +2, Reflexos +2, Vontade +4.",
+            "desc": "Classe de Prestígio. Requisitos: Nível 7+, Use the Force (Treinada), Force Sensitivity, 3 Force Talents",
+            "hp": "1d8 + CON por nível.",
+            "forcePoints": "1 por nível de personagem.",
+            "defenses": "Bônus de Classe: Vontade +2, Fortitude +1",
             "skills": "Não ganha perícias treinadas adicionais.",
             "feats": "Não ganha talentos iniciais.",
             "defenseBonuses": {
@@ -1076,62 +1109,62 @@ const CLASS_DATA = {
                     ],
                     [
                             "1º",
-                            "+0",
-                            "Bônus de Defesa, Aptidão"
+                            "+0.75",
+                            "Aptidão"
                     ],
                     [
                             "2º",
-                            "+1",
-                            "Técnica da Força"
+                            "+0.75",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "3º",
-                            "+2",
+                            "+0.75",
                             "Aptidão"
                     ],
                     [
                             "4º",
-                            "+3",
-                            "Técnica da Força"
+                            "+0.75",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "5º",
-                            "+3",
+                            "+0.75",
                             "Aptidão"
                     ],
                     [
                             "6º",
-                            "+4",
-                            "Técnica da Força"
+                            "+0.75",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "7º",
-                            "+5",
+                            "+0.75",
                             "Aptidão"
                     ],
                     [
                             "8º",
-                            "+6",
-                            "Técnica da Força"
+                            "+0.75",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "9º",
-                            "+6",
+                            "+0.75",
                             "Aptidão"
                     ],
                     [
                             "10º",
-                            "+7",
-                            "Técnica da Força"
+                            "+0.75",
+                            "Segredo da Força ou Outra"
                     ]
             ]
     },
     "Force Disciple": {
             "nome": "Discípulo da Força",
-            "desc": "Classe de Prestígio.",
-            "hp": "1d8 por nível + CON.",
-            "forcePoints": "7 + metade do nível de personagem a cada nível nesta classe.",
-            "defenses": "Fortitude +3, Reflexos +3, Vontade +6.",
+            "desc": "Classe de Prestígio. Requisitos: Nível 12+, Use the Force (Treinada), Force Sensitivity, 2 Dark Side/Force Adept/Force Item Talents, Farseeing, 1 Force Technique",
+            "hp": "1d8 + CON por nível.",
+            "forcePoints": "1 por nível de personagem.",
+            "defenses": "Bônus de Classe: Vontade +2, Fortitude +1, Reflexos +1",
             "skills": "Não ganha perícias treinadas adicionais.",
             "feats": "Não ganha talentos iniciais.",
             "defenseBonuses": {
@@ -1148,37 +1181,62 @@ const CLASS_DATA = {
                     ],
                     [
                             "1º",
-                            "+0",
-                            "Bônus de Defesa, Indomável, Profeta, Aptidão"
+                            "+0.75",
+                            "Aptidão"
                     ],
                     [
                             "2º",
-                            "+1",
-                            "Segredo da Força, Profeta"
+                            "+0.75",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "3º",
-                            "+2",
-                            "Segredo da Força, Profeta, Aptidão"
+                            "+0.75",
+                            "Aptidão"
                     ],
                     [
                             "4º",
-                            "+3",
-                            "Segredo da Força, Profeta"
+                            "+0.75",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "5º",
-                            "+3",
-                            "Segredo da Força, Profeta, Aptidão"
+                            "+0.75",
+                            "Aptidão"
+                    ],
+                    [
+                            "6º",
+                            "+0.75",
+                            "Técnica da Força ou Outra"
+                    ],
+                    [
+                            "7º",
+                            "+0.75",
+                            "Aptidão"
+                    ],
+                    [
+                            "8º",
+                            "+0.75",
+                            "Técnica da Força ou Outra"
+                    ],
+                    [
+                            "9º",
+                            "+0.75",
+                            "Aptidão"
+                    ],
+                    [
+                            "10º",
+                            "+0.75",
+                            "Segredo da Força ou Outra"
                     ]
             ]
     },
     "Gunslinger": {
             "nome": "Pistoleiro",
-            "desc": "Classe de Prestígio.",
-            "hp": "1d8 por nível + CON.",
-            "forcePoints": "6 + metade do nível de personagem a cada nível nesta classe.",
-            "defenses": "Reflexos +4, Vontade +2.",
+            "desc": "Classe de Prestígio. Requisitos: Nível 7+, Point-Blank Shot, Precise Shot, Quick Draw, WP (Pistols)",
+            "hp": "1d8 + CON por nível.",
+            "forcePoints": "1 por nível de personagem.",
+            "defenses": "Bônus de Classe: Reflexos +2, Vontade +1",
             "skills": "Não ganha perícias treinadas adicionais.",
             "feats": "Não ganha talentos iniciais.",
             "defenseBonuses": {
@@ -1196,61 +1254,61 @@ const CLASS_DATA = {
                     [
                             "1º",
                             "+1",
-                            "Bônus de Defesa, Aptidão"
+                            "Aptidão"
                     ],
                     [
                             "2º",
-                            "+2",
-                            "Arma de Confiança +1"
+                            "+1",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "3º",
-                            "+3",
+                            "+1",
                             "Aptidão"
                     ],
                     [
                             "4º",
-                            "+4",
-                            "Arma de Confiança +2"
+                            "+1",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "5º",
-                            "+5",
+                            "+1",
                             "Aptidão"
                     ],
                     [
                             "6º",
-                            "+6",
-                            "Arma de Confiança +3"
+                            "+1",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "7º",
-                            "+7",
+                            "+1",
                             "Aptidão"
                     ],
                     [
                             "8º",
-                            "+8",
-                            "Arma de Confiança +4"
+                            "+1",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "9º",
-                            "+9",
+                            "+1",
                             "Aptidão"
                     ],
                     [
                             "10º",
-                            "+10",
-                            "Arma de Confiança +5"
+                            "+1",
+                            "Segredo da Força ou Outra"
                     ]
             ]
     },
     "Jedi Knight": {
             "nome": "Cavaleiro Jedi",
-            "desc": "Classe de Prestígio.",
-            "hp": "1d10 por nível + CON.",
-            "forcePoints": "6 + metade do nível de personagem a cada nível nesta classe.",
-            "defenses": "Fortitude +2, Reflexos +2, Vontade +2.",
+            "desc": "Classe de Prestígio. Requisitos: BBA +7, Use the Force (Treinada), Force Sensitivity, WP (Lightsabers), Membro dos Jedi",
+            "hp": "1d10 + CON por nível.",
+            "forcePoints": "1 por nível de personagem.",
+            "defenses": "Bônus de Classe: Reflexos +1, Fortitude +1, Vontade +1",
             "skills": "Não ganha perícias treinadas adicionais.",
             "feats": "Não ganha talentos iniciais.",
             "defenseBonuses": {
@@ -1268,61 +1326,61 @@ const CLASS_DATA = {
                     [
                             "1º",
                             "+1",
-                            "Bônus de Defesa, Aptidão"
+                            "Aptidão"
                     ],
                     [
                             "2º",
-                            "+2",
-                            "Técnica da Força"
+                            "+1",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "3º",
-                            "+3",
+                            "+1",
                             "Aptidão"
                     ],
                     [
                             "4º",
-                            "+4",
-                            "Técnica da Força"
+                            "+1",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "5º",
-                            "+5",
+                            "+1",
                             "Aptidão"
                     ],
                     [
                             "6º",
-                            "+6",
-                            "Técnica da Força"
+                            "+1",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "7º",
-                            "+7",
+                            "+1",
                             "Aptidão"
                     ],
                     [
                             "8º",
-                            "+8",
-                            "Técnica da Força"
+                            "+1",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "9º",
-                            "+9",
+                            "+1",
                             "Aptidão"
                     ],
                     [
                             "10º",
-                            "+10",
-                            "Técnica da Força"
+                            "+1",
+                            "Segredo da Força ou Outra"
                     ]
             ]
     },
     "Jedi Master": {
             "nome": "Mestre Jedi",
-            "desc": "Classe de Prestígio.",
-            "hp": "1d10 por nível + CON.",
-            "forcePoints": "7 + metade do nível de personagem a cada nível nesta classe.",
-            "defenses": "Fortitude +3, Reflexos +3, Vontade +3.",
+            "desc": "Classe de Prestígio. Requisitos: Nível 12+, Use the Force (Treinada), Force Sensitivity, WP (Lightsabers), 1 Force Technique, Membro dos Jedi",
+            "hp": "1d10 + CON por nível.",
+            "forcePoints": "1 por nível de personagem.",
+            "defenses": "Bônus de Classe: Vontade +2, Reflexos +1, Fortitude +1",
             "skills": "Não ganha perícias treinadas adicionais.",
             "feats": "Não ganha talentos iniciais.",
             "defenseBonuses": {
@@ -1339,37 +1397,62 @@ const CLASS_DATA = {
                     ],
                     [
                             "1º",
-                            "+1",
-                            "Bônus de Defesa, Destemido, Serenidade, Aptidão"
+                            "+0.75",
+                            "Aptidão"
                     ],
                     [
                             "2º",
-                            "+2",
-                            "Segredo da Força"
+                            "+0.75",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "3º",
-                            "+3",
-                            "Segredo da Força, Aptidão"
+                            "+0.75",
+                            "Aptidão"
                     ],
                     [
                             "4º",
-                            "+4",
-                            "Segredo da Força"
+                            "+0.75",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "5º",
-                            "+5",
-                            "Segredo da Força, Aptidão"
+                            "+0.75",
+                            "Aptidão"
+                    ],
+                    [
+                            "6º",
+                            "+0.75",
+                            "Técnica da Força ou Outra"
+                    ],
+                    [
+                            "7º",
+                            "+0.75",
+                            "Aptidão"
+                    ],
+                    [
+                            "8º",
+                            "+0.75",
+                            "Técnica da Força ou Outra"
+                    ],
+                    [
+                            "9º",
+                            "+0.75",
+                            "Aptidão"
+                    ],
+                    [
+                            "10º",
+                            "+0.75",
+                            "Segredo da Força ou Outra"
                     ]
             ]
     },
     "Officer": {
             "nome": "Oficial",
-            "desc": "Classe de Prestígio.",
-            "hp": "1d8 por nível + CON.",
-            "forcePoints": "6 + metade do nível de personagem a cada nível nesta classe.",
-            "defenses": "Reflexos +2, Vontade +4.",
+            "desc": "Classe de Prestígio. Requisitos: Nível 7+, Conhecimento (Táticas) (Treinada), 1 Leadership/Commando/Veteran Talent, Organização Militar",
+            "hp": "1d8 + CON por nível.",
+            "forcePoints": "1 por nível de personagem.",
+            "defenses": "Bônus de Classe: Vontade +2, Reflexos +1",
             "skills": "Não ganha perícias treinadas adicionais.",
             "feats": "Não ganha talentos iniciais.",
             "defenseBonuses": {
@@ -1386,53 +1469,53 @@ const CLASS_DATA = {
                     ],
                     [
                             "1º",
-                            "+1",
-                            "Bônus de Defesa, Aptidão"
+                            "+0.75",
+                            "Aptidão"
                     ],
                     [
                             "2º",
-                            "+2",
-                            "Cobertura de Comando +1, Compartilhar Aptidão"
+                            "+0.75",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "3º",
-                            "+3",
+                            "+0.75",
                             "Aptidão"
                     ],
                     [
                             "4º",
-                            "+4",
-                            "Cobertura de Comando +2, Compartilhar Aptidão"
+                            "+0.75",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "5º",
-                            "+5",
+                            "+0.75",
                             "Aptidão"
                     ],
                     [
                             "6º",
-                            "+6",
-                            "Cobertura de Comando +3, Compartilhar Aptidão"
+                            "+0.75",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "7º",
-                            "+7",
+                            "+0.75",
                             "Aptidão"
                     ],
                     [
                             "8º",
-                            "+8",
-                            "Cobertura de Comando +4, Compartilhar Aptidão"
+                            "+0.75",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "9º",
-                            "+9",
+                            "+0.75",
                             "Aptidão"
                     ],
                     [
                             "10º",
-                            "+10",
-                            "Cobertura de Comando +5, Compartilhar Aptidão"
+                            "+0.75",
+                            "Segredo da Força ou Outra"
                     ]
             ]
     },
@@ -1557,10 +1640,10 @@ const CLASS_DATA = {
     },
     "Assassin": {
             "nome": "Assassino",
-            "desc": "Classe de Prestígio.",
-            "hp": "1d10 por nível + CON.",
-            "forcePoints": "6 + metade do nível de personagem a cada nível nesta classe.",
-            "defenses": "Fortitude +2, Reflexos +4.",
+            "desc": "Classe de Prestígio. Requisitos: Nível 7+, Furtividade (Treinada), Sniper, Dastardly Strike",
+            "hp": "1d8 + CON por nível.",
+            "forcePoints": "1 por nível de personagem.",
+            "defenses": "Bônus de Classe: Reflexos +2",
             "skills": "Não ganha perícias treinadas adicionais.",
             "feats": "Não ganha talentos iniciais.",
             "defenseBonuses": {
@@ -1578,52 +1661,52 @@ const CLASS_DATA = {
                     [
                             "1º",
                             "+1",
-                            "Bônus de Defesa, Aptidão"
+                            "Aptidão"
                     ],
                     [
                             "2º",
-                            "+2",
-                            "Marca +1"
+                            "+1",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "3º",
-                            "+3",
+                            "+1",
                             "Aptidão"
                     ],
                     [
                             "4º",
-                            "+4",
-                            "Marca +2"
+                            "+1",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "5º",
-                            "+5",
+                            "+1",
                             "Aptidão"
                     ],
                     [
                             "6º",
-                            "+6",
-                            "Marca +3"
+                            "+1",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "7º",
-                            "+7",
+                            "+1",
                             "Aptidão"
                     ],
                     [
                             "8º",
-                            "+8",
-                            "Marca +4"
+                            "+1",
+                            "Técnica da Força ou Outra"
                     ],
                     [
                             "9º",
-                            "+9",
+                            "+1",
                             "Aptidão"
                     ],
                     [
                             "10º",
-                            "+10",
-                            "Marca +5"
+                            "+1",
+                            "Segredo da Força ou Outra"
                     ]
             ]
     },
@@ -1701,10 +1784,10 @@ const CLASS_DATA = {
     },
     "Corporate Agent": {
             "nome": "Agente Corporativo",
-            "desc": "Classe de Prestígio (Knights of the Old Republic Campaign Guide). Agentes corporativos cuidam dos interesses de grandes corporações interestelares, podendo se especializar em segurança, fraude, exploração, administração ou espionagem corporativa.",
-            "hp": "1d8 por nível + CON.",
-            "forcePoints": "6 + metade do nível de personagem a cada nível nesta classe.",
-            "defenses": "Reflexos +2, Vontade +4.",
+            "desc": "Classe de Prestígio (Knights of the Old Republic Campaign Guide). Agentes corporativos cuidam dos interesses de grandes corporações interestelares, podendo se especializar em segurança, fraude, exploração, administração ou espionagem corporativa. Requisitos: Nível 7+, Obter Informação e Conhecimento (Burocracia) (Treinadas), Foco em Perícia (Conhecimento (Burocracia)), Empregado por corporação interestelar.",
+            "hp": "1d8 + CON por nível.",
+            "forcePoints": "6 + metade do nível do personagem por nível de classe.",
+            "defenses": "Bônus de Classe: Reflexos +2, Vontade +4.",
             "skills": "Não ganha perícias treinadas adicionais.",
             "feats": "Não ganha talentos iniciais.",
             "defenseBonuses": {
@@ -1722,7 +1805,7 @@ const CLASS_DATA = {
                     [
                             "1º",
                             "+0",
-                            "Bônus de Defesa, Aptidão"
+                            "Bônus de Defesa, Talento"
                     ],
                     [
                             "2º",
@@ -1732,7 +1815,7 @@ const CLASS_DATA = {
                     [
                             "3º",
                             "+2",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "4º",
@@ -1742,7 +1825,7 @@ const CLASS_DATA = {
                     [
                             "5º",
                             "+3",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "6º",
@@ -1752,7 +1835,7 @@ const CLASS_DATA = {
                     [
                             "7º",
                             "+5",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "8º",
@@ -1762,7 +1845,7 @@ const CLASS_DATA = {
                     [
                             "9º",
                             "+6",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "10º",
@@ -1773,10 +1856,10 @@ const CLASS_DATA = {
     },
     "Gladiator": {
             "nome": "Gladiador",
-            "desc": "Classe de Prestígio (Knights of the Old Republic Campaign Guide). Gladiadores são combatentes de arena extremamente perigosos, vindos de diversos backgrounds — ex-soldados, caçadores de emoções ou prisioneiros forçados a lutar.",
-            "hp": "1d10 por nível + CON.",
-            "forcePoints": "6 + metade do nível de personagem a cada nível nesta classe.",
-            "defenses": "Fortitude +2, Reflexos +4.",
+            "desc": "Classe de Prestígio (Knights of the Old Republic Campaign Guide). Gladiadores são combatentes de arena extremamente perigosos, vindos de diversos backgrounds — ex-soldados, caçadores de emoções ou prisioneiros forçados a lutar. Requisitos: Nível 7+, BBA +7, Improved Damage Threshold, Proficiência com Armas Corpo a Corpo Avançadas.",
+            "hp": "1d10 + CON por nível.",
+            "forcePoints": "6 + metade do nível do personagem por nível de classe.",
+            "defenses": "Bônus de Classe: Reflexos +4, Fortitude +2.",
             "skills": "Não ganha perícias treinadas adicionais.",
             "feats": "Não ganha talentos iniciais.",
             "defenseBonuses": {
@@ -1794,7 +1877,7 @@ const CLASS_DATA = {
                     [
                             "1º",
                             "+1",
-                            "Bônus de Defesa, Aptidão"
+                            "Bônus de Defesa, Talento"
                     ],
                     [
                             "2º",
@@ -1804,7 +1887,7 @@ const CLASS_DATA = {
                     [
                             "3º",
                             "+3",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "4º",
@@ -1814,7 +1897,7 @@ const CLASS_DATA = {
                     [
                             "5º",
                             "+5",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "6º",
@@ -1824,7 +1907,7 @@ const CLASS_DATA = {
                     [
                             "7º",
                             "+7",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "8º",
@@ -1834,7 +1917,7 @@ const CLASS_DATA = {
                     [
                             "9º",
                             "+9",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "10º",
@@ -1845,10 +1928,10 @@ const CLASS_DATA = {
     },
     "Melee Duelist": {
             "nome": "Duelista de Melee",
-            "desc": "Classe de Prestígio (Knights of the Old Republic Campaign Guide). Especialistas em combate singular, os Duelistas de Melee dominam manobras, fintas e truques com armas corpo a corpo. Jedi e Sith também podem se tornar Duelistas para aprimorar seu combate com sabres de luz.",
-            "hp": "1d8 por nível + CON.",
-            "forcePoints": "6 + metade do nível de personagem a cada nível nesta classe.",
-            "defenses": "Reflexos +4, Vontade +2.",
+            "desc": "Classe de Prestígio (Knights of the Old Republic Campaign Guide). Especialistas em combate singular, os Duelistas de Melee dominam manobras, fintas e truques com armas corpo a corpo. Jedi e Sith também podem se tornar Duelistas para aprimorar seu combate com sabres de luz. Requisitos: Nível 7+, BBA +7, Melee Defense, Rapid Strike, Weapon Focus (Arma Corpo a Corpo).",
+            "hp": "1d8 + CON por nível.",
+            "forcePoints": "6 + metade do nível do personagem por nível de classe.",
+            "defenses": "Bônus de Classe: Reflexos +4, Vontade +2.",
             "skills": "Não ganha perícias treinadas adicionais.",
             "feats": "Não ganha talentos iniciais.",
             "defenseBonuses": {
@@ -1866,7 +1949,7 @@ const CLASS_DATA = {
                     [
                             "1º",
                             "+1",
-                            "Bônus de Defesa, Aptidão"
+                            "Bônus de Defesa, Talento"
                     ],
                     [
                             "2º",
@@ -1876,7 +1959,7 @@ const CLASS_DATA = {
                     [
                             "3º",
                             "+3",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "4º",
@@ -1886,7 +1969,7 @@ const CLASS_DATA = {
                     [
                             "5º",
                             "+5",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "6º",
@@ -1896,7 +1979,7 @@ const CLASS_DATA = {
                     [
                             "7º",
                             "+7",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "8º",
@@ -1906,7 +1989,7 @@ const CLASS_DATA = {
                     [
                             "9º",
                             "+9",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "10º",
@@ -1917,10 +2000,10 @@ const CLASS_DATA = {
     },
     "Enforcer": {
             "nome": "Executor",
-            "desc": "Classe de Prestígio (Force Unleashed Campaign Guide). Executores são oficiais de elite da lei — investigadores habilidosos, patrulheiros experientes e líderes dentro de suas organizações. Podem ser honestos defensores da paz ou corruptos em busca de poder pessoal.",
-            "hp": "1d8 por nível + CON.",
-            "forcePoints": "6 + metade do nível de personagem a cada nível nesta classe.",
-            "defenses": "Reflexos +4, Vontade +4.",
+            "desc": "Classe de Prestígio (Force Unleashed Campaign Guide). Executores são oficiais de elite da lei — investigadores habilidosos, patrulheiros experientes e líderes dentro de suas organizações. Podem ser honestos defensores da paz ou corruptos em busca de poder pessoal. Requisitos: Nível 7+, Obter Informação e Percepção (Treinadas), 1 Talento da Árvore de Sobrevivente, Membro de organização de segurança.",
+            "hp": "1d8 + CON por nível.",
+            "forcePoints": "6 + metade do nível do personagem por nível de classe.",
+            "defenses": "Bônus de Classe: Reflexos +4, Vontade +2.",
             "skills": "Não ganha perícias treinadas adicionais.",
             "feats": "Não ganha talentos iniciais.",
             "defenseBonuses": {
@@ -1938,7 +2021,7 @@ const CLASS_DATA = {
                     [
                             "1º",
                             "+0",
-                            "Bônus de Defesa, Recursos, Aptidão"
+                            "Bônus de Defesa, Recursos, Talento"
                     ],
                     [
                             "2º",
@@ -1948,7 +2031,7 @@ const CLASS_DATA = {
                     [
                             "3º",
                             "+2",
-                            "Recursos, Aptidão"
+                            "Recursos, Talento"
                     ],
                     [
                             "4º",
@@ -1958,7 +2041,7 @@ const CLASS_DATA = {
                     [
                             "5º",
                             "+3",
-                            "Recursos, Aptidão"
+                            "Recursos, Talento"
                     ],
                     [
                             "6º",
@@ -1968,7 +2051,7 @@ const CLASS_DATA = {
                     [
                             "7º",
                             "+5",
-                            "Recursos, Aptidão"
+                            "Recursos, Talento"
                     ],
                     [
                             "8º",
@@ -1978,7 +2061,7 @@ const CLASS_DATA = {
                     [
                             "9º",
                             "+6",
-                            "Recursos, Aptidão"
+                            "Recursos, Talento"
                     ],
                     [
                             "10º",
@@ -1989,10 +2072,10 @@ const CLASS_DATA = {
     },
     "Independent Droid": {
             "nome": "Droide Independente",
-            "desc": "Classe de Prestígio (Force Unleashed Campaign Guide). Droides altamente independentes e autossuficientes que passaram por um evento que quebrou sua programação — ordens conflitantes, processador com defeito ou ação deliberada. Rejeitam a noção de pertencer a alguém e expressam forte individualidade.",
-            "hp": "1d12 por nível.",
-            "forcePoints": "6 + metade do nível de personagem a cada nível nesta classe.",
-            "defenses": "Reflexos +2, Vontade +4.",
+            "desc": "Classe de Prestígio (Force Unleashed Campaign Guide). Droides altamente independentes e autossuficientes que passaram por um evento que quebrou sua programação — ordens conflitantes, processador com defeito ou ação deliberada. Rejeitam a noção de pertencer a alguém e expressam forte individualidade. Requisitos: Nível 3+, Usar Computador (Treinada), Processador Heurístico, Deve ser um Droide.",
+            "hp": "1d12 por nível (sem modificador de CON).",
+            "forcePoints": "6 + metade do nível do personagem por nível de classe.",
+            "defenses": "Bônus de Classe: Reflexos +2, Vontade +4.",
             "skills": "Não ganha perícias treinadas adicionais.",
             "feats": "Não ganha talentos iniciais.",
             "defenseBonuses": {
@@ -2010,7 +2093,7 @@ const CLASS_DATA = {
                     [
                             "1º",
                             "+0",
-                            "Bônus de Defesa, Sapiência, Aptidão"
+                            "Bônus de Defesa, Sapiência, Talento"
                     ],
                     [
                             "2º",
@@ -2020,7 +2103,7 @@ const CLASS_DATA = {
                     [
                             "3º",
                             "+2",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "4º",
@@ -2030,7 +2113,7 @@ const CLASS_DATA = {
                     [
                             "5º",
                             "+3",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "6º",
@@ -2040,7 +2123,7 @@ const CLASS_DATA = {
                     [
                             "7º",
                             "+5",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "8º",
@@ -2050,7 +2133,7 @@ const CLASS_DATA = {
                     [
                             "9º",
                             "+6",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "10º",
@@ -2061,10 +2144,10 @@ const CLASS_DATA = {
     },
     "Infiltrator": {
             "nome": "Infiltrador",
-            "desc": "Classe de Prestígio (Force Unleashed Campaign Guide). Infiltradores são espiões, agentes secretos e operativos de forças especiais que se especializam em penetrar secretamente fortalezas ou organizações inimigas. Operam individualmente ou em pequenos grupos, com ênfase em furtividade e combate discreto.",
-            "hp": "1d8 por nível + CON.",
-            "forcePoints": "6 + metade do nível de personagem a cada nível nesta classe.",
-            "defenses": "Reflexos +4, Vontade +2.",
+            "desc": "Classe de Prestígio (Force Unleashed Campaign Guide). Infiltradores são espiões, agentes secretos e operativos de forças especiais que se especializam em penetrar secretamente fortalezas ou organizações inimigas. Operam individualmente ou em pequenos grupos, com ênfase em furtividade e combate discreto. Requisitos: Nível 7+, Percepção e Furtividade (Treinadas), Foco em Perícia (Furtividade), 2 Talentos da Árvore de Camuflagem ou Espião.",
+            "hp": "1d8 + CON por nível.",
+            "forcePoints": "6 + metade do nível do personagem por nível de classe.",
+            "defenses": "Bônus de Classe: Reflexos +4, Vontade +2.",
             "skills": "Não ganha perícias treinadas adicionais.",
             "feats": "Não ganha talentos iniciais.",
             "defenseBonuses": {
@@ -2082,17 +2165,17 @@ const CLASS_DATA = {
                     [
                             "1º",
                             "+0",
-                            "Bônus de Defesa, Aptidão"
+                            "Bônus de Defesa, Talento"
                     ],
                     [
                             "2º",
                             "+1",
-                            "Atordoamento Desarmado (+1 dado)"
+                            "Atordoamento Desarmado (+1d)"
                     ],
                     [
                             "3º",
                             "+2",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "4º",
@@ -2102,17 +2185,17 @@ const CLASS_DATA = {
                     [
                             "5º",
                             "+3",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "6º",
                             "+4",
-                            "Atordoamento Desarmado (+2 dados)"
+                            "Atordoamento Desarmado (+2d)"
                     ],
                     [
                             "7º",
                             "+5",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "8º",
@@ -2122,21 +2205,21 @@ const CLASS_DATA = {
                     [
                             "9º",
                             "+6",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "10º",
                             "+7",
-                            "Atordoamento Desarmado (+3 dados)"
+                            "Atordoamento Desarmado (+3d)"
                     ]
             ]
     },
     "Master Privateer": {
             "nome": "Corsário Mestre",
-            "desc": "Classe de Prestígio (Force Unleashed Campaign Guide). Corsários Mestres são especialistas na arte de parar e apreender naves. São pilotos habilidosos, combatentes capazes e negociadores astutos que operam sob cartas de corso de governos ou corporações. A linha entre piratas e corsários é frequentemente borrada.",
-            "hp": "1d10 por nível + CON.",
-            "forcePoints": "6 + metade do nível de personagem a cada nível nesta classe.",
-            "defenses": "Reflexos +2, Vontade +4.",
+            "desc": "Classe de Prestígio (Force Unleashed Campaign Guide). Corsários Mestres são especialistas na arte de parar e apreender naves. São pilotos habilidosos, combatentes capazes e negociadores astutos que operam sob cartas de corso de governos ou corporações. A linha entre piratas e corsários é frequentemente borrada. Requisitos: Nível 7+, Enganação e Pilotar (Treinadas), Vehicular Combat, 2 Talentos da Árvore de Infortúnio, Contrabando ou Espacial.",
+            "hp": "1d10 + CON por nível.",
+            "forcePoints": "6 + metade do nível do personagem por nível de classe.",
+            "defenses": "Bônus de Classe: Vontade +4, Reflexos +2.",
             "skills": "Não ganha perícias treinadas adicionais.",
             "feats": "Não ganha talentos iniciais.",
             "defenseBonuses": {
@@ -2154,7 +2237,7 @@ const CLASS_DATA = {
                     [
                             "1º",
                             "+1",
-                            "Bônus de Defesa, Tentação da Pirataria, Aptidão"
+                            "Bônus de Defesa, Tentação da Pirataria, Talento"
                     ],
                     [
                             "2º",
@@ -2164,7 +2247,7 @@ const CLASS_DATA = {
                     [
                             "3º",
                             "+3",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "4º",
@@ -2174,7 +2257,7 @@ const CLASS_DATA = {
                     [
                             "5º",
                             "+5",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "6º",
@@ -2184,7 +2267,7 @@ const CLASS_DATA = {
                     [
                             "7º",
                             "+7",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "8º",
@@ -2194,7 +2277,7 @@ const CLASS_DATA = {
                     [
                             "9º",
                             "+9",
-                            "Aptidão"
+                            "Talento"
                     ],
                     [
                             "10º",
