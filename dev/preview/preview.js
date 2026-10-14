@@ -75,6 +75,7 @@ function loadSampleSheets() {
     kael.skills.conhecimentoTradicaoGalactica = { treinada: true, bonus: 1 };
     kael.customNotes = [{ title: 'Missão em Taris', text: 'Encontrar o contato no cantina do setor inferior.' }];
     delete kael.inventory; // Exercita a importação das listas de armas/equipamentos da ficha antiga.
+    delete kael.attacks; // Exercita a separação dos ataques que antes eram calculados nas armas.
 
     const mestre = createEmptySheet(1002);
     Object.assign(mestre, { owner: 'mestre', firebaseId: 'exemplo-mestre', name: 'Darth Malgus', classes: [{ name: 'Sith', level: 10 }], level: 10 });
@@ -100,7 +101,7 @@ function applyPreviewState(state) {
     userBar.style.display = 'flex';
     document.getElementById('userEmail').textContent = window._currentUser.email;
 
-    if (['pericias', 'notas', 'lore'].includes(state)) switchSheetTab(activeSheetId, state);
+    if (['pericias', 'equipamentos', 'notas', 'lore'].includes(state)) switchSheetTab(activeSheetId, state);
     if (state === 'conhecimentos') {
         switchSheetTab(activeSheetId, 'pericias');
         toggleKnowledgeGroup(activeSheetId);
@@ -119,8 +120,8 @@ function applyPreviewState(state) {
         openSpeciesReference();
         openSpeciesIconEditor('wookiee');
         // Carrega uma imagem de teste no editor, como se tivesse sido escolhida
-        fetch('dev/icones-especies/fontes/wookiee.jpg')
+        fetch('img/especies/wookiee.png')
             .then(response => response.blob())
-            .then(blob => loadSpeciesIconImage(new File([blob], 'wookiee.jpg', { type: blob.type })));
+            .then(blob => loadSpeciesIconImage(new File([blob], 'wookiee.png', { type: blob.type })));
     }
 }

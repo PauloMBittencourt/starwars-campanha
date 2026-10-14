@@ -145,14 +145,18 @@ function getFirstHeroicClassIndex(sheet) {
 }
 
 // Talentos que a ficha ganha sem escolher (talentos iniciais da primeira classe heroica)
-function getAutomaticChoices(sheet) {
+function getAutomaticChoices(sheet, includeRemoved = false) {
     const index = getFirstHeroicClassIndex(sheet);
     if (index < 0) return [];
     const classObj = sheet.classes[index];
     return getClassProgression(classObj.name).talentosIniciais.map(item => ({
         tipo: 'talento', nome: item.nome, ...(item.detalhe ? { detalhe: item.detalhe } : {}),
         fonte: `${classObj.name} · inicial`,
-    }));
+    })).filter(entry => includeRemoved || !(sheet.excludedAutomaticChoices || []).includes(automaticChoiceKey(entry)));
+}
+
+function automaticChoiceKey(entry) {
+    return JSON.stringify([entry.fonte, entry.nome, entry.detalhe || '']);
 }
 
 function prestigeSlotTypes(rule, level) {
@@ -553,12 +557,14 @@ function renderForcePowersCard(sheet) {
             <div id="forcePowers-${sheet.id}" class="choice-list">
                 ${powers.length ? powers.map((value, index) => {
                     const name = findForcePowerName(value);
+                    const aptitude = name && LIBRARY_ITEM_DETAILS[name]?.kind === 'aptitude';
                     return `<div class="choice-row ${name ? '' : 'legacy'}">
                         ${name ? renderChoiceIcon(name, 'poder') : ''}
-                        <span class="choice-name"><button type="button" title="Ver ou trocar" onclick="openForcePowerPicker(${sheet.id}, ${index})">${escapeHtml(name || value || 'Poder a escolher')}</button>
+                        <span class="choice-name">${aptitude ? renderLibraryChoiceName({ nome: name, tipo: 'poder' }) : `<button type="button" title="Ver ou trocar" onclick="openForcePowerPicker(${sheet.id}, ${index})">${escapeHtml(name || value || 'Poder a escolher')}</button>`}
+                            ${aptitude ? '<small>Aptidão · escolha antiga preservada</small>' : ''}
                             ${name ? '' : '<small>Da ficha antiga · escolher na Biblioteca</small>'}
                         </span>
-                        <button class="icon-btn btn-remove" title="Remover poder" onclick="removeDynamicItem(${sheet.id}, 'forcePowers', ${index})">×</button>
+                        <button type="button" class="icon-btn btn-remove" title="Remover poder" aria-label="Remover poder ${escapeHtml(name || value)}" onclick="removeDynamicItem(${sheet.id}, 'forcePowers', ${index})">×</button>
                     </div>`;
                 }).join('') : '<div class="list-empty">Nenhum poder ainda.</div>'}
             </div>
@@ -592,6 +598,7 @@ function renderChoiceCard(sheet, tipo) {
                 ${renderChoiceIcon(entry.nome, entry.tipo)}
                 ${renderLibraryChoiceName(entry)}
                 <span class="choice-source auto">${escapeHtml(entry.fonte)}</span>
+                <button type="button" class="icon-btn btn-remove" title="Remover talento" aria-label="Remover talento ${escapeHtml(choiceLabel(entry))}" data-choice-key="${escapeHtml(automaticChoiceKey(entry))}" onclick="removeAutomaticChoice(${sheet.id}, this.dataset.choiceKey)">×</button>
             </div>
         `);
     });
@@ -609,7 +616,7 @@ function renderChoiceCard(sheet, tipo) {
                     ${renderChoiceIcon(entry.nome, entry.tipo)}
                     <span class="choice-name"><button type="button" title="Ver ou trocar" onclick="openChoicePicker(${sheet.id}, ${slotArg})">${escapeHtml(choiceLabel(entry))}</button></span>
                     <span class="choice-source">${escapeHtml(slot.fonte)}</span>
-                    <button class="icon-btn btn-remove" title="Desfazer escolha" onclick="removeChoice(${sheet.id}, ${slotArg})">×</button>
+                    <button type="button" class="icon-btn btn-remove" title="Remover escolha" aria-label="Remover ${escapeHtml(choiceLabel(entry))}" onclick="removeChoice(${sheet.id}, ${slotArg})">×</button>
                 </div>
             `);
             return;
@@ -627,7 +634,7 @@ function renderChoiceCard(sheet, tipo) {
         `);
     });
 
-    entries.filter(entry => entry.tipo === tipo && !slotKeys.has(entry.vaga)).forEach(entry => {
+    entries.filter(entry => cardTypes.includes(entry.tipo) && !slotKeys.has(entry.vaga)).forEach(entry => {
         const isExtra = entry.vaga.startsWith('extra:');
         const slotArg = escapeHtml(JSON.stringify(entry.vaga));
         rows.push(`
@@ -637,7 +644,7 @@ function renderChoiceCard(sheet, tipo) {
                 ${isExtra
                     ? `<span class="choice-source extra">Extra · ${escapeHtml(entry.motivo || 'sem motivo')}</span>`
                     : '<span class="choice-source warn" title="O nível ou a classe que dava esta vaga mudou">Sem vaga</span>'}
-                <button class="icon-btn btn-remove" title="Remover" onclick="removeChoice(${sheet.id}, ${slotArg})">×</button>
+                <button type="button" class="icon-btn btn-remove" title="Remover escolha" aria-label="Remover ${escapeHtml(choiceLabel(entry))}" onclick="removeChoice(${sheet.id}, ${slotArg})">×</button>
             </div>
         `);
     });
@@ -648,18 +655,19 @@ function renderChoiceCard(sheet, tipo) {
             <div class="choice-row legacy">
                 <span class="choice-name">${escapeHtml(legacy.texto)}<small>Da ficha antiga · não encontrado na Biblioteca</small></span>
                 <button class="btn btn-small" onclick="openExtraPicker(${sheet.id}, '${tipo}', ${index})">Escolher na lista</button>
-                <button class="icon-btn btn-remove" title="Remover" onclick="removeLegacyChoice(${sheet.id}, ${index})">×</button>
+                <button type="button" class="icon-btn btn-remove" title="Remover escolha" aria-label="Remover ${escapeHtml(legacy.texto)}" onclick="removeLegacyChoice(${sheet.id}, ${index})">×</button>
             </div>
         `);
     });
 
     return `
-        <div class="card">
+        <div class="card" data-choice-type="${tipo}">
             <div class="card-header">
                 <h3 class="card-title">${labels.plural}</h3>
                 <span class="card-count">${rows.length - pending}</span>
                 ${pending ? `<span class="choice-pending-count" title="Vagas de nível sem escolha">${pending} a escolher</span>` : ''}
                 <button class="btn-add" onclick="openExtraPicker(${sheet.id}, '${tipo}')">+ Extra</button>
+                ${tipo === 'talento' && getAutomaticChoices(sheet, true).some(entry => (sheet.excludedAutomaticChoices || []).includes(automaticChoiceKey(entry))) ? `<button type="button" class="btn btn-small" onclick="restoreAutomaticChoices(${sheet.id})">Restaurar talentos iniciais</button>` : ''}
             </div>
             <div class="choice-list">
                 ${rows.length ? rows.join('') : `<div class="list-empty">Nenhum${tipo === 'aptidao' ? 'a aptidão' : ' talento'} ainda.</div>`}
@@ -677,10 +685,11 @@ function removeChoice(sheetId, slotKey) {
         sheet.escolhas = sheet.escolhas.filter(e => e.vaga !== slotKey);
         syncChoiceNameLists(sheet);
         renderSheets();
+        document.querySelector(`#sheet-${sheet.id} [data-choice-type="${entry.tipo === 'talento' ? 'talento' : 'aptidao'}"] .btn-add`)?.focus();
         scheduleSave(sheet.id);
     };
     if (typeof showConfirmModal === 'function') {
-        showConfirmModal(`Desfazer a escolha de <strong>${escapeHtml(choiceLabel(entry))}</strong>?`, apply, 'Desfazer');
+        showConfirmModal(`Remover a escolha de <strong>${escapeHtml(choiceLabel(entry))}</strong> da ficha?`, apply, 'Remover');
     } else {
         apply();
     }
@@ -689,7 +698,35 @@ function removeChoice(sheetId, slotKey) {
 function removeLegacyChoice(sheetId, index) {
     const sheet = findSheet(sheetId);
     if (!sheet?.outrosTalentos?.[index]) return;
-    sheet.outrosTalentos.splice(index, 1);
+    const legacy = sheet.outrosTalentos[index];
+    showConfirmModal(`Remover <strong>${escapeHtml(legacy.texto)}</strong> da ficha?`, () => {
+        if (sheet.outrosTalentos[index] !== legacy) return;
+        sheet.outrosTalentos.splice(index, 1);
+        syncChoiceNameLists(sheet);
+        renderSheets();
+        document.querySelector(`#sheet-${sheet.id} [data-choice-type="${legacy.lista === 'talents' ? 'talento' : 'aptidao'}"] .btn-add`)?.focus();
+        scheduleSave(sheet.id);
+    }, 'Remover');
+}
+
+function removeAutomaticChoice(sheetId, key) {
+    const sheet = findSheet(sheetId);
+    const entry = sheet && getAutomaticChoices(sheet).find(item => automaticChoiceKey(item) === key);
+    if (!entry) return;
+    showConfirmModal(`Remover <strong>${escapeHtml(choiceLabel(entry))}</strong> da ficha? Ele é um talento inicial de ${escapeHtml(entry.fonte.split(' · ')[0])}.`, () => {
+        (sheet.excludedAutomaticChoices ||= []).push(key);
+        syncChoiceNameLists(sheet);
+        renderSheets();
+        document.querySelector(`#sheet-${sheet.id} [data-choice-type="talento"] .btn-add`)?.focus();
+        scheduleSave(sheet.id);
+    }, 'Remover');
+}
+
+function restoreAutomaticChoices(sheetId) {
+    const sheet = findSheet(sheetId);
+    if (!sheet) return;
+    const currentKeys = getAutomaticChoices(sheet, true).map(automaticChoiceKey);
+    sheet.excludedAutomaticChoices = (sheet.excludedAutomaticChoices || []).filter(key => !currentKeys.includes(key));
     syncChoiceNameLists(sheet);
     renderSheets();
     scheduleSave(sheet.id);
@@ -702,7 +739,7 @@ let choiceState = null;
 
 function buildCandidates(sheet, slot, tipo) {
     const kind = slot?.tipo || tipo;
-    if (kind === 'poder') return (LIBRARY_DATA.forcePowers?.items || []).map(nome => ({ tipo: 'poder', nome }));
+    if (kind === 'poder') return (LIBRARY_DATA.forcePowers?.items || []).filter(nome => LIBRARY_ITEM_DETAILS[nome]?.kind !== 'aptitude').map(nome => ({ tipo: 'poder', nome }));
     if (kind === 'tecnica' || kind === 'segredo') {
         const category = kind === 'tecnica' ? LIBRARY_DATA.forceTechniques : LIBRARY_DATA.forceSecrets;
         return (category?.items || []).map(nome => ({ tipo: kind, nome }));
@@ -893,9 +930,11 @@ function showChoiceDetails(index, keepDetail = false) {
             ${detail?.descriptor ? `<span class="chip"><strong>Descritor:</strong> ${escapeHtml(detail.descriptor)}</span>` : ''}
             ${detail?.source ? `<span class="chip"><strong>Fonte:</strong> ${escapeHtml(detail.source)}</span>` : ''}
         </div>
+        ${candidate.tipo === 'poder' && detail?.descriptor?.includes('Forma de Sabre') ? `<p class="library-source-note">${escapeHtml(LIGHTSABER_FORM_RULES)}</p>` : ''}
         <div class="library-text">${detail ? escapeHtml(detail.text).replace(/\n/g, '<br>') : '<em>Texto ainda não traduzido na Biblioteca.</em>'}</div>
         ${renderLibraryChecks(detail)}
         ${detail?.special ? `<div class="library-special"><strong>Especial:</strong> ${escapeHtml(detail.special)}</div>` : ''}
+        ${renderLibrarySource(detail)}
     `;
 }
 
@@ -908,7 +947,7 @@ function confirmChoice() {
     if (evaluateChoice(sheet, candidate, detalhe || undefined, choiceState.slotKey).status === 'blocked') return;
 
     if (candidate.tipo === 'poder') {
-        if (!(LIBRARY_DATA.forcePowers?.items || []).includes(candidate.nome)) return;
+        if (!(LIBRARY_DATA.forcePowers?.items || []).includes(candidate.nome) || LIBRARY_ITEM_DETAILS[candidate.nome]?.kind === 'aptitude') return;
         if (!Array.isArray(sheet.forcePowers)) sheet.forcePowers = [];
         const index = choiceState.powerIndex;
         if (index === null) sheet.forcePowers.push(candidate.nome);

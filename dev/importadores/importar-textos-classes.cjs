@@ -1,4 +1,4 @@
-// Uso: node dev/importar-textos-classes.cjs pagina-original.html [--check]
+// Uso: node dev/importadores/importar-textos-classes.cjs pagina-original.html [--check]
 // Lê apenas o JSON de CLASS_DATA; não executa scripts da página de origem.
 const fs = require('node:fs');
 const path = require('node:path');
@@ -11,7 +11,7 @@ const html = fs.readFileSync(sourcePath, 'utf8');
 const match = html.match(/const CLASS_DATA = (\{[\s\S]*?\r?\n\});/);
 if (!match) throw new Error('CLASS_DATA não encontrado na página original.');
 const source = JSON.parse(match[1]);
-const targetPath = path.join(__dirname, '../js/dados/classes.js');
+const targetPath = path.join(__dirname, '../../js/dados/classes.js');
 const before = fs.readFileSync(targetPath, 'utf8');
 const readClasses = text => vm.runInNewContext(`${text}\nJSON.stringify(CLASS_DATA)`);
 const local = JSON.parse(readClasses(before));

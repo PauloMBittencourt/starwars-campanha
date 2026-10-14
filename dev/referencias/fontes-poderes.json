@@ -1,0 +1,1005 @@
+[
+  {
+    "name": "Agressão Temperada (Tempered Aggression)",
+    "url": "https://swse.fandom.com/wiki/Tempered_Aggression",
+    "revision": 39673,
+    "cds": [
+      "30",
+      "35",
+      "40"
+    ],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Aproximar (Draw Closer)",
+    "url": "https://swse.fandom.com/wiki/Draw_Closer",
+    "revision": 86351,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Atordoamento da Força (Force Stun)",
+    "url": "https://swse.fandom.com/wiki/Force_Stun",
+    "revision": 103550,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Avalanche Cadente (Falling Avalanche)",
+    "url": "https://swse.fandom.com/wiki/Falling_Avalanche",
+    "revision": 48104,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Balistocinese (Ballistakinesis)",
+    "url": "https://swse.fandom.com/wiki/Ballistakinesis",
+    "revision": 88950,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Barreira de Lâminas (Barrier of Blades)",
+    "url": "https://swse.fandom.com/wiki/Barrier_of_Blades",
+    "revision": 86346,
+    "cds": [],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Bloqueio Desequilibrante (Unbalancing Block)",
+    "url": "https://swse.fandom.com/wiki/Unbalancing_Block",
+    "revision": 86356,
+    "cds": [],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Bomba de Pensamento (Thought Bomb)",
+    "url": "https://swse.fandom.com/wiki/Thought_Bomb",
+    "revision": 92565,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Cambalear (Stagger)",
+    "url": "https://swse.fandom.com/wiki/Stagger",
+    "revision": 13397,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Camuflagem (Cloak)",
+    "url": "https://swse.fandom.com/wiki/Cloak",
+    "revision": 39712,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Carga Desimpedida (Unhindered Charge)",
+    "url": "https://swse.fandom.com/wiki/Unhindered_Charge",
+    "revision": 39671,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Caminhada pela Memória (Memory Walk)",
+    "url": "https://swse.fandom.com/wiki/Memory_Walk",
+    "revision": 97529,
+    "cds": [
+      "20",
+      "25",
+      "30",
+      "35"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Cegueira (Blind)",
+    "url": "https://swse.fandom.com/wiki/Blind",
+    "revision": 82728,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Círculo de Proteção (Circle of Shelter)",
+    "url": "https://swse.fandom.com/wiki/Circle_of_Shelter",
+    "revision": 39689,
+    "cds": [
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Combate Cinético (Kinetic Combat)",
+    "url": "https://swse.fandom.com/wiki/Kinetic_Combat",
+    "revision": 78860,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Combustão (Combustion)",
+    "url": "https://swse.fandom.com/wiki/Combustion",
+    "revision": 86337,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Convecção (Convection)",
+    "url": "https://swse.fandom.com/wiki/Convection",
+    "revision": 39704,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Corrupção (Corruption)",
+    "url": "https://swse.fandom.com/wiki/Corruption_(Force_Power)",
+    "revision": 61628,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Cortar a Força (Sever Force)",
+    "url": "https://swse.fandom.com/wiki/Sever_Force",
+    "revision": 86330,
+    "cds": [
+      "25",
+      "30",
+      "35"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Crioquinese (Cryokinesis)",
+    "url": "https://swse.fandom.com/wiki/Cryokinesis",
+    "revision": 96636,
+    "cds": [
+      "20",
+      "25",
+      "30",
+      "35"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Crucitorn (Crucitorn)",
+    "url": "https://swse.fandom.com/wiki/Crucitorn",
+    "revision": 86339,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Defesa de Terreno Elevado (High Ground Defense)",
+    "url": "https://swse.fandom.com/wiki/High_Ground_Defense",
+    "revision": 86347,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Deflexão Shien (Shien Deflection)",
+    "url": "https://swse.fandom.com/wiki/Shien_Deflection",
+    "revision": 86357,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Desarmar pela Força (Force Disarm)",
+    "url": "https://swse.fandom.com/wiki/Force_Disarm",
+    "revision": 86328,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Detonar (Detonate)",
+    "url": "https://swse.fandom.com/wiki/Detonate",
+    "revision": 39706,
+    "cds": [
+      "20",
+      "25",
+      "30",
+      "35"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Dilacerar (Rend)",
+    "url": "https://swse.fandom.com/wiki/Rend",
+    "revision": 86335,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Dobrar o Espaço (Fold Space)",
+    "url": "https://swse.fandom.com/wiki/Fold_Space",
+    "revision": 86342,
+    "cds": [
+      "20",
+      "25",
+      "30",
+      "35",
+      "40"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Drenar Energia (Drain Energy)",
+    "url": "https://swse.fandom.com/wiki/Drain_Energy",
+    "revision": 98865,
+    "cds": [
+      "20",
+      "25",
+      "30",
+      "35"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Dreno de Vida (Force Drain)",
+    "url": "https://swse.fandom.com/wiki/Sith_Talent_Tree",
+    "revision": 98232,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Enxame de Sabres (Saber Swarm)",
+    "url": "https://swse.fandom.com/wiki/Saber_Swarm",
+    "revision": 39677,
+    "cds": [
+      "20",
+      "25",
+      "30",
+      "35"
+    ],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Escudo da Força (Force Shield)",
+    "url": "https://swse.fandom.com/wiki/Force_Shield",
+    "revision": 90695,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Estilhaço Mental (Mind Shard)",
+    "url": "https://swse.fandom.com/wiki/Mind_Shard",
+    "revision": 86344,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Explosão da Força (Force Blast)",
+    "url": "https://swse.fandom.com/wiki/Force_Blast",
+    "revision": 90694,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Explosão de Relâmpago (Lightning Burst)",
+    "url": "https://swse.fandom.com/wiki/Lightning_Burst",
+    "revision": 87003,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Fase (Phase)",
+    "url": "https://swse.fandom.com/wiki/Phase",
+    "revision": 66078,
+    "cds": [
+      "25",
+      "30",
+      "35",
+      "40"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Ferida (Wound)",
+    "url": "https://swse.fandom.com/wiki/Wound",
+    "revision": 12397,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Ferocidade do Vornskr (Vornskr's Ferocity)",
+    "url": "https://swse.fandom.com/wiki/Vornskr's_Ferocity",
+    "revision": 39670,
+    "cds": [
+      "20",
+      "25",
+      "30",
+      "35"
+    ],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Flanco Rápido (Swift Flank)",
+    "url": "https://swse.fandom.com/wiki/Swift_Flank",
+    "revision": 39674,
+    "cds": [
+      "20",
+      "25",
+      "30",
+      "35"
+    ],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Fúria Sombria (Dark Rage)",
+    "url": "https://swse.fandom.com/wiki/Dark_Rage",
+    "revision": 39658,
+    "cds": [
+      "15",
+      "20",
+      "25"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Golpe da Força (Force Slam)",
+    "url": "https://swse.fandom.com/wiki/Force_Slam",
+    "revision": 26859,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Golpe de Batalha (Battle Strike)",
+    "url": "https://swse.fandom.com/wiki/Battle_Strike",
+    "revision": 47616,
+    "cds": [
+      "15",
+      "20",
+      "25"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Golpe Desarmador (Disarming Slash)",
+    "url": "https://swse.fandom.com/wiki/Disarming_Slash",
+    "revision": 86350,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Golpe Duplo (Twin Strike)",
+    "url": "https://swse.fandom.com/wiki/Twin_Strike",
+    "revision": 39672,
+    "cds": [
+      "15",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Golpe Garantido (Assured Strike)",
+    "url": "https://swse.fandom.com/wiki/Assured_Strike",
+    "revision": 39690,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Golpe Revelador (Deflecting Slash)",
+    "url": "https://swse.fandom.com/wiki/Deflecting_Slash",
+    "revision": 89039,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Grito da Força (Force Scream)",
+    "url": "https://swse.fandom.com/wiki/Force_Scream",
+    "revision": 61593,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Iluminar (Force Light)",
+    "url": "https://swse.fandom.com/wiki/Force_Light",
+    "revision": 103435,
+    "cds": [
+      "20",
+      "25",
+      "30",
+      "35"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Iluminar Aliado (Enlighten)",
+    "url": "https://swse.fandom.com/wiki/Enlighten",
+    "revision": 47169,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Ilusão da Força (Force Illusion)",
+    "url": "https://swse.fandom.com/wiki/Alter_Talent_Tree",
+    "revision": 104714,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Arremeter (Surge)",
+    "url": "https://swse.fandom.com/wiki/Surge",
+    "revision": 86331,
+    "cds": [
+      "10",
+      "15",
+      "20"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Impulso da Força (Force Thrust)",
+    "url": "https://swse.fandom.com/wiki/Force_Thrust",
+    "revision": 61610,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Inércia (Inertia)",
+    "url": "https://swse.fandom.com/wiki/Inertia",
+    "revision": 39694,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Inspirar (Inspire)",
+    "url": "https://swse.fandom.com/wiki/Inspire",
+    "revision": 39693,
+    "cds": [
+      "20",
+      "25",
+      "30",
+      "35"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Interceptar (Intercept)",
+    "url": "https://swse.fandom.com/wiki/Intercept",
+    "revision": 86343,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Ionizar (Ionize)",
+    "url": "https://swse.fandom.com/wiki/Ionize",
+    "revision": 39564,
+    "cds": [
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Lentidão (Slow)",
+    "url": "https://swse.fandom.com/wiki/Slow",
+    "revision": 61606,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Malacia (Malacia)",
+    "url": "https://swse.fandom.com/wiki/Malacia",
+    "revision": 90696,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Meditação de Batalha (Battle Meditation)",
+    "url": "https://swse.fandom.com/wiki/Jedi_Guardian_Talent_Tree",
+    "revision": 100314,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Medo (Fear)",
+    "url": "https://swse.fandom.com/wiki/Fear",
+    "revision": 61592,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Morichro (Morichro)",
+    "url": "https://swse.fandom.com/wiki/Morichro",
+    "revision": 65108,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Mover Objeto (Move Object)",
+    "url": "https://swse.fandom.com/wiki/Move_Object",
+    "revision": 93418,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30",
+      "35"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Negar Energia (Negate Energy)",
+    "url": "https://swse.fandom.com/wiki/Negate_Energy",
+    "revision": 77317,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Obscurecer (Obscure)",
+    "url": "https://swse.fandom.com/wiki/Obscure",
+    "revision": 61596,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Ódio (Hatred)",
+    "url": "https://swse.fandom.com/wiki/Hatred",
+    "revision": 39696,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Oportunidade Contenciosa (Contentious Opportunity)",
+    "url": "https://swse.fandom.com/wiki/Contentious_Opportunity",
+    "revision": 86348,
+    "cds": [
+      "20",
+      "25",
+      "30",
+      "35"
+    ],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Passar a Lâmina (Pass the Blade)",
+    "url": "https://swse.fandom.com/wiki/Pass_the_Blade",
+    "revision": 39681,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Ponto de Ruptura (Shatterpoint)",
+    "url": "https://swse.fandom.com/wiki/Shatterpoint",
+    "revision": 39709,
+    "cds": [
+      "25",
+      "30",
+      "35",
+      "40"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Presciência (Prescience)",
+    "url": "https://swse.fandom.com/wiki/Prescience",
+    "revision": 39705,
+    "cds": [
+      "15",
+      "20",
+      "25"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Aperto da Força (Force Grip)",
+    "url": "https://swse.fandom.com/wiki/Force_Grip",
+    "revision": 41914,
+    "cds": [
+      "15",
+      "20",
+      "25"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Projeção da Força (Force Projection)",
+    "url": "https://swse.fandom.com/wiki/Force_Projection",
+    "revision": 91113,
+    "cds": [],
+    "homebrew": true,
+    "form": false
+  },
+  {
+    "name": "Rastrear pela Força (Force Track)",
+    "url": "https://swse.fandom.com/wiki/Force_Track",
+    "revision": 39697,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Redemoinho Ascendente (Rising Whirlwind)",
+    "url": "https://swse.fandom.com/wiki/Rising_Whirlwind",
+    "revision": 39679,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Redemoinho da Força (Force Whirlwind)",
+    "url": "https://swse.fandom.com/wiki/Force_Whirlwind",
+    "revision": 61594,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Repreender (Rebuke)",
+    "url": "https://swse.fandom.com/wiki/Rebuke",
+    "revision": 61609,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Reorganização (Rearrangement)",
+    "url": "https://swse.fandom.com/wiki/Rearrangement",
+    "revision": 69515,
+    "cds": [
+      "25",
+      "30",
+      "35",
+      "40"
+    ],
+    "homebrew": true,
+    "form": false
+  },
+  {
+    "name": "Repulsa (Repulse)",
+    "url": "https://swse.fandom.com/wiki/Repulse",
+    "revision": 12499,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Resistência a Energia (Energy Resistance)",
+    "url": "https://swse.fandom.com/wiki/Energy_Resistance",
+    "revision": 39561,
+    "cds": [
+      "20",
+      "25",
+      "30",
+      "35"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Resistir à Força (Resist Force)",
+    "url": "https://swse.fandom.com/wiki/Resist_Force",
+    "revision": 105175,
+    "cds": [
+      "15",
+      "20",
+      "25"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Riposte Fluido (Fluid Riposte)",
+    "url": "https://swse.fandom.com/wiki/Fluid_Riposte",
+    "revision": 86366,
+    "cds": [],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Riposte Makashi (Makashi Riposte)",
+    "url": "https://swse.fandom.com/wiki/Makashi_Riposte",
+    "revision": 86359,
+    "cds": [],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Surgimento de Plantas (Plant Surge)",
+    "url": "https://swse.fandom.com/wiki/Plant_Surge",
+    "revision": 86345,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Tecnometria (Technometry)",
+    "url": "https://swse.fandom.com/wiki/Technometry",
+    "revision": 61599,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Tempestade da Força (Force Storm)",
+    "url": "https://swse.fandom.com/wiki/Force_Storm",
+    "revision": 61617,
+    "cds": [
+      "20",
+      "25",
+      "30",
+      "35"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Transferência de Essência (Essence Transfer)",
+    "url": "https://swse.fandom.com/wiki/Dark_Side_Talent_Tree",
+    "revision": 93413,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Transferência Sombria (Dark Transfer)",
+    "url": "https://swse.fandom.com/wiki/Dark_Transfer",
+    "revision": 70120,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Transferência Vital (Vital Transfer)",
+    "url": "https://swse.fandom.com/wiki/Vital_Transfer",
+    "revision": 86332,
+    "cds": [
+      "15",
+      "20",
+      "25"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Truque Mental (Mind Trick)",
+    "url": "https://swse.fandom.com/wiki/Mind_Trick",
+    "revision": 86329,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Valor (Valor)",
+    "url": "https://swse.fandom.com/wiki/Valor",
+    "revision": 86334,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Varredura Sarlacc (Sarlacc Sweep)",
+    "url": "https://swse.fandom.com/wiki/Sarlacc_Sweep",
+    "revision": 86358,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": true
+  },
+  {
+    "name": "Visão Distante (Farseeing)",
+    "url": "https://swse.fandom.com/wiki/Farseeing",
+    "revision": 102362,
+    "cds": [],
+    "homebrew": false,
+    "form": false
+  },
+  {
+    "name": "Voo do Hawk-bat (Hawk-Bat Swoop)",
+    "url": "https://swse.fandom.com/wiki/Hawk-Bat_Swoop",
+    "revision": 39683,
+    "cds": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "homebrew": false,
+    "form": true
+  }
+]

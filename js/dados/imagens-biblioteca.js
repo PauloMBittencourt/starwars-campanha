@@ -1,4 +1,4 @@
-// Gerado por: dev/atualizar-imagens-biblioteca.html (não editar à mão)
+// Gerado por: dev/ferramentas/atualizar-imagens-biblioteca.html (não editar à mão)
 // Pasta em img/ -> nome da imagem (sem extensão) -> arquivo
 window.LIBRARY_IMAGE_FILES = {
     "talentos": {
@@ -259,6 +259,7 @@ window.LIBRARY_IMAGE_FILES = {
         "weapon-specialization": "weapon-specialization.jpg"
     },
     "poderes": {
+        "ballistakinesis": "ballistakinesis.png",
         "barrier-of-blades": "barrier-of-blades.jpg",
         "battle-meditation": "battle-meditation.jpg",
         "battle-strike": "battle-strike.jpg",
@@ -279,6 +280,8 @@ window.LIBRARY_IMAGE_FILES = {
         "sever-force": "sever-force.jpg",
         "shien-deflection": "shien-deflection.jpg",
         "surge": "surge.jpg",
+        "tempered-aggression": "tempered-aggression.png",
+        "unbalancing-block": "unbalancing-block.png",
         "vital-transfer": "vital-transfer.jpg"
     },
     "tecnicas": {

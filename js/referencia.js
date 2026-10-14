@@ -12,6 +12,7 @@ function closeModal(modalId) {
     if (!document.querySelector('.modal.active')) document.body.classList.remove('modal-open');
     if (modalId === 'skillUsesModal') finishSkillUsesModal();
     if (modalId === 'inventoryModal') finishInventoryEditor();
+    if (modalId === 'attackModal') finishAttackEditor();
 }
 
 document.addEventListener('keydown', e => {
@@ -212,7 +213,7 @@ function showLibraryCategory(categoryKey) {
         btn.className = 'library-item-btn';
         btn.dataset.index = index;
         btn.dataset.search = normalizeSearch(item);
-        btn.innerHTML = `${renderLibraryIcon(item, categoryKey)}<span class="library-item-name">${escapeHtml(item)}</span>${LIBRARY_ITEM_DETAILS[item] ? '' : '<span class="library-pending">sem texto</span>'}`;
+        btn.innerHTML = `${renderLibraryIcon(item, categoryKey)}<span class="library-item-name">${escapeHtml(item)}</span>${LIBRARY_ITEM_DETAILS[item]?.kind === 'aptitude' ? '<span class="library-pending">aptidão</span>' : LIBRARY_ITEM_DETAILS[item] ? '' : '<span class="library-pending">sem texto</span>'}`;
         btn.onclick = () => showLibraryItem(categoryKey, null, index);
         list.appendChild(btn);
     });
@@ -263,12 +264,17 @@ function getLibraryItem(categoryKey, treeIndex, itemIndex) {
     return { category, tree, itemName, detail: LIBRARY_ITEM_DETAILS[itemName] };
 }
 
+const LIGHTSABER_FORM_RULES = 'Para usar um poder de Forma de Sabre, é necessário empunhar um sabre de luz ativado. A aptidão da forma não é um requisito de uso: ela concede o benefício adicional descrito. Repreender não afeta estes poderes, exceto Aproximar (Draw Closer) e Pushing Slash.';
+
 function getLibraryCopyText(categoryLabel, itemName, treeName, detail) {
-    const parts = [itemName, `Categoria: ${categoryLabel}`];
+    const parts = [itemName, `Categoria: ${detail?.kind === 'aptitude' ? 'Aptidões' : categoryLabel}`];
     if (treeName) parts.push(`Árvore: ${treeName}`);
     if (detail?.descriptor) parts.push(`Descritor: ${detail.descriptor}`);
     if (detail?.source) parts.push(`Fonte: ${detail.source}`);
+    if (detail?.sourceUrl) parts.push(`Wiki consultada: ${detail.sourceUrl}`);
+    if (detail?.sourceLicense) parts.push(`Tradução da wiki sob ${detail.sourceLicense}: https://www.fandom.com/licensing`);
     parts.push('');
+    if (categoryLabel === LIBRARY_DATA.forcePowers.label && detail?.descriptor?.includes('Forma de Sabre')) parts.push(LIGHTSABER_FORM_RULES, '');
     parts.push(detail?.text || 'Conteúdo ainda não preenchido.');
     if (detail?.checks?.length) {
         parts.push('');
@@ -279,6 +285,7 @@ function getLibraryCopyText(categoryLabel, itemName, treeName, detail) {
         parts.push('');
         parts.push(`Especial: ${detail.special}`);
     }
+    if (detail?.sourceNote) parts.push('', `Nota da fonte: ${detail.sourceNote}`);
     return parts.join('\n');
 }
 
@@ -305,6 +312,11 @@ function renderLibraryChecks(detail) {
     ` : '';
 }
 
+function renderLibrarySource(detail) {
+    return `${detail?.sourceNote ? `<p class="library-source-note">${escapeHtml(detail.sourceNote)}</p>` : ''}
+        ${detail?.sourceUrl ? `<p class="library-source-link"><a href="${escapeHtml(detail.sourceUrl)}" target="_blank" rel="noopener noreferrer">Abrir fonte na wiki</a>${detail.sourceLicense ? ` · Tradução sob <a href="https://www.fandom.com/licensing" target="_blank" rel="noopener noreferrer">${escapeHtml(detail.sourceLicense)}</a>` : ''}</p>` : ''}`;
+}
+
 function showLibraryItem(categoryKey, treeIndex, itemIndex) {
     const details = document.getElementById('libraryDetails');
     const { category, tree, itemName, detail } = getLibraryItem(categoryKey, treeIndex, itemIndex);
@@ -312,7 +324,7 @@ function showLibraryItem(categoryKey, treeIndex, itemIndex) {
     if (!tree) highlightLibraryListItem(itemIndex);
 
     const meta = [
-        ['Categoria', category.label],
+        ['Categoria', detail?.kind === 'aptitude' ? 'Aptidões' : category.label],
         tree && ['Árvore', shortTreeName(tree.name)],
         detail?.descriptor && ['Descritor', detail.descriptor],
         detail?.source && ['Fonte', detail.source],
@@ -327,9 +339,11 @@ function showLibraryItem(categoryKey, treeIndex, itemIndex) {
         <div class="library-meta">
             ${meta.map(([label, value]) => `<span class="chip"><strong>${label}:</strong> ${escapeHtml(value)}</span>`).join('')}
         </div>
+        ${categoryKey === 'forcePowers' && detail?.descriptor?.includes('Forma de Sabre') ? `<p class="library-source-note">${escapeHtml(LIGHTSABER_FORM_RULES)}</p>` : ''}
         <div class="library-text">${detail ? escapeHtml(detail.text).replace(/\n/g, '<br>') : '<em>Conteúdo ainda não preenchido.</em>'}</div>
         ${renderLibraryChecks(detail)}
         ${detail?.special ? `<div class="library-special"><strong>Especial:</strong> ${escapeHtml(detail.special)}</div>` : ''}
+        ${renderLibrarySource(detail)}
         <div class="library-actions">
             <button class="btn" onclick="copyLibraryItem('${categoryKey}', ${treeIndex}, ${itemIndex})">Copiar texto</button>
             <span id="libraryCopyStatus"></span>

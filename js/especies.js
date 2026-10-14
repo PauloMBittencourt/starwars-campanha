@@ -9,7 +9,7 @@ const SPECIES_ICON_COLLECTION = 'especies_icones';
 window.SPECIES_ICON_STORAGE = SPECIES_ICON_STORAGE;
 window.SPECIES_ICON_COLLECTION = SPECIES_ICON_COLLECTION;
 
-// Camadas do ícone (512x512), geradas a partir de img/especies/originais/clawdite.png
+// Camadas do ícone (512x512), geradas a partir de dev/referencias/especies/originais/clawdite.png
 const ICON_LAYER_SIZE = 512;
 const ICON_PORTRAIT_BOX = { x: 41, y: 41, size: 431 };
 const ICON_FINAL_SIZE = 256;
@@ -107,6 +107,7 @@ function renderSpeciesPickAction(slug) {
             <button class="btn btn-primary" ${isCurrent ? 'disabled' : ''} onclick="chooseSpeciesForSheet('${slug}')">
                 ${isCurrent ? 'Raça atual de' : 'Escolher para'} ${escapeHtml(sheet.name || 'esta ficha')}
             </button>
+            ${sheet.speciesKey || sheet.species ? `<button type="button" class="btn btn-danger" onclick="removeSpeciesFromSheet(${sheet.id})">Remover raça da ficha</button>` : ''}
             ${automation.length ? `
                 <p class="species-pick-hint">
                     <strong>Aplicado automaticamente:</strong> ${escapeHtml(automation.join('; '))}.

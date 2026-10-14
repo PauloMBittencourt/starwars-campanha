@@ -1,9 +1,9 @@
-// node dev/verificar-pericias.cjs
+// node dev/testes/verificar-pericias.cjs
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const assert = require('node:assert/strict');
-const root = path.join(__dirname, '..');
+const root = path.join(__dirname, '../..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const context = vm.createContext({ console, assert, window: {} });
 vm.runInContext(read('js/estado.js').split('let syncStatusTimer')[0], context);

@@ -37,6 +37,7 @@
     <script defer src="js/especies.js"></script>
     <script defer src="js/talentos.js"></script>
     <script defer src="js/equipamentos.js"></script>
+    <script defer src="js/ataques.js"></script>
     <script defer src="js/firebase.js"></script>
 </head>
 <body>
@@ -199,6 +200,14 @@
         <button type="button" class="close-modal" onclick="closeModal('inventoryModal')" aria-label="Fechar editor de item">&times;</button>
         <h2 id="inventoryModalTitle">Criar item</h2>
         <div id="inventoryModalBody"></div>
+    </div>
+</div>
+
+<div id="attackModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="attackModalTitle">
+    <div class="modal-content">
+        <button type="button" class="close-modal" onclick="closeModal('attackModal')" aria-label="Fechar editor de ataque">&times;</button>
+        <h2 id="attackModalTitle">Criar ataque</h2>
+        <div id="attackModalBody"></div>
     </div>
 </div>
 

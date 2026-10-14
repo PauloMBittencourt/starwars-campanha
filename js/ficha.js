@@ -78,6 +78,7 @@ const CONDITION_STEPS = [
 const SHEET_TABS = [
     { key: 'ficha',    label: 'Ficha' },
     { key: 'pericias', label: 'Perícias' },
+    { key: 'equipamentos', label: 'Equipamentos' },
     { key: 'notas',    label: 'Notas' },
     { key: 'lore',     label: 'História' },
 ];
@@ -137,12 +138,14 @@ function createEmptySheet(id) {
         },
         combat: { speed: "", init: "", perc: "", bab: "", forcePoints: "" },
         inventory: [],
+        attacks: [],
         specialActions: ["", "", ""],
         skills: Object.fromEntries(SKILL_ROWS.map(skill => [skill.key, { treinada: false, bonus: 0 }])),
         // talents/aptitudes são recalculados a partir de "escolhas" (js/talentos.js cria esse campo na
         // primeira renderização e converte o que já estiver digitado aqui)
         talents: [],
         aptitudes: [],
+        excludedAutomaticChoices: [],
         forcePowers: [],
         lore: "",
         noteDetails: {},
@@ -499,10 +502,21 @@ function renderTabsHeader(sortedSheets) {
                 <span class="tab-name">${escapeHtml(sheet.name || 'Sem Nome')}</span>
                 <span class="tab-owner">${escapeHtml(ownerInfo?.label || '')}</span>
             </span>
-            <span class="remove-tab" title="Apagar ficha" onclick="event.stopPropagation(); removeSheet(${sheet.id})">×</span>`;
+            `;
         btn._sheetId = sheet.id;
         btn.onclick = () => switchSheet(sheet.id);
-        tabsHeader.appendChild(btn);
+        const wrapper = document.createElement('div');
+        wrapper.className = 'sheet-tab-item';
+        wrapper.appendChild(btn);
+        const removeButton = document.createElement('button');
+        removeButton.type = 'button';
+        removeButton.className = 'remove-tab';
+        removeButton.textContent = '×';
+        removeButton.setAttribute('aria-label', `Apagar ficha ${sheet.name || 'Sem Nome'}`);
+        removeButton.title = 'Apagar ficha';
+        removeButton.onclick = () => removeSheet(sheet.id);
+        wrapper.appendChild(removeButton);
+        tabsHeader.appendChild(wrapper);
     });
 
     const addBtn = document.createElement('button');
@@ -533,6 +547,7 @@ function renderSheets() {
         // Talentos e Aptidões por nível (js/talentos.js); converte a lista digitada das fichas antigas
         if (prepareSheetChoices(sheet)) scheduleSave(sheet.id);
         if (prepareInventory(sheet)) scheduleSave(sheet.id);
+        if (prepareAttacks(sheet)) scheduleSave(sheet.id);
 
         const sheetDiv = document.createElement('div');
         sheetDiv.className = `sheet-content ${sheet.id === activeSheetId ? 'active' : ''}`;
@@ -545,6 +560,7 @@ function renderSheets() {
                 </div>
                 <div id="tab-ficha-${sheet.id}" class="sheet-tab-content" hidden>${renderFichaTab(sheet)}</div>
                 <div id="tab-pericias-${sheet.id}" class="sheet-tab-content" hidden>${renderSkillsTab(sheet)}</div>
+                <div id="tab-equipamentos-${sheet.id}" class="sheet-tab-content" hidden>${renderInventoryCard(sheet)}</div>
                 <div id="tab-notas-${sheet.id}" class="sheet-tab-content" hidden>${renderNotesTab(sheet)}</div>
                 <div id="tab-lore-${sheet.id}" class="sheet-tab-content" hidden>${renderLoreTab(sheet)}</div>
             `;
@@ -588,7 +604,6 @@ function renderFichaTab(sheet) {
 
         <section class="combat-equipment-section">
             ${renderAttacksCard(sheet)}
-            ${renderInventoryCard(sheet)}
         </section>
     `;
 }
@@ -670,7 +685,7 @@ function renderBasicInfo(sheet) {
                     <button class="btn-add" onclick="addClass(${sheet.id})">+ Classe</button>
                 </div>
                 <div id="classes-${sheet.id}" class="class-list">
-                    ${sheet.classes.map((c, idx) => renderClassRow(sheet.id, idx, c)).join('')}
+                    ${sheet.classes.length ? sheet.classes.map((c, idx) => renderClassRow(sheet.id, idx, c)).join('') : '<div class="list-empty">Nenhuma classe. Use “+ Classe” para adicionar.</div>'}
                 </div>
             </div>
         </div>
@@ -691,7 +706,7 @@ function renderClassRow(sheetId, index, classObj) {
                 <input type="number" min="1" aria-label="Nível na classe" value="${toInt(classObj.level)}" onchange="updateClassRow(${sheetId}, ${index}, this.value, 'level')">
             </div>
             ${renderClassEntryWarning(sheetId, index)}
-            <button class="icon-btn btn-remove" title="Remover classe" onclick="removeClassRow(${sheetId}, ${index})">×</button>
+            <button type="button" class="btn btn-small btn-danger" aria-label="Remover classe ${escapeHtml(classObj.name)}" onclick="removeClassRow(${sheetId}, ${index})">Remover</button>
         </div>
     `;
 }
@@ -973,7 +988,7 @@ function renderCustomNotes(sheet) {
             <div class="note-card-header">
                 <span class="note-card-badge badge-note">Nota</span>
                 <input type="text" class="note-card-title-input" value="${escapeHtml(note.title)}" onchange="updateCustomNoteTitle(${sheet.id}, ${idx}, this.value)" placeholder="Título da nota">
-                <button class="icon-btn btn-remove" title="Apagar nota" onclick="removeCustomNote(${sheet.id}, ${idx})">×</button>
+                <button type="button" class="btn btn-small btn-danger" aria-label="Remover nota ${escapeHtml(note.title)}" onclick="removeCustomNote(${sheet.id}, ${idx})">Remover</button>
             </div>
             <textarea class="note-card-textarea" placeholder="Escreva o conteúdo da nota aqui..." onchange="updateCustomNoteText(${sheet.id}, ${idx}, this.value)">${escapeHtml(note.text)}</textarea>
         </div>
@@ -1137,11 +1152,15 @@ function updateCustomNoteText(id, index, value) {
 
 function removeCustomNote(id, index) {
     const sheet = findSheet(id);
-    if (sheet && sheet.customNotes) {
+    const note = sheet?.customNotes?.[index];
+    if (!note || !Number.isInteger(index) || index < 0) return;
+    showConfirmModal(`Remover a nota <strong>${escapeHtml(note.title || 'Sem título')}</strong>?`, () => {
+        if (sheet.customNotes[index] !== note) return;
         sheet.customNotes.splice(index, 1);
         renderSheets();
+        document.querySelector(`#sheet-${sheet.id} #tab-notas-${sheet.id} .btn-add`)?.focus();
         scheduleSave(sheet.id);
-    }
+    }, 'Remover');
 }
 
 const NUMERIC_FIELDS = new Set(['level', 'condition']);
@@ -1285,6 +1304,26 @@ function applySpeciesToSheet(id, slug) {
     scheduleSave(sheet.id);
 }
 
+function removeSpeciesFromSheet(id) {
+    const sheet = findSheet(id);
+    if (!sheet || (!sheet.speciesKey && !sheet.species)) return;
+    showConfirmModal(`Remover a raça <strong>${escapeHtml(sheet.species || 'atual')}</strong> da ficha e retirar seus modificadores?`, () => {
+        const oldMods = getAppliedSpeciesMods(sheet);
+        ATTRIBUTES.forEach(attr => {
+            const data = sheet.attributes?.[attr];
+            if (data) data.val = toInt(data.val) - toInt(oldMods[attr]);
+        });
+        sheet.speciesKey = '';
+        sheet.species = '';
+        sheet.speciesMods = normalizeSpeciesMods({});
+        syncDerivedValues(sheet);
+        closeModal('speciesModal');
+        renderSheets();
+        document.getElementById(`species-${sheet.id}`)?.focus();
+        scheduleSave(sheet.id);
+    }, 'Remover');
+}
+
 function updateDefense(id, def, field, value) {
     const sheet = findSheet(id);
     if (sheet) {
@@ -1296,11 +1335,14 @@ function updateDefense(id, def, field, value) {
 
 function removeDynamicItem(id, field, index) {
     const sheet = findSheet(id);
-    if (sheet && sheet[field]) {
+    if (!sheet?.[field]?.[index] || !Number.isInteger(index) || index < 0) return;
+    const item = sheet[field][index];
+    showConfirmModal(`Remover <strong>${escapeHtml(item)}</strong> da ficha?`, () => {
+        if (sheet[field][index] !== item) return;
         sheet[field].splice(index, 1);
         renderSheets();
         scheduleSave(sheet.id);
-    }
+    }, 'Remover');
 }
 
 // Nível e classe mudam as vagas de Talentos/Aptidões, então a ficha é redesenhada
@@ -1319,11 +1361,15 @@ function updateClassRow(id, index, value, field) {
 
 function removeClassRow(id, index) {
     const sheet = findSheet(id);
-    if (sheet && sheet.classes.length > 1) {
+    const entry = sheet?.classes?.[index];
+    if (!entry || !Number.isInteger(index) || index < 0) return;
+    showConfirmModal(`Remover a classe <strong>${escapeHtml(entry.name)}</strong> da ficha?`, () => {
+        if (sheet.classes[index] !== entry) return;
         sheet.classes.splice(index, 1);
         renderSheets();
+        document.getElementById(`classes-${sheet.id}`)?.parentElement.querySelector('.btn-add')?.focus();
         scheduleSave(sheet.id);
-    }
+    }, 'Remover');
 }
 
 function addClass(id) {
@@ -1365,15 +1411,24 @@ function removeSheet(id) {
     // Usa modal de confirmação (confirm() não funciona em iframe)
     showConfirmModal(
         `Apagar a ficha "<strong>${escapeHtml(sheet.name || 'Sem Nome')}</strong>"? Esta ação não pode ser desfeita.`,
-        () => {
+        async () => {
+            const hadPendingSave = typeof pendingSaves !== 'undefined' && pendingSaves.has(sheet.id);
+            if (typeof pendingSaves !== 'undefined') pendingSaves.delete(sheet.id);
             if (sheet.owner && sheet.firebaseId && window._fbDeleteDoc) {
-                window._fbDeleteDoc('sheets_' + sheet.owner, sheet.firebaseId);
-            } else {
-                sheets = sheets.filter(s => s.id !== sheet.id);
-                if (activeSheetId === sheet.id)
-                    activeSheetId = sheets.length > 0 ? sheets[0].id : null;
-                renderSheets();
+                try {
+                    await window._fbDeleteDoc('sheets_' + sheet.owner, sheet.firebaseId);
+                } catch (error) {
+                    console.error('Erro ao apagar ficha:', error);
+                    if (hadPendingSave) scheduleSave(sheet.id);
+                    setSyncStatus('Não foi possível apagar a ficha. Verifique a conexão.', 5000);
+                    return;
+                }
             }
+            if (typeof pendingSaves !== 'undefined') pendingSaves.delete(sheet.id);
+            sheets = sheets.filter(s => s.id !== sheet.id);
+            if (activeSheetId === sheet.id)
+                activeSheetId = sheets.length > 0 ? sheets[0].id : null;
+            renderSheets();
         }
     );
 }
@@ -1386,7 +1441,7 @@ function showConfirmModal(message, onConfirm, confirmLabel = 'Apagar') {
         modal.id = 'confirmModal';
         modal.className = 'confirm-overlay';
         modal.innerHTML = `
-            <div class="confirm-box" role="dialog" aria-modal="true">
+            <div class="confirm-box" role="dialog" aria-modal="true" aria-label="Confirmar ação">
                 <p id="confirmMsg"></p>
                 <div class="confirm-actions">
                     <button id="confirmNo" class="btn">Cancelar</button>
@@ -1398,10 +1453,25 @@ function showConfirmModal(message, onConfirm, confirmLabel = 'Apagar') {
     document.getElementById('confirmMsg').innerHTML = message;
     document.getElementById('confirmYes').textContent = confirmLabel;
     modal.style.display = 'flex';
-    const close = () => { modal.style.display = 'none'; };
+    const previousFocus = document.activeElement;
+    document.body.classList.add('modal-open');
+    const close = () => {
+        modal.style.display = 'none';
+        if (!document.querySelector('.modal.active')) document.body.classList.remove('modal-open');
+        if (previousFocus?.isConnected) previousFocus.focus();
+    };
     document.getElementById('confirmYes').onclick = () => { close(); onConfirm(); };
     document.getElementById('confirmNo').onclick = close;
     modal.onclick = (e) => { if (e.target === modal) close(); };
+    modal.onkeydown = event => {
+        if (event.key === 'Escape') { event.preventDefault(); event.stopPropagation(); close(); }
+        if (event.key === 'Tab') {
+            const first = document.getElementById('confirmNo'), last = document.getElementById('confirmYes');
+            if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+            else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+        }
+    };
+    document.getElementById('confirmNo').focus();
 }
 
 function switchSheet(id) {

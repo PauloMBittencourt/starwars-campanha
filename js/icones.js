@@ -26,6 +26,14 @@ const CLASS_ICON_FILES = {
     'Master Privateer': 'master-privateer.gif'
 };
 
+const WEAPON_TYPES = {
+    lightsabers: { label: 'Sabres de luz', file: 'lightsabers.jpg' },
+    pistols: { label: 'Pistolas', file: 'pistols.jpg' },
+    rifles: { label: 'Rifles', file: 'rifles.jpg' },
+    simple: { label: 'Armas simples', file: 'simple-weapons.jpg' },
+    advancedMelee: { label: 'Armas corpo a corpo avançadas', file: 'advanced-melee-weapons.jpg' },
+};
+
 // A primeira regra que casar com o nome da arma define o ícone (rifle antes de blaster)
 const WEAPON_ICON_RULES = [
     { pattern: /sabre|lightsaber/i, file: 'lightsabers.jpg' },
@@ -71,18 +79,22 @@ function renderDefenseIcon(name) {
     return `<span class="defense-icon" aria-hidden="true"><img src="img/defesas/${name}.png" alt="" draggable="false" onerror="this.remove()"></span>`;
 }
 
-function renderWeaponIcon(weaponName) {
-    if (!String(weaponName || '').trim()) {
+function getWeaponIconFile(weaponName, weaponType = '') {
+    if (Object.hasOwn(WEAPON_TYPES, weaponType)) return WEAPON_TYPES[weaponType].file;
+    return WEAPON_ICON_RULES.find(rule => rule.pattern.test(weaponName || ''))?.file || 'simple-weapons.jpg';
+}
+
+function renderWeaponIcon(weaponName, weaponType = '') {
+    if (!String(weaponName || '').trim() && !Object.hasOwn(WEAPON_TYPES, weaponType)) {
         return '<span class="item-icon" data-weapon-icon aria-hidden="true"></span>';
     }
-    const rule = WEAPON_ICON_RULES.find(r => r.pattern.test(weaponName));
-    const file = rule ? rule.file : 'simple-weapons.jpg';
+    const file = getWeaponIconFile(weaponName, weaponType);
     return `<img class="item-icon" data-weapon-icon src="img/armas/${file}" alt="" draggable="false">`;
 }
 
 // ===== Imagens da Biblioteca =====
 // Cada categoria da Biblioteca tem sua pasta em img/ (abaixo), listadas em
-// js/dados/imagens-biblioteca.js (gerado por dev/atualizar-imagens-biblioteca.html).
+// js/dados/imagens-biblioteca.js (gerado por dev/ferramentas/atualizar-imagens-biblioteca.html).
 // A imagem é achada pelo nome em inglês entre parênteses: "Esquiva (Dodge)" -> dodge.jpg
 
 // Categoria da Biblioteca -> pasta em img/

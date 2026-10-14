@@ -1,9 +1,9 @@
-// node dev/verificar-poderes.cjs
+// node dev/testes/verificar-poderes.cjs
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const assert = require('node:assert/strict');
-const root = path.join(__dirname, '..');
+const root = path.join(__dirname, '../..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const context = vm.createContext({ assert, console, window: {}, document: { addEventListener() {} } });
 for (const file of ['js/estado.js', 'js/dados/biblioteca.js', 'js/dados/biblioteca-detalhes.js', 'js/dados/prerequisitos-talentos.js', 'js/referencia.js', 'js/talentos.js']) {
@@ -35,8 +35,8 @@ vm.runInContext(`
     assert.ok(memory.text.includes('Defesa de Vontade'));
     assert.ok(memory.text.includes('2d6'));
     assert.ok(memory.text.includes('Inteligência 3'));
-    assert.ok(memory.checks[3].effect.includes('padrão e rápida'));
-    assert.ok(memory.special.includes('CD 15 + dano recebido'));
+    assert.ok(memory.checks[3].effect.includes('a ação padrão e a ação rápida'));
+    assert.ok(memory.special.includes('CD 15 + dano sofrido'));
     assert.equal(findForcePowerName('Impulso'), other);
     assert.equal(findForcePowerName('Impulso (Surge)'), other);
     assert.equal(findForcePowerName('Pressão da Força'), 'Aperto da Força (Force Grip)');
@@ -74,8 +74,18 @@ vm.runInContext(`
     assert.ok(renderForcePowersCard(sheet).includes(legacy));
     assert.equal(JSON.stringify(sheet), original, 'Consultar não pode alterar dados antigos');
     const candidates = buildCandidates(sheet, null, 'poder');
-    assert.equal(candidates.length, LIBRARY_DATA.forcePowers.items.length);
+    assert.equal(candidates.length, LIBRARY_DATA.forcePowers.items.length - 4);
     assert.ok(candidates.every(candidate => candidate.tipo === 'poder'));
+    assert.ok(candidates.every(candidate => LIBRARY_ITEM_DETAILS[candidate.nome]?.kind !== 'aptitude'));
+    const oldAptitude = { id: 3, forcePowers: ['Dreno de Vida (Force Drain)'], escolhas: [], noteDetails: { preserved: 'Nota antiga' } };
+    const originalAptitude = JSON.stringify(oldAptitude);
+    assert.ok(renderForcePowersCard(oldAptitude).includes('Aptidão · escolha antiga preservada'));
+    assert.ok(renderForcePowersCard(oldAptitude).includes('openLibraryItem'));
+    assert.equal(JSON.stringify(oldAptitude), originalAptitude, 'Consultar aptidão legada não altera a ficha');
+    const invalidAptitude = JSON.stringify(sheet);
+    choiceState = { sheetId: 1, tipo: 'poder', slotKey: null, powerIndex: null, candidates: [{ tipo: 'poder', nome: 'Dreno de Vida (Force Drain)' }], selected: 0 };
+    confirmChoice();
+    assert.equal(JSON.stringify(sheet), invalidAptitude, 'Aptidão não pode ser adicionada como novo poder');
     const choose = (name, index) => {
         choiceState = { sheetId: 1, tipo: 'poder', slotKey: null, powerIndex: index, candidates: [{ tipo: 'poder', nome: name }], selected: 0 };
         confirmChoice();

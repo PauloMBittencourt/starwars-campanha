@@ -1,5 +1,5 @@
 """Importa o capítulo completo de perícias do PDF PT-BR fornecido pelo usuário.
-Uso: python dev/importar-pericias-livro.py caminho-do-livro.pdf
+Uso: python dev/importadores/importar-pericias-livro.py caminho-do-livro.pdf
 Requer pypdfium2; o site gerado continua sem dependências adicionais.
 """
 import json
@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 import pypdfium2 as pdfium
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 PDF = pdfium.PdfDocument(sys.argv[1])
 
 def page_text(number):
@@ -243,7 +243,7 @@ for ref in data['skills'].values():
     for item in ref['uses']:
         item.pop('_raw', None)
 
-output = '// Regras do capítulo de Perícias do livro PT-BR (v1.05), fornecido pelo usuário.\n// Gerado por dev/importar-pericias-livro.py; complementos de suplementos têm fonte própria.\n'
+output = '// Regras do capítulo de Perícias do livro PT-BR (v1.05), fornecido pelo usuário.\n// Gerado por dev/importadores/importar-pericias-livro.py; complementos de suplementos têm fonte própria.\n'
 output += 'const SKILL_USES = ' + json.dumps(data['skills'], ensure_ascii=False, indent=4) + ';\n\n'
 output += 'const KNOWLEDGE_TACTICS_USES = ' + json.dumps(data['tactics'], ensure_ascii=False, indent=4) + ';\n'
 (ROOT / 'js/dados/pericias-usos.js').write_text(output, encoding='utf-8')

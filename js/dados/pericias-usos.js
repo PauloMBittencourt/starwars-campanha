@@ -1,5 +1,5 @@
 // Regras do capítulo de Perícias do livro PT-BR (v1.05), fornecido pelo usuário.
-// Gerado por dev/importar-pericias-livro.py; complementos de suplementos têm fonte própria.
+// Gerado por dev/importadores/importar-pericias-livro.py; complementos de suplementos têm fonte própria.
 const SKILL_USES = {
     "acrobacia": {
         "page": "Acrobatics",
