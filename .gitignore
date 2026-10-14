@@ -1,0 +1,8 @@
+# Saídas temporárias de ferramentas e geração de imagens.
+/output/
+
+# Cache do Python e arquivos auxiliares do sistema.
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
